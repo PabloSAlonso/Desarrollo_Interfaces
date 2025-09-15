@@ -21,13 +21,13 @@ namespace Ejercicio3
         {
 
         }
-         
+
 
         int saldo = 50;
         Random rndm = new Random();
-        public (int, int, int) Aleatorios (int minimo, int maximo)
-        {   
-            
+        public (int, int, int) Aleatorios(int minimo, int maximo)
+        {
+
             return (rndm.Next(minimo, maximo + 1), rndm.Next(minimo, maximo + 1), rndm.Next(minimo, maximo + 1));
         }
 

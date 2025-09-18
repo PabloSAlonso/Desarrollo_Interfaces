@@ -34,7 +34,7 @@
                 flag = true;
                 Console.WriteLine("Por favor introduce una opción");
                 Console.WriteLine("1º: Año bisiesto");
-                Console.WriteLine("2º: Suma de rangom de números");
+                Console.WriteLine("2º: Suma de rango de números");
                 Console.WriteLine("3º: Todas las opciones");
                 Console.WriteLine("4º: Salir");
                 opcion = int.Parse(Console.ReadLine());

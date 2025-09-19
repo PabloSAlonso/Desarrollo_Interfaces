@@ -22,7 +22,7 @@ namespace Ejercicio6
             DialogResult mensaje = MessageBox.Show("Quieres poner \"" + txtBox1.Text + "\" como titulo del formulario?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (mensaje == DialogResult.Yes)
             {
-                Form1.ActiveForm.Text = txtBox1.Text;
+                this.Text = txtBox1.Text;
             }
 
         }

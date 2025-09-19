@@ -9,7 +9,7 @@
             {
                 n *= i;
             }
-            return numValidar < 0 || numValidar > 10 ? false : true;
+            return (numValidar >= 0 || numValidar <= 10);
         }
         public static void dibujarAsteriscos(int cantidad = 10)
         {
@@ -29,6 +29,7 @@
         {
             int a = 5;
             factorial(ref a);
+            Console.WriteLine(a);
             Console.WriteLine(a);
             dibujarAsteriscos(13);
             Console.ReadLine();

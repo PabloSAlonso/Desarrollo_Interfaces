@@ -22,6 +22,10 @@
             }
             return suma;
         }
+        public static int pedirNum(int n1, int n2)
+        {
+            do
+        }
         static void Main(string[] args)
         {
             int opcion;

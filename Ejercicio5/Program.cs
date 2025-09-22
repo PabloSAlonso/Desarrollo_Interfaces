@@ -14,14 +14,12 @@ namespace Ejercicio5
                     {
                         n *= i;
                     }
-                    return true;
-
                 }
                 else
                 {
                     n = 1;
-                    return true;
                 }
+                    return true;
             }
             else
             {
@@ -47,7 +45,7 @@ namespace Ejercicio5
 #if OPCION
             int a = 11;
             factorial(ref a);
-            Console.WriteLine(factorial (ref a));
+            Console.WriteLine(factorial(ref a));
             Console.WriteLine(a);
 #else
             dibujarAsteriscos(13);

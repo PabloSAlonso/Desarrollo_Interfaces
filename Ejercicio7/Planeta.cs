@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ejercicio7
+namespace Ejercicio7_8
 {
     public class Planeta : Astro, ITerraformable
     {
@@ -53,7 +53,7 @@ namespace Ejercicio7
         }
         public override string ToString()
         {
-            return String.Format("%10s %4d %.2f", this.Nombre, this.satelites, this.Radio);
+            return String.Format("Nombre:{0,10}\nSatelites:{1,4}\nRadio:{2,8:.00}", this.Nombre, this.satelites, this.Radio);
         }
         public static Planeta operator +(Planeta p1)
         {

@@ -126,6 +126,7 @@
             this.Controls.Add(this.num1);
             this.Name = "Form3";
             this.Text = "Tragaperra";
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

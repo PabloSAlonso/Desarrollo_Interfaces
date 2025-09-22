@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Ejercicio7
 {
-    public interface ITerraformable 
+    public class Cometa : Astro, ITerraformable
     {
-        public bool esHabitable();
-        
+        public bool esHabitable()
+        {
+            return false;
+        }
     }
 }

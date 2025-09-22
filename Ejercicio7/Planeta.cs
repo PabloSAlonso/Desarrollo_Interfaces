@@ -8,11 +8,13 @@ namespace Ejercicio7
 {
     public class Planeta : Astro, ITerraformable
     {
+        private bool gaseoso;
+        public int satelites;
         public bool Gaseoso
         {
             set; get;
         }
-        public int satelites
+        public int Satelites
         {
             set
             {
@@ -47,11 +49,29 @@ namespace Ejercicio7
             {
                 return false;
             }
-             
+
         }
         public override string ToString()
         {
-            return String.Format("%10s %4d %.2f",this.Nombre,this.satelites, this.Radio);
+            return String.Format("%10s %4d %.2f", this.Nombre, this.satelites, this.Radio);
+        }
+        public static Planeta operator +(Planeta p1)
+        {
+            p1.satelites++;
+            return p1;
+        }
+        public static Planeta operator -(Planeta p1)
+        {
+            if (p1.satelites <= 0)
+            {
+                return p1;
+            }
+            else
+            {
+                p1.satelites--;
+                return p1;
+            }
+
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define PRUEBA
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,10 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace Ejercicio3
 {
+
     public partial class Form3 : Form
     {
+
         public Form3()
         {
             InitializeComponent();
@@ -33,6 +39,7 @@ namespace Ejercicio3
 
         private void btnJugar_Click(object sender, EventArgs e)
         {
+
             var aleatorio = Aleatorios(1, 7);
             saldo -= 2;
             int premio;
@@ -51,10 +58,18 @@ namespace Ejercicio3
             }
             else if (n1 == n2 || n1 == n3 || n2 == n3)
             {
+#if !PRUEBA
                 premio = 5;
+         
+#else
+                premio = -5;
+               // premio = 5;
+#endif
                 lblPremio.Text = "El premio es de: " + premio.ToString();
                 saldo += premio;
                 numSaldo.Text = saldo.ToString();
+
+
             }
             else
             {
@@ -71,6 +86,11 @@ namespace Ejercicio3
         }
 
         private void numSaldo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
         {
 
         }

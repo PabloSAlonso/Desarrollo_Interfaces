@@ -4,7 +4,6 @@
     {
         public static bool Bisiesto(int año)
         {
-            //TODO
             return (año % 4 == 0 && año % 100 != 0) || año % 400 == 0;
 
         }
@@ -22,9 +21,23 @@
             }
             return suma;
         }
-        public static int pedirNum(int n1, int n2)
+        public static int pedirNum()// TODO revisar
         {
+            bool flag;
+            int n1;
             do
+            {
+                flag = true;
+                Console.WriteLine("Dame un numero del 1 al 10000");
+                n1 = int.Parse(Console.ReadLine());
+                if (n1 < 1 || n1 > 10000)
+                {
+                    Console.Write("El numero no es valido");
+                    n1 = int.Parse(Console.ReadLine());
+                    flag = false;
+                }
+            } while (!flag);
+            return n1;
         }
         static void Main(string[] args)
         {
@@ -46,15 +59,8 @@
                 {
                     case 1:
                         Console.WriteLine("Funcion de año bisiesto:");
-                        Console.WriteLine("Introduce un numero positivo menor que 10000");
-                        año = int.Parse(Console.ReadLine());
-                   
-                        if (año < 0 || año > 10000)
-                        {
-                            Console.WriteLine("El año debe ser positivo y menor que 10000");
-                            goto case 1;
+                        año = pedirNum();
 
-                        }
                         if (Bisiesto(año))
                         {
                             Console.WriteLine("El año {0} es bisiesto", año);
@@ -70,10 +76,11 @@
                         break;
                     case 2:
                         Console.WriteLine("Funcion de suma Rango:");
-                        Console.WriteLine("Introduce un numero positivo menor que 10000");
-                        n1 = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Introduce un segundo numero, que sea mayor al anterior");
-                        n2 = int.Parse(Console.ReadLine());
+
+                        n1 = pedirNum();
+                        Console.WriteLine("Num 1 introducido");
+                        n2 = pedirNum();
+                        Console.WriteLine("Num 2 introducido");
                         if (sumaRango(n1, n2) == null)
                         {
                             Console.WriteLine("Los numeros no son validos");
@@ -85,10 +92,14 @@
                         Console.WriteLine("Funcion Bisiesto y sumaRango:");
                         flag = false;
                         goto case 1;
-                        break;
+
 
                     case 4:
                         Console.WriteLine("Fin del programa, hasta otra!");
+                        break;
+
+                    default:
+                        Console.WriteLine("Error no identificado en la eleccion de la opcion");
                         break;
 
                 }

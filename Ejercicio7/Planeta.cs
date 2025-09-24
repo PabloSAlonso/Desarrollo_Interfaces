@@ -8,19 +8,16 @@ namespace Ejercicio7_8
 {
     public class Planeta : Astro, ITerraformable
     {
-        private bool gaseoso;
-        public int satelites;
-        public bool Gaseoso
-        {
-            set; get;
-        }
+        public bool Gaseoso { set; get; }
+
+        private int satelites;
         public int Satelites
         {
-            set
+            set//TODO no guarda
             {
                 if (value < 0)
                 {
-                    value = 0;
+                    satelites = 0;
                 }
             }
             get
@@ -33,15 +30,14 @@ namespace Ejercicio7_8
             this.Gaseoso = gaseoso;
             this.satelites = satelites;
         }
-        public Planeta() : base("", 1)
+        public Planeta() : this("", 0.00, false, 0)
         {
-            this.Gaseoso = false;
-            this.satelites = 0;
+            
         }
 
         public bool esHabitable()
         {
-            if (!this.Gaseoso && base.Radio >= 2000 && base.Radio <= 8000)
+            if (!this.Gaseoso && base.Radio >= 2000 && base.Radio <= 8000)//return esto
             {
                 return true;
             }
@@ -55,12 +51,12 @@ namespace Ejercicio7_8
         {
             return String.Format("Nombre:{0,10}\nSatelites:{1,4}\nRadio:{2,8:.00}", this.Nombre, this.satelites, this.Radio);
         }
-        public static Planeta operator +(Planeta p1)
+        public static Planeta operator ++(Planeta p1)
         {
             p1.satelites++;
             return p1;
         }
-        public static Planeta operator -(Planeta p1)
+        public static Planeta operator --(Planeta p1)
         {
             if (p1.satelites <= 0)
             {

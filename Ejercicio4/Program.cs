@@ -23,20 +23,14 @@
         }
         public static int pedirNum()// TODO revisar
         {
-            bool flag;
             int n1;
-            do
-            {
-                flag = true;
                 Console.WriteLine("Dame un numero del 1 al 10000");
                 n1 = int.Parse(Console.ReadLine());
-                if (n1 < 1 || n1 > 10000)
+                while (n1 < 1 || n1 > 10000)
                 {
-                    Console.Write("El numero no es valido");
+                    Console.Write("El numero no es valido\n");
                     n1 = int.Parse(Console.ReadLine());
-                    flag = false;
                 }
-            } while (!flag);
             return n1;
         }
         static void Main(string[] args)

@@ -14,11 +14,11 @@ namespace Ejercicio7_8
         {
             set
             {
-                nombre = "\"" + value.ToUpper() + "\"";
+                nombre = value.ToUpper();
             }
             get
             {
-                return nombre;
+                return "\"" + nombre + "\"";
             }
         }
         public double Radio
@@ -33,15 +33,15 @@ namespace Ejercicio7_8
             }
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object? obj) //TODO
         {
-            if (obj.GetType() is Astro)
+            if (obj is Astro)
             {
-                return this.Equals(obj);
+                return this.Nombre == ((Astro)obj).Nombre;
             }
-            else if (obj.GetType() is String)
+            else if (obj is String)
             {
-                return this.nombre.Equals(obj);
+                return this.Nombre == (String)obj;
             }
             else
             {
@@ -56,10 +56,9 @@ namespace Ejercicio7_8
             this.nombre = nombre;
             this.radio = radio;
         }
-        public Astro()
+        public Astro() : this ("Tierra", 6378)
         {
-            nombre = "Tierra";
-            radio = 6378;
+    
         }
     }
 }

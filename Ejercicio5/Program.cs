@@ -3,7 +3,7 @@ namespace Ejercicio5
 {
     internal class Program
     {
-        public static bool factorial(ref int n)//TODO revisar
+        public static bool factorial(ref int n)
         {
             int numValidar = n;
             if (numValidar >= 0 && numValidar <= 10)

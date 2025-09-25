@@ -19,6 +19,10 @@ namespace Ejercicio7_8
                 {
                     satelites = 0;
                 }
+                else 
+                {
+                    satelites = value;
+                }
             }
             get
             {
@@ -37,19 +41,12 @@ namespace Ejercicio7_8
 
         public bool esHabitable()
         {
-            if (!this.Gaseoso && base.Radio >= 2000 && base.Radio <= 8000)//return esto
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (!this.Gaseoso && base.Radio >= 2000 && base.Radio <= 8000);//return esto
 
         }
         public override string ToString()
         {
-            return String.Format("Nombre:{0,10}\nSatelites:{1,4}\nRadio:{2,8:.00}", this.Nombre, this.satelites, this.Radio);
+            return String.Format("Planeta:{0,10}\nSatelites:{1,4}\nRadio:{2,8:.00}", this.Nombre, this.satelites, this.Radio);
         }
         public static Planeta operator ++(Planeta p1)
         {

@@ -100,24 +100,30 @@ namespace Ejercicio7_8
             planeta.Nombre = Console.ReadLine();
 
             int opcion = 0;
-            for (int i = 0; i < lista.Count; i++)
+            //int index = -1;
+            for (int i = 0; i < lista.Count(); i++)
             {
-                if (lista.IndexOf(planeta) == i)
+                Console.WriteLine(planeta.Nombre);
+                if (lista.IndexOf(lista[i]) != -1) //TODO no vaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                 {
-                    if (lista[i].Nombre == planeta.Nombre && lista[i].GetType() == typeof(Planeta))
+                    if (lista[i].Equals(planeta.Nombre) && lista[i] is Planeta planetaAstro)
                     {
                         Console.WriteLine("Quieres aumentar o decrementar satelites (1/2)");
                         opcion = pedirEntero(1, 2);
                         if (opcion == 1)
                         {
-                            planeta =(((Planeta)lista[i]));
                             planeta++;
+                            lista[i] = planetaAstro;
                         }
                         else
                         {
-                            planeta = (((Planeta)lista[i]));
                             planeta--;
+                            lista[i] = planetaAstro;
                         }
+                    }
+                    else
+                    {
+                        Console.WriteLine("ENTRÓ EN EL 2º IF");
                     }
                 }
                 else
@@ -127,7 +133,7 @@ namespace Ejercicio7_8
 
             }
         }
-        public static void EliminarNoHabitables(List<Astro> listaAstros) //TODO acabar
+        public static void EliminarNoHabitables(List<Astro> listaAstros) 
         {
             for (int i = listaAstros.Count - 1; i >= 0; i--)
             {

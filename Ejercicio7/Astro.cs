@@ -33,7 +33,7 @@ namespace Ejercicio7_8
             }
         }
 
-        public override bool Equals(object? obj) //TODO
+        public override bool Equals(object? obj) 
         {
             if (obj is Astro)
             {

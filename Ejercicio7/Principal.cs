@@ -104,7 +104,7 @@ namespace Ejercicio7_8
             for (int i = 0; i < lista.Count(); i++)
             {
                 Console.WriteLine(planeta.Nombre);
-                if (lista.IndexOf(lista[i]) != -1) //TODO no vaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                if (lista.IndexOf(lista[i]) != -1) 
                 {
                     if (lista[i].Equals(planeta.Nombre) && lista[i] is Planeta planetaAstro)
                     {

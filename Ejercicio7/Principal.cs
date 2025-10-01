@@ -113,12 +113,12 @@ namespace Ejercicio7_8
 
             for (int i = 0; i < lista.Count(); i++)
             {
-<<<<<<< HEAD
+
                 Console.WriteLine(planeta.Nombre);
                 if (lista.IndexOf(lista[i]) != -1) 
-=======
+
                 if (lista.IndexOf(lista[i]) != -1)
->>>>>>> b6c331dc6773d9325991c6909ecef2ceb8b4a81b
+
                 {
                     if (lista[i].Equals(planeta.Nombre) && lista[i] is Planeta planetaAstro)
                     {

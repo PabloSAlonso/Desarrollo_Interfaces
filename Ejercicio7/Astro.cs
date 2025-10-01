@@ -18,7 +18,7 @@ namespace Ejercicio7_8
             }
             get
             {
-                return "\"" + nombre + "\"";
+                return $"\"{nombre}\"";
             }
         }
         public double Radio

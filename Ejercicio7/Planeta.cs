@@ -32,7 +32,7 @@ namespace Ejercicio7_8
         public Planeta(String nombre, double radio, bool gaseoso, int satelites) : base(nombre, radio)
         {
             this.Gaseoso = gaseoso;
-            this.satelites = satelites;
+            this.Satelites = satelites;
         }
         public Planeta() : this("", 0.00, false, 0)
         {

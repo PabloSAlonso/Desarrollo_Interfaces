@@ -39,9 +39,9 @@ namespace Ejercicio7_8
             {
                 return this.Nombre == ((Astro)obj).Nombre;
             }
-            else if (obj is String)
+            else if (obj is String nombreStr)
             {
-                return this.Nombre == (String)obj;
+                return this.Nombre == nombreStr.ToUpper();
             }
             else
             {
@@ -53,7 +53,7 @@ namespace Ejercicio7_8
 
         public Astro(String nombre, double radio)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
             this.radio = radio;
         }
         public Astro() : this ("Tierra", 6378)

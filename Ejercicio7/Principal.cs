@@ -53,58 +53,72 @@ namespace Ejercicio7_8
 
             return num;
         }
-
-        public static Object PedirObjeto(Object obj)
+        public static void pedirPlaneta(List<Astro> colAstros)
         {
-            int opcion = 0;
-            bool gaseoso = true;
-            String nombre = "";
-            double radio = 0;
-            int lunas = 0;
-            try
+            Console.WriteLine("¿Tu planeta es gaseoso?: 1/2");
+            bool gaseoso = pedirEntero(1, 2) == 1 ? true : false;
+
+            Console.WriteLine("Introduce el nombre:");
+            string nombrePlaneta = Console.ReadLine() ?? "";
+
+            Console.WriteLine("Dime el radio:");
+            double radio = pedirDouble();
+
+            Console.WriteLine("Dime la cantidad de lunas:");
+            int numLunas = pedirEntero();
+
+            colAstros.Add(new Planeta(nombrePlaneta, radio, gaseoso, numLunas));
+        }
+
+        public static void pedirCometa(List<Astro> colAstro)
+        {
+            Console.WriteLine("Introduce el nombre:");
+            string nombreCometa = Console.ReadLine() ?? "";
+
+            Console.WriteLine("Dime el radio:");
+            double radioCometa = pedirDouble();
+
+            Cometa c = new Cometa();
+            c.Nombre = nombreCometa;
+            c.Radio = radioCometa;
+            colAstro.Add(c);
+        }
+
+        public static void muestraDatos(List<Astro> colAstros)
+        {
+            for (int i = 0; i < colAstros.Count; i++)
             {
-                if (obj is Planeta)
+                if (colAstros[i] == null)
                 {
-                    Console.WriteLine("¿Tu planeta es gaseoso?: 1/2");
-                    opcion = pedirEntero(1, 2);
-                    gaseoso = opcion == 1 ? true : false;
-                    Console.WriteLine("¿Y cuantas lunas tiene?");
-                    lunas = pedirEntero();
+                    Console.WriteLine("Elemento no existe o es null");
+                    break;
                 }
 
-                Console.WriteLine("Dime el nombre de tu elemento");
-                nombre = Console.ReadLine();
-                Console.WriteLine("Ahora dime el radio");
-                radio = pedirDouble();
-
-                if (obj is Planeta)
+                if (colAstros[i] is Planeta)
                 {
-                    Planeta p = new(nombre, radio, gaseoso, lunas);
-                    return p;
+                    Console.WriteLine(((Planeta)colAstros[i]).ToString());
                 }
-                else
+                if (colAstros[i] is Cometa)
                 {
-                    Cometa c = new Cometa();
-                    c.Nombre = nombre;
-                    c.Radio = radio;
-                    return c;
+                    Console.WriteLine("\nCometa: {0,10}", ((Cometa)colAstros[i]).Nombre);
                 }
             }
-            catch (FormatException) { }
-            return null;
         }
         public static void AumentarDecrementar(List<Astro> lista)
         {
             Planeta planeta = new();
             Console.WriteLine("Dime el nombre de tu elemento");
             planeta.Nombre = Console.ReadLine();
-
             int opcion = 0;
-            //int index = -1;
+
             for (int i = 0; i < lista.Count(); i++)
             {
+<<<<<<< HEAD
                 Console.WriteLine(planeta.Nombre);
                 if (lista.IndexOf(lista[i]) != -1) 
+=======
+                if (lista.IndexOf(lista[i]) != -1)
+>>>>>>> b6c331dc6773d9325991c6909ecef2ceb8b4a81b
                 {
                     if (lista[i].Equals(planeta.Nombre) && lista[i] is Planeta planetaAstro)
                     {
@@ -112,18 +126,14 @@ namespace Ejercicio7_8
                         opcion = pedirEntero(1, 2);
                         if (opcion == 1)
                         {
-                            planeta++;
+                            planetaAstro++;
                             lista[i] = planetaAstro;
                         }
                         else
                         {
-                            planeta--;
+                            planetaAstro--;
                             lista[i] = planetaAstro;
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("ENTRÓ EN EL 2º IF");
                     }
                 }
                 else
@@ -133,7 +143,7 @@ namespace Ejercicio7_8
 
             }
         }
-        public static void EliminarNoHabitables(List<Astro> listaAstros) 
+        public static void EliminarNoHabitables(List<Astro> listaAstros)
         {
             for (int i = listaAstros.Count - 1; i >= 0; i--)
             {
@@ -147,21 +157,7 @@ namespace Ejercicio7_8
 
         static void Main(string[] args)
         {
-            //Pruebas Ej 7
-            //Console.WriteLine(planeta.ToString());
-            //planeta--;
-            //Console.WriteLine(planeta.ToString());
-            //Console.WriteLine(planeta.esHabitable());
 
-            //astros.Add(planeta1);
-            //Planeta planeta2 = new ("Tierra", 3000.00, false, 4);
-            //Console.WriteLine("Planeta 2 creado");
-            //Console.WriteLine(planeta2.ToString());
-            //planeta2--;
-            //Console.WriteLine(planeta2.esHabitable());
-            //Console.WriteLine(planeta2.ToString());
-
-            //Objetos inicializados al constructor vacio para detrminar que objetos piden la funcion pedir objeto
             Planeta planeta = new();
             Cometa cometa = new();
             List<Astro> colAstros = new List<Astro>();
@@ -183,35 +179,17 @@ namespace Ejercicio7_8
                 {
                     case 1:
 
-                        Planeta nuevoPlaneta = (Planeta)PedirObjeto(planeta);
-                        colAstros.Add(nuevoPlaneta);
+                        pedirPlaneta(colAstros);
                         break;
 
                     case 2:
 
-                        Cometa nuevoCometa = (Cometa)PedirObjeto(cometa);
-                        colAstros.Add((Cometa)nuevoCometa);
+                        pedirCometa(colAstros);
                         break;
 
                     case 3:
 
-                        for (int i = 0; i < colAstros.Count; i++)
-                        {
-                            if (colAstros[i] == null)
-                            {
-                                Console.WriteLine("Elemento no existe o es null");
-                                break;
-                            }
-
-                            if (colAstros[i] is Planeta)
-                            {
-                                Console.WriteLine(((Planeta)colAstros[i]).ToString());
-                            }
-                            if (colAstros[i] is Cometa)
-                            {
-                                Console.WriteLine("\nCometa: {0,10}", ((Cometa)colAstros[i]).Nombre);
-                            }
-                        }
+                        muestraDatos(colAstros);
 
                         break;
 
@@ -237,3 +215,18 @@ namespace Ejercicio7_8
         }
     }
 }
+//Pruebas Ej 7
+//Console.WriteLine(planeta.ToString());
+//planeta--;
+//Console.WriteLine(planeta.ToString());
+//Console.WriteLine(planeta.esHabitable());
+
+//astros.Add(planeta1);
+//Planeta planeta2 = new ("Tierra", 3000.00, false, 4);
+//Console.WriteLine("Planeta 2 creado");
+//Console.WriteLine(planeta2.ToString());
+//planeta2--;
+//Console.WriteLine(planeta2.esHabitable());
+//Console.WriteLine(planeta2.ToString());
+
+//Objetos inicializados al constructor vacio para detrminar que objetos piden la funcion pedir objeto

@@ -22,6 +22,17 @@ namespace Ejercicio9
                 return memoriaRAM;
             }
         }
+        public Ordenador(string nombre, int MemoriaRam)
+        {
+            Nombre = nombre;
+            memoriaRAM = MemoriaRam;
+        }
+
+        public Ordenador()
+        {
+            Nombre = "";
+            memoriaRAM = 0;
+        }
 
         public static bool comprobarIp(string ip)
         {
@@ -31,14 +42,21 @@ namespace Ejercicio9
             {
                 foreach (var ipElement in ipSplited)
                 {
-                    if (!byte.TryParse(ipElement, out _))
-                    {
-                        return false;
-                    }
+                        return (byte.TryParse(ipElement, out _));
                 }
-                return true;
             }
             return false;
+        }
+
+        public String pedirIp(string ip)
+        {
+            ip = Console.ReadLine();
+            while (!comprobarIp(ip))
+            {
+                Console.WriteLine("La ip no es valida, introducela de nuevo");
+                ip = Console.ReadLine();
+            }
+            return ip;
         }
 
         public override string ToString()

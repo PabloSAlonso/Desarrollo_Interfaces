@@ -11,7 +11,7 @@ namespace Ejercicio7_8
             bool flag;
             do
             {
-                flag = true;
+                //flag = true;
                 Console.WriteLine("Introduce una opcion entre {0} y {1}", min, max);
                 flag = int.TryParse(Console.ReadLine(), out opcion);
 
@@ -56,7 +56,7 @@ namespace Ejercicio7_8
         public static void pedirPlaneta(List<Astro> colAstros)
         {
             Console.WriteLine("¿Tu planeta es gaseoso?: 1/2");
-            bool gaseoso = pedirEntero(1, 2) == 1 ? true : false;
+            bool gaseoso = pedirEntero(1, 2) == 1;
 
             Console.WriteLine("Introduce el nombre:");
             string nombrePlaneta = Console.ReadLine() ?? "";
@@ -78,15 +78,17 @@ namespace Ejercicio7_8
             Console.WriteLine("Dime el radio:");
             double radioCometa = pedirDouble();
 
-            Cometa c = new Cometa();
-            c.Nombre = nombreCometa;
-            c.Radio = radioCometa;
+            Cometa c = new()
+            {
+                Nombre = nombreCometa,
+                Radio = radioCometa
+            };
             colAstro.Add(c);
         }
 
         public static void muestraDatos(List<Astro> colAstros)
         {
-            for (int i = 0; i < colAstros.Count; i++)
+            for (int i = 0; i < colAstros.Count; i++)//TODO indicar si es o no habitable
             {
                 if (colAstros[i] == null)
                 {
@@ -97,6 +99,7 @@ namespace Ejercicio7_8
                 if (colAstros[i] is Planeta)
                 {
                     Console.WriteLine(((Planeta)colAstros[i]).ToString());
+                    Console.WriteLine(((Planeta)colAstros[i]).esHabitable() ? "Es habitable" : "No es habitable");
                 }
                 if (colAstros[i] is Cometa)
                 {
@@ -109,45 +112,46 @@ namespace Ejercicio7_8
             Planeta planeta = new();
             Console.WriteLine("Dime el nombre de tu elemento");
             planeta.Nombre = Console.ReadLine();
+
             int opcion = 0;
 
-            for (int i = 0; i < lista.Count(); i++)
+            //for (int i = 0; i < lista.Count(); i++)//TODO quitar bucle y comparar planeta
+            //{
+
+            Console.WriteLine(planeta.Nombre);
+            // if (lista.IndexOf(lista[i]) != -1)
+
+            if (lista.IndexOf(planeta) != -1)
+
             {
-
-                Console.WriteLine(planeta.Nombre);
-                if (lista.IndexOf(lista[i]) != -1) 
-
-                if (lista.IndexOf(lista[i]) != -1)
-
+                if (lista[lista.IndexOf(planeta)].Equals(planeta.Nombre) && lista[lista.IndexOf(planeta)] is Planeta planetaAstro)
                 {
-                    if (lista[i].Equals(planeta.Nombre) && lista[i] is Planeta planetaAstro)
+                    Console.WriteLine("Quieres aumentar o decrementar satelites (1/2)");
+                    opcion = pedirEntero(1, 2);
+                    if (opcion == 1)
                     {
-                        Console.WriteLine("Quieres aumentar o decrementar satelites (1/2)");
-                        opcion = pedirEntero(1, 2);
-                        if (opcion == 1)
-                        {
-                            planetaAstro++;
-                            lista[i] = planetaAstro;
-                        }
-                        else
-                        {
-                            planetaAstro--;
-                            lista[i] = planetaAstro;
-                        }
+                        planetaAstro++;
+                        //lista[lista.IndexOf(planeta)] = planetaAstro;
+                    }
+                    else
+                    {
+                        planeta--;
+                        // lista[i] = planetaAstro;
                     }
                 }
-                else
-                {
-                    Console.WriteLine("No hay ningun elemento con ese nombre");
-                }
-
             }
+            else
+            {
+                Console.WriteLine("No hay ningun elemento con ese nombre");
+            }
+
+            //}
         }
         public static void EliminarNoHabitables(List<Astro> listaAstros)
         {
             for (int i = listaAstros.Count - 1; i >= 0; i--)
             {
-                if (listaAstros[i] is Cometa || listaAstros[i] is Planeta && !((ITerraformable)listaAstros[i]).esHabitable())
+                if (!((ITerraformable)listaAstros[i]).esHabitable())
                 {
                     listaAstros.Remove(listaAstros[i]);
                 }

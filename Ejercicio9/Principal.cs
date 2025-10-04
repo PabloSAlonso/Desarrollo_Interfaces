@@ -62,18 +62,23 @@
                         RAM = pedirEntero();
                         //RAM guardada
                         ordenador = new(nombre, RAM);
-                        ordenadores.Add(IP,ordenador);
+                        ordenadores.Add(IP, ordenador);
                         break;
                     case 2:
-                        
+
                         break;
                     case 3:
                         Console.WriteLine("Cual es la IP del ordenador que vas a eliminar?");
+                        string iPeliminar = Console.ReadLine();
+                        if (!iPeliminar.comprobarIp() && iPeliminar.)
+                        {
+                            
+                        }
 
                         break;
                     case 4:
                         Console.WriteLine("Tu coleccion de ordenadores:");
-                        foreach(String ips in ordenadores.Keys)
+                        foreach (String ips in ordenadores.Keys)
                         {
                             Console.WriteLine(ips);
                         }

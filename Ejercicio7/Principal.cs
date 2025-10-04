@@ -30,7 +30,7 @@ namespace Ejercicio7_8
             bool flag;
             do
             {
-                flag = true;
+                //flag = true;
                 Console.WriteLine("Introduce un numero entero");
                 flag = int.TryParse(Console.ReadLine(), out num);
 
@@ -45,7 +45,7 @@ namespace Ejercicio7_8
             bool flag;
             do
             {
-                flag = true;
+                //flag = true;
                 Console.WriteLine("Introduce un numero decimal");
                 flag = double.TryParse(Console.ReadLine(), out num);
 

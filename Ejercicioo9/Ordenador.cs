@@ -48,9 +48,9 @@ namespace Ejercicioo9
             return false;
         }
 
-        public String pedirIp(string ip)
+        public String pedirIp()
         {
-            ip = Console.ReadLine();
+            string ip = Console.ReadLine();
             while (!comprobarIp(ip))
             {
                 Console.WriteLine("La ip no es valida, introducela de nuevo");

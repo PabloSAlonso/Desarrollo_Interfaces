@@ -54,8 +54,7 @@
                         nombre = Console.ReadLine();
                         //Nombre guardado
                         Console.WriteLine("Dame la Ip del nuevo ordenador");
-                        IP = Console.ReadLine();
-                        ordenador.pedirIp(IP);
+                        IP = ordenador.pedirIp();
                         //Ip guardada tras la comprobacion
                         Console.WriteLine("Dame la cantidad de RAM que quieres (numero entero)");
                         RAM = pedirEntero();
@@ -68,6 +67,7 @@
                         string equipos = Console.ReadLine();
                         string[] equipoConRam = equipos.Split(",");
                         string[] equipoSinRam;
+                        //Tenemos: 1º el string del usuario (por ejemplo 3 equipos) 2º cada uno de los equipos es un miembro (la coma separa a cada equipo) 3º las Ips de cada equipo como 1º miembro (0) y la ram de ese equipo como segundo (1).
                         for (int i = 0; i < equipoConRam.Length; i++)
                         {
                             equipoSinRam = equipoConRam[i].Split(":");
@@ -77,11 +77,11 @@
                             {
                                 ordenador.MemoriaRam = ram;
                                 ordenadores.Add(equipoSinRam[0], ordenador);
-
+                                Console.WriteLine($"Equipo {equipoConRam[i]} introducido con exito");
                             }
                             else
                             {
-                                Console.WriteLine("Error de formato, la lista de equipos permanecerá igual");
+                                Console.WriteLine($"Error de formato, el equipo {i + 1} no se añadirá");
                             }
                         }
 
@@ -99,9 +99,11 @@
                         break;
                     case 4:
                         Console.WriteLine("Tu coleccion de ordenadores:");
+                        int p = 1;
                         foreach (String ips in ordenadores.Keys)
                         {
-                            Console.WriteLine(ips);
+                            Console.WriteLine($"IP {p} - " + ips);
+                            p++;
                         }
                         break;
                     case 5:

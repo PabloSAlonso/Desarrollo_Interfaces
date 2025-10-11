@@ -1,8 +1,8 @@
 ﻿namespace Ejercicio10
 {
-    internal class Program
+    internal class Principal
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
         }

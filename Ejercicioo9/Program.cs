@@ -76,6 +76,7 @@
                             if (Ordenador.comprobarIp(equipoSinRam[0]) && checkearRam)
                             {
                                 ordenador.MemoriaRam = ram;
+                                ordenador.Nombre = $"Nombre por defecto {i}";
                                 ordenadores.Add(equipoSinRam[0], ordenador);
                                 Console.WriteLine($"Equipo {equipoConRam[i]} introducido con exito");
                             }

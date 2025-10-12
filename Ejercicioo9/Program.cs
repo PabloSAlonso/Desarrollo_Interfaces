@@ -49,7 +49,7 @@
                 opcion = pedirEntero();
                 switch (opcion)
                 {
-                    case 1: //- Falla si metes IPs repetidas
+                    case 1: //-TODO Falla si metes IPs repetidas
                         Console.WriteLine("Dime el nombre de tu equipo nuevo");
 
                         nombre = Console.ReadLine();

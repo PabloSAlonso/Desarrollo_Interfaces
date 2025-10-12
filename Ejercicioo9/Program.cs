@@ -49,18 +49,26 @@
                 opcion = pedirEntero();
                 switch (opcion)
                 {
-                    case 1:
+                    case 1: //- Falla si metes IPs repetidas
                         Console.WriteLine("Dime el nombre de tu equipo nuevo");
+
                         nombre = Console.ReadLine();
                         //Nombre guardado
                         Console.WriteLine("Dame la Ip del nuevo ordenador");
                         IP = ordenador.pedirIp();
+                        while (ordenadores.ContainsKey(IP))
+                        {
+                            Console.WriteLine("No puedes repetir una IP");
+                            IP = ordenador.pedirIp();
+                        }
                         //Ip guardada tras la comprobacion
                         Console.WriteLine("Dame la cantidad de RAM que quieres (numero entero)");
                         RAM = pedirEntero();
                         //RAM guardada
                         ordenador = new(nombre, RAM);
                         ordenadores.Add(IP, ordenador);
+
+
                         break;
                     case 2:
                         Console.WriteLine("Introduce varios equipos, separa la de Ip y RAM de cada equipo con : y separa cada equipo con , (ejemplo: 0.0.0.0:16,1.1.1.1:32");

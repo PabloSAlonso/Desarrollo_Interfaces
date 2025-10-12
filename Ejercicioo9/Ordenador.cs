@@ -28,11 +28,13 @@ namespace Ejercicioo9
             memoriaRAM = MemoriaRam;
         }
 
-        public Ordenador()
+        public Ordenador() : this("", 0)
         {
-            Nombre = "";
-            memoriaRAM = 0;
+
         }
+        //- comprobarIp solo comprueba que sea un octeto válido el primero.El resto ya no los comprueba.
+        //Por ejemplo si metes como ip: 12.a.b.c traga
+        
 
         public static bool comprobarIp(string ip)
         {
@@ -40,12 +42,16 @@ namespace Ejercicioo9
             string[] ipSplited = ip.Split(".");
             if (ipSplited.Length == 4)
             {
-                foreach (var ipElement in ipSplited)
+                for (int i = 0; i < ipSplited.Length; i++)
                 {
-                    return (byte.TryParse(ipElement, out _));
+                    if (!byte.TryParse(ipSplited[i], out _))
+                    {
+                        return false;
+                    }
+
                 }
             }
-            return false;
+            return true;
         }
 
         public String pedirIp()

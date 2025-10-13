@@ -44,12 +44,13 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button2.Location = new System.Drawing.Point(451, 80);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Ejercicio1_MouseMove);
             // 
             // Ejercicio1
@@ -61,8 +62,11 @@
             this.Controls.Add(this.button1);
             this.Name = "Ejercicio1";
             this.Text = "Mouse Tester";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Ejercicio1_KeyPress);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Ejercicio1_MouseDown);
             this.MouseLeave += new System.EventHandler(this.Ejercicio1_MouseLeave);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Ejercicio1_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Ejercicio1_MouseUp);
             this.ResumeLayout(false);
 
         }

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tema4WindowsForms;
 
 namespace Tema4WindowsForms
 {
@@ -26,10 +28,62 @@ namespace Tema4WindowsForms
 
         private void Ejercicio1_MouseLeave(object sender, EventArgs e)
         {
-            this.Text = "Mouse Tester";
+            this.Text = "Mouse Tester"; // Catetada
         }
 
-       
-    }
-}
 
+        private void Ejercicio1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                button1.BackColor = Color.Yellow;
+
+            }
+
+            else if (e.Button == MouseButtons.Right)
+            {
+                button2.BackColor = Color.Red;
+            }
+            else
+            {
+                button1.BackColor = Color.Blue;
+                button2.BackColor = Color.Blue;
+            }
+        }
+
+        private void Ejercicio1_MouseUp(object sender, MouseEventArgs e)
+        {
+                button1.BackColor = Color.Empty;
+                button2.BackColor = Color.Empty;
+        }
+
+        private void Ejercicio1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                Text = "Mouse Tester";
+            }
+            else
+            {
+                Text = e.KeyChar.ToString();
+            }
+        }
+    }
+
+    //• Los botones “emularán” los botones del ratón (izquierdo y derecho)
+    //cambiando de color si dicho botón del ratón está pulsado sobre el
+    //formulario imagen. En caso de un ratón con otros botones dicha
+    //pulsación coloreará los dos Button al mismo tiempo. Este efecto será
+    //solo sobre el formulario, no es necesario sobre los componentes del
+    //mismo.
+
+    //• Además si se pulsa alguna tecla, dicha tecla debe aparecer como título
+    //del formulario. Si se pulsa ESC, entonces se restaura el título del
+    //formulario.
+    //• Debajo de los botones, o a un lado, se crearán en tiempo de ejecución
+    //20 botones en 4 filas y 5 columnas. Dichos botones tendrán en su
+    //campo text los números del 1 al 20. Cuando algún botón es pulsado su
+    //número cambia de color y al soltarlo vuelve a negro. Recuerda que las
+    //coordenadas también deben funcionar en estos botones.
+    //Al salir debe preguntar al usuario si está seguro y cancelar en caso negativo.
+}

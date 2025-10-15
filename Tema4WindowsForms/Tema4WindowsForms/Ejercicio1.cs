@@ -14,9 +14,11 @@ namespace Tema4WindowsForms
 {
     public partial class Ejercicio1 : Form
     {
+        string titulo;
         public Ejercicio1()
         {
             InitializeComponent();
+            titulo = this.Text;
         }
 
 
@@ -28,7 +30,7 @@ namespace Tema4WindowsForms
 
         private void Ejercicio1_MouseLeave(object sender, EventArgs e)
         {
-            this.Text = "Mouse Tester"; // Catetada
+            this.Text = titulo;
         }
 
 
@@ -53,19 +55,38 @@ namespace Tema4WindowsForms
 
         private void Ejercicio1_MouseUp(object sender, MouseEventArgs e)
         {
-                button1.BackColor = Color.Empty;
-                button2.BackColor = Color.Empty;
+            button1.BackColor = Color.Empty;
+            button2.BackColor = Color.Empty;
         }
 
         private void Ejercicio1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Escape)
+            Text = e.KeyChar.ToString();
+            if (e.KeyChar is (char)Keys.Escape)
             {
-                Text = "Mouse Tester";
+                Text = titulo;
             }
-            else
+        }
+
+        private void Ejercicio1_Load(object sender, EventArgs e)
+        {
+            int x = 200;
+            int y = 300;
+            for (int i = 0; i < 20; i++)
             {
-                Text = e.KeyChar.ToString();
+                Button button = new Button();
+                button.Size = new Size(80, 20);
+                button.Enabled = true;
+                if (i % 5 == 0)
+                {
+                    x = 200;
+                    y += 40;
+                }
+                x += 100;
+                button.Location = new Point(x, y);
+                button.Text = "Boton " + (i + 1);
+
+                this.Controls.Add(button);
             }
         }
     }
@@ -80,10 +101,13 @@ namespace Tema4WindowsForms
     //• Además si se pulsa alguna tecla, dicha tecla debe aparecer como título
     //del formulario. Si se pulsa ESC, entonces se restaura el título del
     //formulario.
+
+
     //• Debajo de los botones, o a un lado, se crearán en tiempo de ejecución
     //20 botones en 4 filas y 5 columnas. Dichos botones tendrán en su
-    //campo text los números del 1 al 20. Cuando algún botón es pulsado su
-    //número cambia de color y al soltarlo vuelve a negro. Recuerda que las
+    //campo text los números del 1 al 20.
+    
+    //Cuando algún botón es pulsado su número cambia de color y al soltarlo vuelve a negro. Recuerda que las
     //coordenadas también deben funcionar en estos botones.
     //Al salir debe preguntar al usuario si está seguro y cancelar en caso negativo.
 }

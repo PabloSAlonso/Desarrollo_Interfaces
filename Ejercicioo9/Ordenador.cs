@@ -27,14 +27,11 @@ namespace Ejercicioo9
             Nombre = nombre;
             memoriaRAM = MemoriaRam;
         }
-        //TODO constructor vacio llama a el otro
+
         public Ordenador() : this("", 0)
         {
 
         }
-        //-TODO comprobarIp solo comprueba que sea un octeto válido el primero.El resto ya no los comprueba.
-        //Por ejemplo si metes como ip: 12.a.b.c traga
-
 
         public static bool comprobarIp(string ip)
         {

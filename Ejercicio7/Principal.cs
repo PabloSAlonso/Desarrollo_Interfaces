@@ -3,7 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Ejercicio7_8
 {
-    internal class Principal
+    public class Principal
     {
         public static int pedirEntero(int min, int max)
         {
@@ -159,12 +159,12 @@ namespace Ejercicio7_8
             }
         }
 
-        static void Main(string[] args)
+        public static List<Astro> colAstros = new List<Astro>();
+        public static void Main(string[] args)
         {
 
             Planeta planeta = new();
             Cometa cometa = new();
-            List<Astro> colAstros = new List<Astro>();
 
             int opcion = 0;
 

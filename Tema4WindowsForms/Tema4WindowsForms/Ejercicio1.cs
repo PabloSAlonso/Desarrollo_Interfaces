@@ -14,6 +14,7 @@ namespace Tema4WindowsForms
 {
     public partial class Ejercicio1 : Form
     {
+        Button[] botones;
         string titulo;
         public Ejercicio1()
         {
@@ -28,6 +29,8 @@ namespace Tema4WindowsForms
             this.Text = $"X: {MousePosition.X}, Y: {MousePosition.Y}";
 
         }
+
+
 
         private void Ejercicio1_MouseLeave(object sender, EventArgs e)
         {
@@ -47,10 +50,6 @@ namespace Tema4WindowsForms
             {
                 button2.BackColor = Color.Red;
             }
-            else if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right && sender == Controls)
-            {
-
-            }
             else
             {
                 button1.BackColor = Color.Blue;
@@ -60,14 +59,27 @@ namespace Tema4WindowsForms
 
         private void Ejercicio1_MouseUp(object sender, MouseEventArgs e)
         {
-            button1.BackColor = Color.Empty;
-            button2.BackColor = Color.Empty;
+            if (e.Button == MouseButtons.Left)
+            {
+                button1.BackColor = Color.Empty;
+
+            }
+
+            else if (e.Button == MouseButtons.Right)
+            {
+                button2.BackColor = Color.Empty;
+            }
+            else
+            {
+                button1.BackColor = Color.Empty;
+                button2.BackColor = Color.Empty;
+            }
         }
 
-        private void Ejercicio1_KeyPress(object sender, KeyPressEventArgs e)
+        private void Ejercicio1_KeyDown(object sender, KeyEventArgs e)
         {
-            Text = e.KeyChar.ToString();
-            if (e.KeyChar is (char)Keys.Escape)
+            Text = e.KeyCode.ToString();
+            if (e.KeyCode is Keys.Escape)
             {
                 Text = titulo;
             }
@@ -75,6 +87,7 @@ namespace Tema4WindowsForms
 
         private void Ejercicio1_Load(object sender, EventArgs e)
         {
+            botones = new Button[20];
             int x = 200;
             int y = 300;
             for (int i = 0; i < 20; i++)
@@ -91,12 +104,38 @@ namespace Tema4WindowsForms
                 button.Location = new Point(x, y);
                 button.Text = "Boton " + (i + 1);
                 this.Controls.Add(button);
+                botones[i] = button;
                 button.MouseMove += Ejercicio1_MouseMove;
-                button.MouseDown += Ejercicio1_MouseDown;
-                button.MouseUp += Ejercicio1_MouseUp;
+                button.MouseDown += Botones_MouseDown;
+                button.MouseUp += Botones_MouseUp;
 
             }
         }
+        private void Botones_MouseDown(object sender, MouseEventArgs e)
+        {
+            for (int i = 0; i < botones.Length; i++)
+            {
+                if (botones[i] == sender)
+                {
+                    botones[i].ForeColor = Color.Red;
+                }
+
+            }
+        }
+        private void Botones_MouseUp(object sender, MouseEventArgs e)
+        {
+            for (int i = 0; i < botones.Length; i++)
+            {
+                if (botones[i] == sender)
+                {
+                    botones[i].ForeColor = Color.Black;
+
+                }
+            }
+            this.ForeColor = Color.Black;
+        }
+
+
     }
 
     //• Los botones “emularán” los botones del ratón (izquierdo y derecho)

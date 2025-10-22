@@ -26,6 +26,7 @@ namespace Tema4WindowsForms
         private void Ejercicio1_MouseMove(object sender, MouseEventArgs e)
         {
             this.Text = $"X: {MousePosition.X}, Y: {MousePosition.Y}";
+
         }
 
         private void Ejercicio1_MouseLeave(object sender, EventArgs e)
@@ -45,6 +46,10 @@ namespace Tema4WindowsForms
             else if (e.Button == MouseButtons.Right)
             {
                 button2.BackColor = Color.Red;
+            }
+            else if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right && sender == Controls)
+            {
+
             }
             else
             {
@@ -85,8 +90,11 @@ namespace Tema4WindowsForms
                 x += 100;
                 button.Location = new Point(x, y);
                 button.Text = "Boton " + (i + 1);
-
                 this.Controls.Add(button);
+                button.MouseMove += Ejercicio1_MouseMove;
+                button.MouseDown += Ejercicio1_MouseDown;
+                button.MouseUp += Ejercicio1_MouseUp;
+
             }
         }
     }
@@ -106,7 +114,7 @@ namespace Tema4WindowsForms
     //• Debajo de los botones, o a un lado, se crearán en tiempo de ejecución
     //20 botones en 4 filas y 5 columnas. Dichos botones tendrán en su
     //campo text los números del 1 al 20.
-    
+
     //Cuando algún botón es pulsado su número cambia de color y al soltarlo vuelve a negro. Recuerda que las
     //coordenadas también deben funcionar en estos botones.
     //Al salir debe preguntar al usuario si está seguro y cancelar en caso negativo.

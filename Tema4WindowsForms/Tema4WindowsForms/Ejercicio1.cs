@@ -14,15 +14,13 @@ namespace Tema4WindowsForms
 {
     public partial class Ejercicio1 : Form
     {
-        Button[] botones;
+        Button button;
         string titulo;
         public Ejercicio1()
         {
             InitializeComponent();
             titulo = this.Text;
         }
-
-
 
         private void Ejercicio1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -87,12 +85,11 @@ namespace Tema4WindowsForms
 
         private void Ejercicio1_Load(object sender, EventArgs e)
         {
-            botones = new Button[20];
             int x = 200;
             int y = 300;
             for (int i = 0; i < 20; i++)
             {
-                Button button = new Button();
+                button = new Button();
                 button.Size = new Size(80, 20);
                 button.Enabled = true;
                 if (i % 5 == 0)
@@ -104,7 +101,6 @@ namespace Tema4WindowsForms
                 button.Location = new Point(x, y);
                 button.Text = "Boton " + (i + 1);
                 this.Controls.Add(button);
-                botones[i] = button;
                 button.MouseMove += Ejercicio1_MouseMove;
                 button.MouseDown += Botones_MouseDown;
                 button.MouseUp += Botones_MouseUp;
@@ -113,26 +109,21 @@ namespace Tema4WindowsForms
         }
         private void Botones_MouseDown(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i < botones.Length; i++)
-            {
-                if (botones[i] == sender)
+                if (button == (Button) sender)
                 {
-                    botones[i].ForeColor = Color.Red;
+                    button.ForeColor = Color.Red;
                 }
 
-            }
+            
         }
         private void Botones_MouseUp(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i < botones.Length; i++)
-            {
-                if (botones[i] == sender)
+                if (button == sender)
                 {
-                    botones[i].ForeColor = Color.Black;
+                    button.ForeColor = Color.Black;
 
                 }
-            }
-            this.ForeColor = Color.Black;
+            //this.ForeColor = Color.Black;
         }
 
 

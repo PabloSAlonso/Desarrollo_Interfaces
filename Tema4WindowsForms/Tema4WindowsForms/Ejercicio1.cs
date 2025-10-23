@@ -30,7 +30,7 @@ namespace Tema4WindowsForms
             int ybtn;
             if (sender == this)
             {
-                this.Text = $"X: {x}, Y: {y}";
+                this.Text = $"X: {x} Y: {y}";
             }
             else
             {

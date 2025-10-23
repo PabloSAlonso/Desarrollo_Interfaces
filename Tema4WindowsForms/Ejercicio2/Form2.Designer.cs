@@ -69,6 +69,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "COLOR";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox4
             // 
@@ -132,6 +133,9 @@
             this.Name = "Form2";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
+            this.MouseEnter += new System.EventHandler(this.Form2_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.Form2_MouseLeave);
+            this.MouseHover += new System.EventHandler(this.Form2_MouseHover);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

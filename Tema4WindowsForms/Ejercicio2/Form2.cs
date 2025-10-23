@@ -29,5 +29,40 @@ namespace Ejercicio2
                 e.Cancel = true;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            byte[] colorFinal = new byte[3];
+            string[] rgb = { textBox1.Text.Trim(), textBox2.Text.Trim(), textBox3.Text.Trim() };
+            for (int i = 0; i < rgb.Length; i++)
+            {
+                if (byte.TryParse(rgb[i], out colorFinal[i]))
+                {
+
+                }
+            }
+            this.BackColor = Color.FromArgb(colorFinal[0], colorFinal[1], colorFinal[2]);
+        }
+
+        private void Form2_MouseHover(object sender, EventArgs e)
+        {
+            if (sender.GetType() == typeof(Button))
+            {
+                ((Button)sender).BackColor = Color.Red;
+            }
+        }
+
+        private void Form2_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form2_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender.GetType() == typeof(Button))
+            {
+                ((Button)sender).BackColor = Color.Empty;
+            }
+        }
     }
 }

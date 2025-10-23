@@ -112,6 +112,7 @@
             this.button4.TabIndex = 8;
             this.button4.Text = "SALIR";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form2
             // 
@@ -130,6 +131,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "Form2";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

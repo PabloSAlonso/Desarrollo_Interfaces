@@ -34,8 +34,8 @@ namespace Tema4WindowsForms
             }
             else
             {
-                xbtn = ((Button)sender).Location.X;
-                ybtn = ((Button)sender).Location.Y;
+                xbtn = ((Control)sender).Location.X;
+                ybtn = ((Control)sender).Location.Y;
                 this.Text = $"X: {xbtn + x} Y:{ybtn + y}";
             }
 

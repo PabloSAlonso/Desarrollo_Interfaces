@@ -24,7 +24,21 @@ namespace Tema4WindowsForms
 
         private void Ejercicio1_MouseMove(object sender, MouseEventArgs e)
         {
-            this.Text = $"X: {MousePosition.X}, Y: {MousePosition.Y}";
+            int x;
+            int y;
+            if (sender == this)
+            {
+                x = e.X;
+                y = e.Y;
+                this.Text = $"X: {x}, Y: {y}";
+            }
+            else
+            {
+                x = e.X;
+                y = e.Y;
+                this.Text = $"X: {x}, Y: {y}";
+            }
+
 
         }
 
@@ -100,30 +114,25 @@ namespace Tema4WindowsForms
                 x += 100;
                 button.Location = new Point(x, y);
                 button.Text = "Boton " + (i + 1);
-                this.Controls.Add(button);
                 button.MouseMove += Ejercicio1_MouseMove;
                 button.MouseDown += Botones_MouseDown;
                 button.MouseUp += Botones_MouseUp;
+                this.Controls.Add(button);
 
             }
         }
         private void Botones_MouseDown(object sender, MouseEventArgs e)
         {
-                if (button == (Button) sender)
-                {
-                    button.ForeColor = Color.Red;
-                }
 
-            
+            ((Button)sender).ForeColor = Color.Red;
+
         }
         private void Botones_MouseUp(object sender, MouseEventArgs e)
         {
-                if (button == sender)
-                {
-                    button.ForeColor = Color.Black;
 
-                }
-            //this.ForeColor = Color.Black;
+            ((Button)sender).ForeColor = Color.Black;
+
+
         }
 
 

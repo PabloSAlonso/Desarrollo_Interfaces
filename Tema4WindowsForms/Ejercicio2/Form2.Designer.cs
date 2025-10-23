@@ -67,7 +67,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
+            this.button1.Text = "COLOR";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox4
@@ -105,12 +105,13 @@
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.Red;
             this.button4.Location = new System.Drawing.Point(368, 304);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 8;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Text = "SALIR";
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // Form2
             // 

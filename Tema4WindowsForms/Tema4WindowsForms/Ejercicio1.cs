@@ -132,7 +132,7 @@ namespace Tema4WindowsForms
 
         private void Ejercicio1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Quieres salir del formulario?", "Ejercicio1", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            if (MessageBox.Show("Quieres salir del formulario?", titulo, MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
             {
                 e.Cancel = true;
             }

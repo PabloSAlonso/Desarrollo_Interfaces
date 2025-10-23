@@ -24,19 +24,22 @@ namespace Tema4WindowsForms
 
         private void Ejercicio1_MouseMove(object sender, MouseEventArgs e)
         {
-            int x;
-            int y;
+            int x = e.X;
+            int y = e.Y;
+            int xbtn ;
+            int ybtn ;
             if (sender == this)
             {
-                x = e.X;
-                y = e.Y;
+                //coordenadas del elemento donde está el raton (lo hará si el elemento es el formulario)
+               
                 this.Text = $"X: {x}, Y: {y}";
             }
             else
             {
-                x = e.X;
-                y = e.Y;
-                this.Text = $"X: {x}, Y: {y}";
+               
+                xbtn = ((Button)sender).Location.X;
+                ybtn = ((Button)sender).Location.Y;
+                this.Text = $"X: {xbtn + x} Y:{ybtn + y}";
             }
 
 

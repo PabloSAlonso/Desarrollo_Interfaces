@@ -65,6 +65,7 @@
             this.KeyPreview = true;
             this.Name = "Ejercicio1";
             this.Text = "Mouse Tester";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Ejercicio1_FormClosing);
             this.Load += new System.EventHandler(this.Ejercicio1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ejercicio1_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Ejercicio1_MouseDown);

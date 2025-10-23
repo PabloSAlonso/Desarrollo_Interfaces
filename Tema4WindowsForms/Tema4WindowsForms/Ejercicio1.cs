@@ -26,17 +26,14 @@ namespace Tema4WindowsForms
         {
             int x = e.X;
             int y = e.Y;
-            int xbtn ;
-            int ybtn ;
+            int xbtn;
+            int ybtn;
             if (sender == this)
             {
-                //coordenadas del elemento donde está el raton (lo hará si el elemento es el formulario)
-               
                 this.Text = $"X: {x}, Y: {y}";
             }
             else
             {
-               
                 xbtn = ((Button)sender).Location.X;
                 ybtn = ((Button)sender).Location.Y;
                 this.Text = $"X: {xbtn + x} Y:{ybtn + y}";
@@ -126,19 +123,20 @@ namespace Tema4WindowsForms
         }
         private void Botones_MouseDown(object sender, MouseEventArgs e)
         {
-
             ((Button)sender).ForeColor = Color.Red;
-
         }
         private void Botones_MouseUp(object sender, MouseEventArgs e)
         {
-
             ((Button)sender).ForeColor = Color.Black;
-
-
         }
 
-
+        private void Ejercicio1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Quieres salir del formulario?", "Ejercicio1", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 
     //• Los botones “emularán” los botones del ratón (izquierdo y derecho)

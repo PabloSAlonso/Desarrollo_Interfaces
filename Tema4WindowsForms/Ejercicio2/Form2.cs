@@ -15,6 +15,7 @@ namespace Ejercicio2
         public Form2()
         {
             InitializeComponent();
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -24,6 +25,7 @@ namespace Ejercicio2
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
             if (MessageBox.Show("Quieres salir del formulario?", "Ejercicio2", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
             {
                 e.Cancel = true;
@@ -44,17 +46,14 @@ namespace Ejercicio2
             this.BackColor = Color.FromArgb(colorFinal[0], colorFinal[1], colorFinal[2]);
         }
 
-        private void Form2_MouseHover(object sender, EventArgs e)
+        
+
+        private void Form2_MouseEnter(object sender, EventArgs e)
         {
             if (sender.GetType() == typeof(Button))
             {
                 ((Button)sender).BackColor = Color.Red;
             }
-        }
-
-        private void Form2_MouseEnter(object sender, EventArgs e)
-        {
-            
         }
 
         private void Form2_MouseLeave(object sender, EventArgs e)
@@ -63,6 +62,17 @@ namespace Ejercicio2
             {
                 ((Button)sender).BackColor = Color.Empty;
             }
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            CancelButton = btnSalir;
+            AcceptButton = btnColor;
+        }
+
+        private void textBox4_Enter(object sender, EventArgs e)
+        {
+            AcceptButton = btnColor;
         }
     }
 }

@@ -71,7 +71,7 @@
             this.btnColor.TabIndex = 3;
             this.btnColor.Text = "COLOR";
             this.btnColor.UseVisualStyleBackColor = true;
-            this.btnColor.Click += new System.EventHandler(this.button1_Click);
+            this.btnColor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnColor_MouseClick);
             // 
             // textBox4
             // 
@@ -109,6 +109,7 @@
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "RESET";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnReset_MouseClick);
             // 
             // btnSalir
             // 
@@ -120,6 +121,7 @@
             this.btnSalir.Text = "SALIR";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.button4_Click);
+            this.btnSalir.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSalir_MouseClick);
             // 
             // Form2
             // 

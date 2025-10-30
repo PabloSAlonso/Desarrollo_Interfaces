@@ -32,7 +32,7 @@ namespace Ejercicio2
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Revisar
         {
             byte[] colorFinal = new byte[3];
             string[] rgb = { textBox1.Text.Trim(), textBox2.Text.Trim(), textBox3.Text.Trim() };
@@ -48,7 +48,7 @@ namespace Ejercicio2
 
         
 
-        private void Form2_MouseEnter(object sender, EventArgs e)
+        private void Form2_MouseEnter(object sender, EventArgs e) //Revisar condicion
         {
             if (sender.GetType() == typeof(Button))
             {
@@ -73,6 +73,11 @@ namespace Ejercicio2
         private void textBox4_Enter(object sender, EventArgs e)
         {
             AcceptButton = btnColor;
+        }
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+           String direccionImagen = textBox4.Text;
         }
     }
 }

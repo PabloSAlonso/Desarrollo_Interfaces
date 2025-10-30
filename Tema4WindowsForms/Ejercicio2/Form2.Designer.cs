@@ -98,6 +98,7 @@
             this.btn2.TabIndex = 6;
             this.btn2.Text = "button2";
             this.btn2.UseVisualStyleBackColor = true;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
             // 
             // btnReset
             // 

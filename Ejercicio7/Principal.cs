@@ -159,13 +159,25 @@ namespace Ejercicio7_8
             }
         }
 
-        public static List<Astro> colAstros = new List<Astro>();
+        public void CargarLista(string file)
+        {
+
+        }
+
+        public void GuardarArchivo(string file) // Devolver Alamacenaje 
+        {
+            using (StreamReader sr = new StreamReader(file))
+            {
+                sr.ReadLine();
+            }
+        }
+
         public static void Main(string[] args)
         {
 
+            List<Astro> colAstros = new List<Astro>();
             Planeta planeta = new();
             Cometa cometa = new();
-
             int opcion = 0;
 
             do

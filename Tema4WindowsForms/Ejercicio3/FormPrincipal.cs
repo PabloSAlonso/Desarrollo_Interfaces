@@ -41,8 +41,30 @@ namespace Ejercicio3
                 FormSecundario secundario = new FormSecundario();
                 secundario.Text = nombreArchivo;
                 secundario.asignarImagen(seleccionDialog);
+
+                if (chBoxModal.Checked)
+                {
+                    secundario.ShowDialog();
+                }
+                else
+                {
+                    secundario.Show();
+                }
             }
-            catch (IOException) { }
+            catch (IOException)
+            {
+                MessageBox.Show("Error de archivo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            catch (OutOfMemoryException)
+            {
+                MessageBox.Show("Error con la imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Has salido sin seleccionar imagen", "INFO",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -58,7 +80,17 @@ namespace Ejercicio3
 
         private void chBoxModal_CheckedChanged(object sender, EventArgs e)
         {
-
+            {
+                CheckBox detectaCheckBox = ((CheckBox)sender);
+                if (detectaCheckBox.Checked)
+                {
+                    detectaCheckBox.ForeColor = Color.Red;
+                }
+                else
+                {
+                    detectaCheckBox.ForeColor = Color.Black;
+                }
+            }
         }
 
         private void chBoxModal_CheckStateChanged(object sender, EventArgs e)

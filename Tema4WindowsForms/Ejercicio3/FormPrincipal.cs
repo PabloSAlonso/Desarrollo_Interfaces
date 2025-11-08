@@ -29,16 +29,18 @@ namespace Ejercicio3
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = "C:\\";
             ofd.Filter = "png (*.png) | *.png | jpg (*.jpg) | *.jpg";
-            string path = "";
+            string seleccionDialog = "";
             DialogResult openFile = ofd.ShowDialog();
             if (openFile == DialogResult.OK)
             {
-                path = ofd.FileName;
-                nombreArchivo = Path.GetFileName(path);
+                seleccionDialog = ofd.FileName;
+                nombreArchivo = Path.GetFileName(seleccionDialog);
             }
             try
             {
-
+                FormSecundario secundario = new FormSecundario();
+                secundario.Text = nombreArchivo;
+                secundario.asignarImagen(seleccionDialog);
             }
             catch (IOException) { }
         }
@@ -57,6 +59,18 @@ namespace Ejercicio3
         private void chBoxModal_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void chBoxModal_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (chBoxModal.Checked)
+            {
+                chBoxModal.ForeColor = Color.Red;
+            }
+            else
+            {
+                chBoxModal.ForeColor = Color.Black;
+            }
         }
     }
 }

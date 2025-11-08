@@ -16,5 +16,9 @@ namespace Ejercicio3
         {
             InitializeComponent();
         }
+        public void asignarImagen(string direccion)
+        {
+            pbImagen.Image = Image.FromFile(direccion);
+        }
     }
 }

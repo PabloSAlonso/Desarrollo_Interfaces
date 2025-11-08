@@ -54,19 +54,20 @@
             this.chBoxModal.Text = "Modal";
             this.chBoxModal.UseVisualStyleBackColor = true;
             this.chBoxModal.CheckedChanged += new System.EventHandler(this.chBoxModal_CheckedChanged);
+            this.chBoxModal.CheckStateChanged += new System.EventHandler(this.chBoxModal_CheckStateChanged);
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Form1
+            // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chBoxModal);
             this.Controls.Add(this.btnImagenNueva);
-            this.Name = "Form1";
+            this.Name = "FormPrincipal";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -54,7 +54,6 @@
             this.chBoxModal.Text = "Modal";
             this.chBoxModal.UseVisualStyleBackColor = true;
             this.chBoxModal.CheckedChanged += new System.EventHandler(this.chBoxModal_CheckedChanged);
-            this.chBoxModal.CheckStateChanged += new System.EventHandler(this.chBoxModal_CheckStateChanged);
             // 
             // timer1
             // 
@@ -68,7 +67,7 @@
             this.Controls.Add(this.chBoxModal);
             this.Controls.Add(this.btnImagenNueva);
             this.Name = "FormPrincipal";
-            this.Text = "Form1";
+            this.Text = "Visor de Imagenes";
             this.ResumeLayout(false);
             this.PerformLayout();
 

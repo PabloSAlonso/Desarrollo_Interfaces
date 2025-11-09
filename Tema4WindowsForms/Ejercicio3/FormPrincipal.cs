@@ -20,15 +20,15 @@ namespace Ejercicio3
         public FormPrincipal()
         {
             InitializeComponent();
-            this.Text = "Visor de imagenes 00:00";
             timer1.Start();
+            
         }
 
         private void btnImagenNueva_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = "C:\\";
-            ofd.Filter = "png (*.png) | *.png | jpg (*.jpg) | *.jpg";
+            ofd.Filter = "png (*.png) | *.png | jpg (*.jpg) | *.jpg | Todos los archivos (*.*) | *.*" ;
             string seleccionDialog = "";
             DialogResult openFile = ofd.ShowDialog();
             if (openFile == DialogResult.OK)
@@ -75,7 +75,7 @@ namespace Ejercicio3
                 segundos = 0;
                 minutos++;
             }
-            this.Text = $"Visor de imágenes {minutos:D2}:{segundos:D2}";
+            this.Text = $"Visor de imagenes - {minutos:D2}:{segundos:D2}";
         }
 
         private void chBoxModal_CheckedChanged(object sender, EventArgs e)
@@ -93,16 +93,5 @@ namespace Ejercicio3
             }
         }
 
-        private void chBoxModal_CheckStateChanged(object sender, EventArgs e)
-        {
-            if (chBoxModal.Checked)
-            {
-                chBoxModal.ForeColor = Color.Red;
-            }
-            else
-            {
-                chBoxModal.ForeColor = Color.Black;
-            }
-        }
     }
 }

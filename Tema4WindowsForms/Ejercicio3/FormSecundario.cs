@@ -15,10 +15,23 @@ namespace Ejercicio3
         public FormSecundario()
         {
             InitializeComponent();
+            
         }
         public void asignarImagen(string direccion)
         {
             pbImagen.Image = Image.FromFile(direccion);
         }
+
+        private void perfectoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void deformaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pbImagen.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+        
+        
     }
 }

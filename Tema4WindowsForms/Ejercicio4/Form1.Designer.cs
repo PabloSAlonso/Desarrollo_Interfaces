@@ -54,6 +54,7 @@
             this.btnAñadir.TabIndex = 1;
             this.btnAñadir.Text = "Añadir";
             this.btnAñadir.UseVisualStyleBackColor = true;
+            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             // 
             // btnQuitar
             // 
@@ -63,6 +64,7 @@
             this.btnQuitar.TabIndex = 2;
             this.btnQuitar.Text = "Quitar";
             this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // btnTraspasar
             // 
@@ -72,6 +74,7 @@
             this.btnTraspasar.TabIndex = 3;
             this.btnTraspasar.Text = "Traspasar";
             this.btnTraspasar.UseVisualStyleBackColor = true;
+            this.btnTraspasar.Click += new System.EventHandler(this.btnTraspasar_Click);
             // 
             // listBox1
             // 

@@ -39,52 +39,55 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblContarItems = new System.Windows.Forms.Label();
+            this.lnlContarItemsSeleccionados = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAñadir
             // 
-            this.btnAñadir.Location = new System.Drawing.Point(12, 51);
+            this.btnAñadir.Location = new System.Drawing.Point(227, 57);
             this.btnAñadir.Name = "btnAñadir";
             this.btnAñadir.Size = new System.Drawing.Size(75, 23);
-            this.btnAñadir.TabIndex = 0;
+            this.btnAñadir.TabIndex = 1;
             this.btnAñadir.Text = "Añadir";
             this.btnAñadir.UseVisualStyleBackColor = true;
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Location = new System.Drawing.Point(13, 80);
+            this.btnQuitar.Location = new System.Drawing.Point(228, 86);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(75, 23);
-            this.btnQuitar.TabIndex = 1;
+            this.btnQuitar.TabIndex = 2;
             this.btnQuitar.Text = "Quitar";
             this.btnQuitar.UseVisualStyleBackColor = true;
             // 
             // btnTraspasar
             // 
-            this.btnTraspasar.Location = new System.Drawing.Point(13, 109);
+            this.btnTraspasar.Location = new System.Drawing.Point(228, 115);
             this.btnTraspasar.Name = "btnTraspasar";
             this.btnTraspasar.Size = new System.Drawing.Size(75, 23);
-            this.btnTraspasar.TabIndex = 2;
+            this.btnTraspasar.TabIndex = 3;
             this.btnTraspasar.Text = "Traspasar";
             this.btnTraspasar.UseVisualStyleBackColor = true;
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(107, 51);
+            this.listBox1.Location = new System.Drawing.Point(308, 57);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 3;
+            this.listBox1.TabIndex = 4;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(258, 51);
+            this.listBox2.Location = new System.Drawing.Point(434, 57);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(120, 95);
-            this.listBox2.TabIndex = 4;
+            this.listBox2.TabIndex = 5;
             // 
             // radioButton1
             // 
@@ -134,10 +137,10 @@
             // 
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Location = new System.Drawing.Point(456, 51);
+            this.groupBox1.Location = new System.Drawing.Point(560, 57);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(199, 100);
-            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
@@ -145,18 +148,46 @@
             // 
             this.groupBox2.Controls.Add(this.radioButton3);
             this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Location = new System.Drawing.Point(455, 157);
+            this.groupBox2.Location = new System.Drawing.Point(559, 163);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 57);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(218, 20);
+            this.textBox1.TabIndex = 0;
+            // 
+            // lblContarItems
+            // 
+            this.lblContarItems.AutoSize = true;
+            this.lblContarItems.Location = new System.Drawing.Point(308, 182);
+            this.lblContarItems.Name = "lblContarItems";
+            this.lblContarItems.Size = new System.Drawing.Size(35, 13);
+            this.lblContarItems.TabIndex = 12;
+            this.lblContarItems.Text = "label1";
+            // 
+            // lnlContarItemsSeleccionados
+            // 
+            this.lnlContarItemsSeleccionados.AutoSize = true;
+            this.lnlContarItemsSeleccionados.Location = new System.Drawing.Point(434, 182);
+            this.lnlContarItemsSeleccionados.Name = "lnlContarItemsSeleccionados";
+            this.lnlContarItemsSeleccionados.Size = new System.Drawing.Size(35, 13);
+            this.lnlContarItemsSeleccionados.TabIndex = 13;
+            this.lnlContarItemsSeleccionados.Text = "label2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lnlContarItemsSeleccionados);
+            this.Controls.Add(this.lblContarItems);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listBox2);
@@ -165,12 +196,13 @@
             this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.btnAñadir);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Formulario listas";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -187,6 +219,9 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblContarItems;
+        private System.Windows.Forms.Label lnlContarItemsSeleccionados;
     }
 }
 

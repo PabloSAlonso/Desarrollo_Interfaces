@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Ejercicio3
 {
-    public partial class FormPrincipal : Form
+    public partial class FormPrincipal : Form//Icono
     {
         int segundos;
         int minutos;
@@ -19,6 +19,7 @@ namespace Ejercicio3
 
         public FormPrincipal()
         {
+
             InitializeComponent();
             timer1.Start();
             

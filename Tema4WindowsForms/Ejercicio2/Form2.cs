@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,31 +14,56 @@ namespace Ejercicio2
     public partial class Form2 : Form
     {
 
-        static Color coloresBotones;
+        static Color colorDefault;
         public Form2()
         {
             InitializeComponent();
             CancelButton = btnSalir;
             AcceptButton = btnColor;
-            coloresBotones = btnColor.BackColor;
+            colorDefault = btnColor.BackColor;
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-
             if (MessageBox.Show("Quieres salir del formulario?", "Ejercicio2", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
             {
                 e.Cancel = true;
             }
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (ValidateTextBoxsColor(((TextBox)sender).Text).Item1)
+            {
+                ((TextBox)sender).ForeColor = Color.Green;
+            }
+            else
+            {
+                ((TextBox)sender).ForeColor = Color.Red;
+            }
+        }
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            string[] textBoxes = { textBox1.Text, textBox2.Text, textBox3.Text };
 
-        private void Form2_MouseEnter(object sender, EventArgs e) //Revisar condicion
+            foreach (string txb in textBoxes)
+            {
+                if (ValidateTextBoxsColor(txb).Item1)
+                {
+                    byte r = ValidateTextBoxsColor(txb).Item2;
+                    byte g = ValidateTextBoxsColor(txb).Item2;
+                    byte b = ValidateTextBoxsColor(txb).Item2;
+                    this.BackColor = Color.FromArgb(r, g, b);
+                }
+                else
+                {
+                    this.BackColor = Color.White;
+                    MessageBox.Show("Color cambiado a blanco por error de datos", "DEFAULT COLOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                }
+            }
+        }
+
+        private void Form2_MouseEnter(object sender, EventArgs e)
         {
             if (sender.GetType() == typeof(Button))
             {
@@ -49,50 +75,17 @@ namespace Ejercicio2
         {
             if (sender.GetType() == typeof(Button))
             {
-                ((Button)sender).BackColor = coloresBotones;
+                ((Button)sender).BackColor = colorDefault;
             }
         }
 
-        private void textBox4_Enter(object sender, EventArgs e)
-        {
-            AcceptButton = btnColor;
-        }
 
-        private void btn2_Click(object sender, EventArgs e)
-        {
-            String direccionImagen = textBox4.Text;
-        }
-        public static (bool, byte) validateTextBoxsColor(string text)
+        public static (bool, byte) ValidateTextBoxsColor(string text)
         {
             bool isChecked = byte.TryParse(text.Trim(), out byte value);
             return (isChecked, value);
         }
-        private void btnColor_MouseClick(object sender, MouseEventArgs e)
-        {
-            string[] textBoxes = { textBox1.Text, textBox2.Text, textBox3.Text };
 
-            foreach (string txb in textBoxes)
-            {
-                if (validateTextBoxsColor(txb).Item1)
-                {
-                    byte r = validateTextBoxsColor(txb).Item2;
-                    byte g = validateTextBoxsColor(txb).Item2;
-                    byte b = validateTextBoxsColor(txb).Item2;
-
-                    this.BackColor = Color.FromArgb(r, g, b);
-                }
-                else
-                {
-                    MessageBox.Show("Introduce números del 0 al 255 en todos los campos.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void btnSalir_MouseClick(object sender, MouseEventArgs e)
-        {
-            this.Close();
-
-        }
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -106,25 +99,64 @@ namespace Ejercicio2
             }
         }
 
+
         private void btnReset_MouseClick(object sender, MouseEventArgs e)
         {
-            this.BackColor = coloresBotones;
-            foreach (Control control in this.Controls)
+            foreach (Control ctrl in Controls)
             {
-                if (control.GetType() == typeof(TextBox)) //TODO mar de dudas
+                if (ctrl is TextBox)
                 {
-                    if (((TextBox)control).Name == textBox4.Name)
+                    if (ctrl.Name == textBox4.Name)
                     {
-
-                        control.Text = "0";
+                        ctrl.Text = "";
                     }
                     else
                     {
-                        control.ResetText();
+                        ctrl.Text = "0";
                     }
-                    control.ResetText();
+                }
+
+            }
+            this.BackColor = colorDefault;
+            pictureBox1.Image = null;
+        }
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            if (textBox4.Text == null || textBox4.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Introduce una ruta válida de una imagen", "ERROR DE IMAGEN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    pictureBox1.Image = new Bitmap(textBox4.Text);
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                } 
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("No se encuentra la imagen", "ERROR DE IMAGEN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (FileNotFoundException)
+                {
+                    MessageBox.Show("No se encontró la imagen", "ERROR DE IMAGEN", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void textBox4_Enter(object sender, EventArgs e)
+        {
+            AcceptButton = btnCargar;
+        }
+
+        private void textBox4_Leave(object sender, EventArgs e)
+        {
+            AcceptButton = btnColor;
+        }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

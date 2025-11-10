@@ -5,6 +5,41 @@ namespace Ejercicio7_8
 {
     public class Principal
     {
+        public static void escribirArchivo(string nomArchivo)
+        {
+            try
+            {
+                foreach (Astro astro in colAstros)
+                {
+                    using (StreamWriter sw = new StreamWriter("C:\\astros.txt"))
+                    {
+                        sw.WriteLine(astro.ToString());
+                    }
+                }
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("problema de archivo");
+            }
+
+
+        }
+
+        public static void cargarArchivo(string nomArchivo)
+        {
+            try
+            {
+                using (StreamReader streamReader = new StreamReader(""))
+                {
+
+                }
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Problema de archivo");
+            }
+
+        }
         public static int pedirEntero(int min, int max)
         {
             int opcion = 0;
@@ -162,7 +197,8 @@ namespace Ejercicio7_8
         public static List<Astro> colAstros = new List<Astro>();
         public static void Main(string[] args)
         {
-
+            string appdata = Environment.GetEnvironmentVariable("APPDATA");
+            cargarArchivo(appdata);
             Planeta planeta = new();
             Cometa cometa = new();
 
@@ -215,7 +251,7 @@ namespace Ejercicio7_8
                 }
 
             } while (opcion != 6);
-
+            escribirArchivo("C:\\astros.txt");
         }
     }
 }

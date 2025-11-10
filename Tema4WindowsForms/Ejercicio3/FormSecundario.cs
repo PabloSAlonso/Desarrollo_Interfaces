@@ -31,7 +31,13 @@ namespace Ejercicio3
         {
             pbImagen.SizeMode = PictureBoxSizeMode.StretchImage;
         }
-        
-        
+
+        private void FormSecundario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("¿Quieres salir del formulario secundario?", "ADVERTENCIA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

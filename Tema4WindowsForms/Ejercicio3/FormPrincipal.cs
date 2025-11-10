@@ -28,7 +28,8 @@ namespace Ejercicio3
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = "C:\\";
-            ofd.Filter = "png (*.png) | *.png | jpg (*.jpg) | *.jpg | Todos los archivos (*.*) | *.*" ;
+            ofd.Filter = "png (*.png) |*.png| jpg (*.jpg) |*.jpg| Todos los archivos |*.*" ;
+            ofd.ValidateNames = true ;
             string seleccionDialog = "";
             DialogResult openFile = ofd.ShowDialog();
             if (openFile == DialogResult.OK)
@@ -93,5 +94,12 @@ namespace Ejercicio3
             }
         }
 
+        private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Quieres salir del formulario?", "ADVERTENCIA", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

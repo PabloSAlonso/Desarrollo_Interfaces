@@ -36,9 +36,10 @@
             // 
             // btnImagenNueva
             // 
-            this.btnImagenNueva.Location = new System.Drawing.Point(97, 74);
+            this.btnImagenNueva.Location = new System.Drawing.Point(73, 60);
+            this.btnImagenNueva.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnImagenNueva.Name = "btnImagenNueva";
-            this.btnImagenNueva.Size = new System.Drawing.Size(154, 43);
+            this.btnImagenNueva.Size = new System.Drawing.Size(116, 35);
             this.btnImagenNueva.TabIndex = 0;
             this.btnImagenNueva.Text = "Nueva Imagen";
             this.btnImagenNueva.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             // chBoxModal
             // 
             this.chBoxModal.AutoSize = true;
-            this.chBoxModal.Location = new System.Drawing.Point(276, 86);
+            this.chBoxModal.Location = new System.Drawing.Point(207, 70);
+            this.chBoxModal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chBoxModal.Name = "chBoxModal";
-            this.chBoxModal.Size = new System.Drawing.Size(67, 20);
+            this.chBoxModal.Size = new System.Drawing.Size(55, 17);
             this.chBoxModal.TabIndex = 1;
             this.chBoxModal.Text = "Modal";
             this.chBoxModal.UseVisualStyleBackColor = true;
@@ -57,17 +59,20 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.chBoxModal);
             this.Controls.Add(this.btnImagenNueva);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormPrincipal";
             this.Text = "Visor de Imagenes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPrincipal_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

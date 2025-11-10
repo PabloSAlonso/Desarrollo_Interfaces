@@ -46,7 +46,7 @@ namespace Ejercicio7_8
         }
         public override string ToString()
         {
-            return String.Format("Planeta:{0,10}\nSatelites:{1,4}\nRadio:{2,8:.00}", this.Nombre, this.satelites, this.Radio);
+            return String.Format("Planeta:{0,10}\nSatelites:{1,4}\nRadio:{2,8:.00}.", this.Nombre, this.satelites, this.Radio);
         }
         public static Planeta operator ++(Planeta p1)
         {

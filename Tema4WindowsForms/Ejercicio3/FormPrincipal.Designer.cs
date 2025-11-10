@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.btnImagenNueva = new System.Windows.Forms.Button();
             this.chBoxModal = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -69,6 +70,7 @@
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.chBoxModal);
             this.Controls.Add(this.btnImagenNueva);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormPrincipal";
             this.Text = "Visor de Imagenes";

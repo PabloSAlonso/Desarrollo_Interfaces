@@ -20,46 +20,52 @@ namespace Ejercicio4
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            foreach (String item in listBox1.Items)
+            String texto = textBox1.Text.Trim();
+            if (texto != "" && texto != null && !listBox1.Items.Contains(texto))
             {
-                if (textBox1.Text != "" && textBox1.Text != null && !listBox1.Items.Contains(item))
+                listBox1.Items.Add(textBox1.Text);
+                lblContarItems.Text = listBox1.Items.Count.ToString();
+            }
+
+        }
+
+        public void EliminarDeLista(ListBox listBox, RadioButton radio)
+        {
+            if (radio.Checked && listBox.Items.Count > 0)
+            {
+                try
                 {
-                    listBox1.Items.Add(textBox1.Text);
+                    listBox.Items.RemoveAt(listBox.SelectedIndex);
                 }
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show("Selecciona un elemento para eliminar", "Programa en Pausa...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            if (rbtn1.Checked)
-            {
-                foreach (String item in listBox1.Items)
-                {
-                    if (item == textBox1.Text)
-                    {
-                        listBox1.Items.Remove(item);
-                    }
-                }
-            }
-            else if (rbtn2.Checked)
-            {
-                foreach (String item in listBox2.Items)
-                {
-                    if (item == textBox1.Text)
-                    {
-                        listBox2.Items.Remove(item);
-                    }
-                }
-            } else
-            {
-
-            }
-
+            EliminarDeLista(listBox1, rbtn1);
+            EliminarDeLista(listBox2, rbtn2);
         }
 
+        public void TraspasarElementosLista(ListBox origen, ListBox destino, RadioButton radio)
+        {
+            if (radio.Checked && origen.Items.Count > 0)
+            {
+                foreach (var item in origen.Items)
+                {
+                    destino.Items.Add(item);
+                }
+                origen.Items.RemoveAt(origen.SelectedIndex);
+            }
+        }
         private void btnTraspasar_Click(object sender, EventArgs e)
         {
-
+            TraspasarElementosLista(listBox1, listBox2, rbtn3);
+            TraspasarElementosLista(listBox2, listBox1, rbtn4);
         }
 
         private void rbtn1_CheckedChanged(object sender, EventArgs e)
@@ -82,15 +88,15 @@ namespace Ejercicio4
         {
             if (rbtn3.Checked)
             {
-                btnQuitar.Text = "Traspasar 1 a 2";
+                btnTraspasar.Text = "Traspasar 1 a 2";
             }
             else if (rbtn4.Checked)
             {
-                btnQuitar.Text = "Traspasar 2 a 1";
+                btnTraspasar.Text = "Traspasar 2 a 1";
             }
             else
             {
-                btnQuitar.Text = "Traspasar";
+                btnTraspasar.Text = "Traspasar";
             }
         }
     }

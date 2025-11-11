@@ -39,7 +39,7 @@ namespace Ejercicio4
                 }
                 catch (ArgumentException ex)
                 {
-                    MessageBox.Show("Selecciona un elemento para eliminar", "Programa en Pausa...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Selecciona un elemento para eliminar y el radiobutton correspondiente", "Programa en Pausa...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -55,9 +55,10 @@ namespace Ejercicio4
         {
             if (radio.Checked && origen.Items.Count > 0)
             {
+                //Traspasar solo seleccionados, no todos.
                 foreach (var item in origen.Items)
                 {
-                    destino.Items.Add(item);
+                    destino.Items.Add(origen.SelectedItem);
                 }
                 origen.Items.RemoveAt(origen.SelectedIndex);
             }

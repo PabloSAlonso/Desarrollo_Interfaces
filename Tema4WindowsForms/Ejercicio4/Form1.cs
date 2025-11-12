@@ -55,7 +55,7 @@ namespace Ejercicio4
         {
             if (radio.Checked && origen.Items.Count > 0)
             {
-                //Traspasar solo seleccionados, no todos.
+                //Arreglar excepcion por modificar lista.
                 foreach (var item in origen.Items)
                 {
                     destino.Items.Add(origen.SelectedItem);

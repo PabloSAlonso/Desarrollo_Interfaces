@@ -16,6 +16,8 @@ namespace Ejercicio4
         {
             InitializeComponent();
             AcceptButton = btnAñadir;
+            timer1.Start();
+            this.Text = "Formulario Listas";
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)
@@ -35,13 +37,16 @@ namespace Ejercicio4
             {
                 try
                 {
-                    listBox.Items.RemoveAt(listBox.SelectedIndex);
+                    while (listBox.SelectedItems.Count > 0)
+                    {
+                        listBox.Items.RemoveAt(listBox.SelectedIndex);
+                    }
+                    lblContarItems.Text = listBox1.Items.Count.ToString();
                 }
                 catch (ArgumentException ex)
                 {
                     MessageBox.Show("Selecciona un elemento para eliminar y el radiobutton correspondiente", "Programa en Pausa...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
 
@@ -53,14 +58,27 @@ namespace Ejercicio4
 
         public void TraspasarElementosLista(ListBox origen, ListBox destino, RadioButton radio)
         {
+            ListBox listaAux = new ListBox();
             if (radio.Checked && origen.Items.Count > 0)
             {
+<<<<<<< HEAD
                 //Arreglar excepcion por modificar lista.
                 foreach (var item in origen.Items)
+=======
+                try
+>>>>>>> 18083261180dc9f7088d9ca516bd21c8cebf8231
                 {
-                    destino.Items.Add(origen.SelectedItem);
+                    while (origen.SelectedItems.Count > 0)
+                    {
+                        destino.Items.Add(origen.SelectedItem);
+                        origen.Items.RemoveAt(origen.SelectedIndex);
+                    }
+                    lblContarItems.Text = listBox1.Items.Count.ToString();
                 }
-                origen.Items.RemoveAt(origen.SelectedIndex);
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show("Selecciona un elemento de la lista para traspasarlo", "Programa en pausa...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void btnTraspasar_Click(object sender, EventArgs e)
@@ -99,6 +117,41 @@ namespace Ejercicio4
             {
                 btnTraspasar.Text = "Traspasar";
             }
+        }
+
+        int i = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.Icon = Properties.Resources.icono1;
+            string textoAux = "FormularioListas";
+            this.Text = textoAux.Substring(textoAux.Length - i - 1);
+            i++;
+            if (i >= textoAux.Length)
+            {
+                i = 0;
+                
+            }
+            if (i % 2 == 0)
+            {
+                this.Icon = Properties.Resources.icono2;
+            }
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string textAux = "";
+            foreach (var indice in listBox1.SelectedIndices)
+            {
+                textAux += $"{indice}, ";
+            }
+            lblListarIndices.Text = textAux;
+        }
+
+        private void listBox2_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(listBox2,$"El numero de elementos de la lista es {listBox2.Items.Count}");
         }
     }
 }

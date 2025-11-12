@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ejercicio4
 {
-    public partial class Form1 : Form
+    public partial class FormularioListas : Form
     {
-        public Form1()
+        public FormularioListas()
         {
             InitializeComponent();
             AcceptButton = btnAñadir;
@@ -61,12 +61,8 @@ namespace Ejercicio4
             ListBox listaAux = new ListBox();
             if (radio.Checked && origen.Items.Count > 0)
             {
-<<<<<<< HEAD
-                //Arreglar excepcion por modificar lista.
-                foreach (var item in origen.Items)
-=======
                 try
->>>>>>> 18083261180dc9f7088d9ca516bd21c8cebf8231
+
                 {
                     while (origen.SelectedItems.Count > 0)
                     {

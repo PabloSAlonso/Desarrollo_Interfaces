@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Ejercicio2
 {
-    public partial class Form2 : Form
+    public partial class FormularioColores : Form
     {
 
         static Color colorDefault;
-        public Form2()
+        public FormularioColores()
         {
             InitializeComponent();
             CancelButton = btnSalir;

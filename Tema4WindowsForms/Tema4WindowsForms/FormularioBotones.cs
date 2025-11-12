@@ -12,11 +12,11 @@ using Tema4WindowsForms;
 
 namespace Tema4WindowsForms
 {
-    public partial class Ejercicio1 : Form
+    public partial class FormularioBotones : Form
     {
         Button button;
         string titulo;
-        public Ejercicio1()
+        public FormularioBotones()
         {
             InitializeComponent();
             titulo = this.Text;
@@ -108,7 +108,7 @@ namespace Tema4WindowsForms
                 button.Enabled = true;
                 if (i % 5 == 0)
                 {
-                    x = 200;
+                    x = 50;
                     y += 40;
                 }
                 x += 100;

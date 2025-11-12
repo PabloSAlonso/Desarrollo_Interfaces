@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{502F2123-5A15-48F4-91F9-B25630FDABD4}</ProjectGuid>
+    <ProjectGuid>{966B1F60-0533-4139-8CB8-F3895E73F02B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Ejercicio4</RootNamespace>
-    <AssemblyName>Ejercicio4</AssemblyName>
+    <RootNamespace>Ejercicio5</RootNamespace>
+    <AssemblyName>Ejercicio5</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormularioListas.cs">
+    <Compile Include="FormularioMovil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormularioListas.Designer.cs">
-      <DependentUpon>FormularioListas.cs</DependentUpon>
+    <Compile Include="FormularioMovil.Designer.cs">
+      <DependentUpon>FormularioMovil.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormularioListas.resx">
-      <DependentUpon>FormularioListas.cs</DependentUpon>
+    <EmbeddedResource Include="FormularioMovil.resx">
+      <DependentUpon>FormularioMovil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,7 +65,6 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -79,15 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icon1.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\4.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\5.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

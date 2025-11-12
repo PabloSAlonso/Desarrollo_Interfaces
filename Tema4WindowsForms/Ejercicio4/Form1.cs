@@ -16,6 +16,8 @@ namespace Ejercicio4
         {
             InitializeComponent();
             AcceptButton = btnAñadir;
+            timer1.Start();
+            this.Text = "Formulario Listas";
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)
@@ -39,6 +41,7 @@ namespace Ejercicio4
                     {
                         listBox.Items.RemoveAt(listBox.SelectedIndex);
                     }
+                    lblContarItems.Text = listBox1.Items.Count.ToString();
                 }
                 catch (ArgumentException ex)
                 {
@@ -65,6 +68,7 @@ namespace Ejercicio4
                         destino.Items.Add(origen.SelectedItem);
                         origen.Items.RemoveAt(origen.SelectedIndex);
                     }
+                    lblContarItems.Text = listBox1.Items.Count.ToString();
                 }
                 catch (ArgumentException ex)
                 {
@@ -112,7 +116,14 @@ namespace Ejercicio4
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            string textoAux = "Formulario Listas";
+            int i = 0;
+            this.Text = textoAux.Substring(textoAux.Length - i - 1);
+            i++;
+            if (i >= textoAux.Length)
+            {
+                i = 0;
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

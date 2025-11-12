@@ -44,6 +44,7 @@
             this.lblContarItems = new System.Windows.Forms.Label();
             this.lblListarIndices = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             this.btnAñadir.Size = new System.Drawing.Size(75, 23);
             this.btnAñadir.TabIndex = 1;
             this.btnAñadir.Text = "Añadir";
+            this.toolTip1.SetToolTip(this.btnAñadir, "Boton que añade el elemento escrito a la lista seleccionada");
             this.btnAñadir.UseVisualStyleBackColor = true;
             this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             // 
@@ -65,6 +67,7 @@
             this.btnQuitar.Size = new System.Drawing.Size(75, 23);
             this.btnQuitar.TabIndex = 2;
             this.btnQuitar.Text = "Quitar";
+            this.toolTip1.SetToolTip(this.btnQuitar, "Boton que quita el/los elementos seleccionados de la lista seleccionada");
             this.btnQuitar.UseVisualStyleBackColor = true;
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
@@ -75,6 +78,7 @@
             this.btnTraspasar.Size = new System.Drawing.Size(75, 23);
             this.btnTraspasar.TabIndex = 3;
             this.btnTraspasar.Text = "Traspasar";
+            this.toolTip1.SetToolTip(this.btnTraspasar, "Boton que traspasa el/los elementos seleccionados de una lista a otra");
             this.btnTraspasar.UseVisualStyleBackColor = true;
             this.btnTraspasar.Click += new System.EventHandler(this.btnTraspasar_Click);
             // 
@@ -95,6 +99,7 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(120, 95);
             this.listBox2.TabIndex = 5;
+            this.listBox2.MouseHover += new System.EventHandler(this.listBox2_MouseHover);
             // 
             // rbtn1
             // 
@@ -193,7 +198,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
@@ -239,6 +244,7 @@
         private System.Windows.Forms.Label lblContarItems;
         private System.Windows.Forms.Label lblListarIndices;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

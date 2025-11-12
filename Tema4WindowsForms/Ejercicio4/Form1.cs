@@ -114,16 +114,23 @@ namespace Ejercicio4
             }
         }
 
+        int i = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string textoAux = "Formulario Listas";
-            int i = 0;
+            this.Icon = Properties.Resources.icono1;
+            string textoAux = "FormularioListas";
             this.Text = textoAux.Substring(textoAux.Length - i - 1);
             i++;
             if (i >= textoAux.Length)
             {
                 i = 0;
+                
             }
+            if (i % 2 == 0)
+            {
+                this.Icon = Properties.Resources.icono2;
+            }
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,6 +141,12 @@ namespace Ejercicio4
                 textAux += $"{indice}, ";
             }
             lblListarIndices.Text = textAux;
+        }
+
+        private void listBox2_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(listBox2,$"El numero de elementos de la lista es {listBox2.Items.Count}");
         }
     }
 }

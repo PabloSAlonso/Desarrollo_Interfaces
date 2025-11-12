@@ -35,13 +35,15 @@ namespace Ejercicio4
             {
                 try
                 {
-                    listBox.Items.RemoveAt(listBox.SelectedIndex);
+                    while (listBox.SelectedItems.Count > 0)
+                    {
+                        listBox.Items.RemoveAt(listBox.SelectedIndex);
+                    }
                 }
                 catch (ArgumentException ex)
                 {
                     MessageBox.Show("Selecciona un elemento para eliminar y el radiobutton correspondiente", "Programa en Pausa...", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
 
@@ -53,14 +55,21 @@ namespace Ejercicio4
 
         public void TraspasarElementosLista(ListBox origen, ListBox destino, RadioButton radio)
         {
+            ListBox listaAux = new ListBox();
             if (radio.Checked && origen.Items.Count > 0)
             {
-                //Traspasar solo seleccionados, no todos.
-                foreach (var item in origen.Items)
+                try
                 {
-                    destino.Items.Add(origen.SelectedItem);
+                    while (origen.SelectedItems.Count > 0)
+                    {
+                        destino.Items.Add(origen.SelectedItem);
+                        origen.Items.RemoveAt(origen.SelectedIndex);
+                    }
                 }
-                origen.Items.RemoveAt(origen.SelectedIndex);
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show("Selecciona un elemento de la lista para traspasarlo", "Programa en pausa...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void btnTraspasar_Click(object sender, EventArgs e)
@@ -99,6 +108,21 @@ namespace Ejercicio4
             {
                 btnTraspasar.Text = "Traspasar";
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string textAux = "";
+            foreach (var indice in listBox1.SelectedIndices)
+            {
+                textAux += $"{indice}, ";
+            }
+            lblListarIndices.Text = textAux;
         }
     }
 }

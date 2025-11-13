@@ -10,14 +10,17 @@ using System.Windows.Forms;
 
 namespace Ejercicio4
 {
-    public partial class FormularioListas : Form
+    public partial class FormularioListas : Form//Texto a labels
     {
+        ToolTip tp = new ToolTip();
+       
         public FormularioListas()
         {
             InitializeComponent();
             AcceptButton = btnAñadir;
             timer1.Start();
             this.Text = "Formulario Listas";
+            tp.SetToolTip(listBox2, $"El numero de elementos de la lista es {listBox2.Items.Count}");
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)
@@ -42,6 +45,7 @@ namespace Ejercicio4
                         listBox.Items.RemoveAt(listBox.SelectedIndex);
                     }
                     lblContarItems.Text = listBox1.Items.Count.ToString();
+                    tp.SetToolTip(listBox2, $"El numero de elementos de la lista es {listBox2.Items.Count}");
                 }
                 catch (ArgumentException ex)
                 {
@@ -70,6 +74,7 @@ namespace Ejercicio4
                         origen.Items.RemoveAt(origen.SelectedIndex);
                     }
                     lblContarItems.Text = listBox1.Items.Count.ToString();
+                    tp.SetToolTip(listBox2, $"El numero de elementos de la lista es {listBox2.Items.Count}");
                 }
                 catch (ArgumentException ex)
                 {
@@ -144,10 +149,5 @@ namespace Ejercicio4
             lblListarIndices.Text = textAux;
         }
 
-        private void listBox2_MouseHover(object sender, EventArgs e)
-        {
-            ToolTip tp = new ToolTip();
-            tp.SetToolTip(listBox2,$"El numero de elementos de la lista es {listBox2.Items.Count}");
-        }
     }
 }

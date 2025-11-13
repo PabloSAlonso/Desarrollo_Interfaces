@@ -51,9 +51,9 @@
             // 
             // btnAñadir
             // 
-            this.btnAñadir.Location = new System.Drawing.Point(227, 57);
+            this.btnAñadir.Location = new System.Drawing.Point(202, 57);
             this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(75, 23);
+            this.btnAñadir.Size = new System.Drawing.Size(100, 23);
             this.btnAñadir.TabIndex = 1;
             this.btnAñadir.Text = "Añadir";
             this.toolTip1.SetToolTip(this.btnAñadir, "Boton que añade el elemento escrito a la lista seleccionada");
@@ -62,9 +62,9 @@
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Location = new System.Drawing.Point(228, 86);
+            this.btnQuitar.Location = new System.Drawing.Point(202, 86);
             this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(75, 23);
+            this.btnQuitar.Size = new System.Drawing.Size(101, 23);
             this.btnQuitar.TabIndex = 2;
             this.btnQuitar.Text = "Quitar";
             this.toolTip1.SetToolTip(this.btnQuitar, "Boton que quita el/los elementos seleccionados de la lista seleccionada");
@@ -73,9 +73,9 @@
             // 
             // btnTraspasar
             // 
-            this.btnTraspasar.Location = new System.Drawing.Point(228, 115);
+            this.btnTraspasar.Location = new System.Drawing.Point(202, 115);
             this.btnTraspasar.Name = "btnTraspasar";
-            this.btnTraspasar.Size = new System.Drawing.Size(75, 23);
+            this.btnTraspasar.Size = new System.Drawing.Size(101, 23);
             this.btnTraspasar.TabIndex = 3;
             this.btnTraspasar.Text = "Traspasar";
             this.toolTip1.SetToolTip(this.btnTraspasar, "Boton que traspasa el/los elementos seleccionados de una lista a otra");
@@ -99,7 +99,6 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(120, 95);
             this.listBox2.TabIndex = 5;
-            this.listBox2.MouseHover += new System.EventHandler(this.listBox2_MouseHover);
             // 
             // rbtn1
             // 
@@ -175,7 +174,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(3, 57);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(218, 20);
+            this.textBox1.Size = new System.Drawing.Size(193, 20);
             this.textBox1.TabIndex = 0;
             // 
             // lblContarItems
@@ -183,25 +182,25 @@
             this.lblContarItems.AutoSize = true;
             this.lblContarItems.Location = new System.Drawing.Point(308, 182);
             this.lblContarItems.Name = "lblContarItems";
-            this.lblContarItems.Size = new System.Drawing.Size(35, 13);
+            this.lblContarItems.Size = new System.Drawing.Size(59, 13);
             this.lblContarItems.TabIndex = 12;
-            this.lblContarItems.Text = "label1";
+            this.lblContarItems.Text = "Elementos:";
             // 
             // lblListarIndices
             // 
             this.lblListarIndices.AutoSize = true;
             this.lblListarIndices.Location = new System.Drawing.Point(393, 182);
             this.lblListarIndices.Name = "lblListarIndices";
-            this.lblListarIndices.Size = new System.Drawing.Size(35, 13);
+            this.lblListarIndices.Size = new System.Drawing.Size(41, 13);
             this.lblListarIndices.TabIndex = 13;
-            this.lblListarIndices.Text = "label2";
+            this.lblListarIndices.Text = "Indices";
             // 
             // timer1
             // 
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Form1
+            // FormularioListas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -216,7 +215,7 @@
             this.Controls.Add(this.btnTraspasar);
             this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.btnAñadir);
-            this.Name = "Form1";
+            this.Name = "FormularioListas";
             this.Text = "Formulario listas";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

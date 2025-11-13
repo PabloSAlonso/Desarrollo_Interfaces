@@ -13,7 +13,7 @@ namespace Ejercicio4
     public partial class FormularioListas : Form//Texto a labels
     {
         ToolTip tp = new ToolTip();
-       
+
         public FormularioListas()
         {
             InitializeComponent();
@@ -38,19 +38,12 @@ namespace Ejercicio4
         {
             if (radio.Checked && listBox.Items.Count > 0)
             {
-                try
+                while (listBox.SelectedItems.Count > 0)
                 {
-                    while (listBox.SelectedItems.Count > 0)
-                    {
-                        listBox.Items.RemoveAt(listBox.SelectedIndex);
-                    }
-                    lblContarItems.Text = listBox1.Items.Count.ToString();
-                    tp.SetToolTip(listBox2, $"El numero de elementos de la lista es {listBox2.Items.Count}");
+                    listBox.Items.RemoveAt(listBox.SelectedIndex);
                 }
-                catch (ArgumentException ex)
-                {
-                    MessageBox.Show("Selecciona un elemento para eliminar y el radiobutton correspondiente", "Programa en Pausa...", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                lblContarItems.Text = listBox1.Items.Count.ToString();
+                tp.SetToolTip(listBox2, $"El numero de elementos de la lista es {listBox2.Items.Count}");
             }
         }
 
@@ -65,21 +58,15 @@ namespace Ejercicio4
             ListBox listaAux = new ListBox();
             if (radio.Checked && origen.Items.Count > 0)
             {
-                try
 
+                while (origen.SelectedItems.Count > 0)
                 {
-                    while (origen.SelectedItems.Count > 0)
-                    {
-                        destino.Items.Add(origen.SelectedItem);
-                        origen.Items.RemoveAt(origen.SelectedIndex);
-                    }
-                    lblContarItems.Text = listBox1.Items.Count.ToString();
-                    tp.SetToolTip(listBox2, $"El numero de elementos de la lista es {listBox2.Items.Count}");
+                    destino.Items.Add(origen.SelectedItem);
+                    origen.Items.RemoveAt(origen.SelectedIndex);
                 }
-                catch (ArgumentException ex)
-                {
-                    MessageBox.Show("Selecciona un elemento de la lista para traspasarlo", "Programa en pausa...", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                lblContarItems.Text = listBox1.Items.Count.ToString();
+                tp.SetToolTip(listBox2, $"El numero de elementos de la lista es {listBox2.Items.Count}");
+
             }
         }
         private void btnTraspasar_Click(object sender, EventArgs e)
@@ -130,7 +117,7 @@ namespace Ejercicio4
             if (i >= textoAux.Length)
             {
                 i = 0;
-                
+
             }
             if (i % 2 == 0)
             {

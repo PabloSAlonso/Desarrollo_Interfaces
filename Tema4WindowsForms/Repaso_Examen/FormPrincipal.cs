@@ -59,7 +59,7 @@ namespace Repaso_Examen
                 toolTip.SetToolTip((CheckBox)sender, "No marcado");
             }
         }
-
+        //Cambiar botones color
         double segundos;
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -68,7 +68,14 @@ namespace Repaso_Examen
 
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Seguro que desea Salir?", "SALIENDO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            if (LstNombres.Items.Count > 0)
+            {
+                if (MessageBox.Show("Se saldrá de la aplicacion", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
             {
                 e.Cancel = true;
             }

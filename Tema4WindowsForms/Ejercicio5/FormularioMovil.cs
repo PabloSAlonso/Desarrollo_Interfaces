@@ -12,9 +12,13 @@ namespace Ejercicio5
 {
     public partial class FormularioMovil : Form
     {
+        Color colorDefault;
+        String[] teclas = {"1","2","3","4","5","6","7", "8", "9", "*", "0", "#"};
         public FormularioMovil()
         {
             InitializeComponent();
+            colorDefault = btnReset.ForeColor;
+
         }
         Button boton;
 
@@ -34,17 +38,18 @@ namespace Ejercicio5
                 }
                 x += 100;
                 boton.Location = new Point(x, y);
-                if (i < 10)
-                {
-                    boton.Text = i.ToString();
-                }
-                else
-                {
-                    boton.Text = i == 10 ? "*" : "#";
-                }
+                boton.Text = teclas[i];
                 boton.Visible = true;
+                boton.MouseClick += botones_MouseClick;
+                boton.MouseEnter += botones_MouseEnter;
+                boton.MouseLeave += botones_MouseLeave;
                 this.Controls.Add(boton);
             }
+        }
+
+        private void boto(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,6 +89,37 @@ namespace Ejercicio5
                 e.Cancel = true;
             }
 
+        }
+        private void botones_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (sender.GetType() == typeof(Button))
+            {
+                textBox1.Text += ((Button)sender).Text;
+            }
+        }
+
+        private void botones_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender.GetType() == typeof(Button))
+            {
+                ((Button)sender).ForeColor = Color.Red;
+            }
+        }
+        private void botones_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender.GetType() == typeof(Button))
+            {
+                ((Button)sender).ForeColor = colorDefault;
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            foreach (Control control in Controls)
+            {
+                ((Button)control).ForeColor = colorDefault;
+            }
         }
     }
 }

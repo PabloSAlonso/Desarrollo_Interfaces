@@ -41,6 +41,7 @@
             this.LstNombres = new System.Windows.Forms.ListBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblResultados = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,8 +107,10 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(80, 25);
             this.btnReset.TabIndex = 0;
+            this.btnReset.TabStop = false;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnSalir
             // 
@@ -116,8 +119,10 @@
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(80, 25);
             this.btnSalir.TabIndex = 0;
+            this.btnSalir.TabStop = false;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // timer1
             // 
@@ -132,14 +137,14 @@
             this.LstNombres.Name = "LstNombres";
             this.LstNombres.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.LstNombres.Size = new System.Drawing.Size(172, 180);
-            this.LstNombres.TabIndex = 5;
+            this.LstNombres.TabIndex = 3;
             // 
             // btnEliminar
             // 
             this.btnEliminar.Location = new System.Drawing.Point(484, 314);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(95, 23);
-            this.btnEliminar.TabIndex = 6;
+            this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
@@ -148,11 +153,21 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
+            // lblResultados
+            // 
+            this.lblResultados.AutoSize = true;
+            this.lblResultados.Location = new System.Drawing.Point(693, 139);
+            this.lblResultados.Name = "lblResultados";
+            this.lblResultados.Size = new System.Drawing.Size(76, 16);
+            this.lblResultados.TabIndex = 5;
+            this.lblResultados.Text = "Resultados";
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblResultados);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.LstNombres);
             this.Controls.Add(this.btnSalir);
@@ -161,6 +176,7 @@
             this.Controls.Add(this.menuStrip2);
             this.Name = "FormPrincipal";
             this.Text = "Loteria Simple";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
@@ -183,6 +199,7 @@
         private System.Windows.Forms.ListBox LstNombres;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.Label lblResultados;
     }
 }
 

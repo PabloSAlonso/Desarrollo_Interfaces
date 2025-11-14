@@ -14,10 +14,12 @@ namespace Repaso_Examen
     {
         CheckBox ch;
         ToolTip toolTip = new ToolTip();
+        String textoLabelDefault;
         public FormPrincipal()
         {
             InitializeComponent();
             timer1.Start();
+            textoLabelDefault = lblResultados.Text;
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace Repaso_Examen
                 ch.Visible = true;
                 ch.Size = new Size(30, 30);
                 ch.Location = new Point(x, y);
-                ch.TabIndex = i;
+                ch.TabIndex = i + 4;
                 if (i % 9 == 0)
                 {
                     y += 40;
@@ -61,7 +63,33 @@ namespace Repaso_Examen
         double segundos;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Seguro que desea Salir?", "SALIENDO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            lblResultados.Text = textoLabelDefault;
+            foreach (Control c in Controls)
+            {
+                if ((sender is RadioButton))
+                {
+                    ((CheckBox)sender).Checked = false;
+                    toolTip.SetToolTip((CheckBox)sender, "No marcado");
+                }
+            }
         }
     }
 }

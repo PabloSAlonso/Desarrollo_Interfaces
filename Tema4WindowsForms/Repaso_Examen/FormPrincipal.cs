@@ -49,7 +49,7 @@ namespace Repaso_Examen
                 ch.Visible = true;
                 ch.Size = new Size(30, 30);
                 ch.Location = new Point(x, y);
-                ch.Text = i.ToString();
+                ch.Text = i.ToString(); //Comportamiento raro
                 ch.TabIndex = i + 4;
                 if (i % 9 == 0)
                 {
@@ -65,7 +65,7 @@ namespace Repaso_Examen
                 toolTip.SetToolTip(ch, "No marcado");
             }
         }
-        int contadorCheckBox;
+        int contadorCheckBox = 0;
         private void checkBox_Checked(object sender, EventArgs e)
         {
             if (((CheckBox)sender).Checked)
@@ -104,14 +104,14 @@ namespace Repaso_Examen
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            aleatorios = new int[0];
+            //Ahora mismo no reinicia los checkeos de checBoxes
             lblResultados.Text = "Resultados";
             foreach (Control c in Controls)
             {
-                if (c is RadioButton)
+                if (c is CheckBox)
                 {
                     ((CheckBox)c).Checked = false;
-                    toolTip.SetToolTip((CheckBox)sender, "No marcado");
+                    toolTip.SetToolTip((CheckBox)c, "No marcado");
                 }
             }
         }
@@ -140,6 +140,7 @@ namespace Repaso_Examen
                     }
                     aleatorios[i] = aleatorio;
                     lblResultados.Text += $", {aleatorios[i]}";
+                    //Pintar de oro checkBoc que coincidan
                 }
             }
 

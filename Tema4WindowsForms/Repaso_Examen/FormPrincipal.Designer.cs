@@ -61,7 +61,7 @@
             // 
             this.jugarToolStripMenuItem.Name = "jugarToolStripMenuItem";
             this.jugarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.jugarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.jugarToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.jugarToolStripMenuItem.Text = "&Jugar";
             this.jugarToolStripMenuItem.Click += new System.EventHandler(this.btnJugar_Click);
             // 
@@ -69,20 +69,20 @@
             // 
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
             this.resetToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.resetToolStripMenuItem.Text = "&Reset";
             this.resetToolStripMenuItem.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(168, 6);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.btnSalir_Click);
             // 
@@ -101,7 +101,7 @@
             // btnJugar
             // 
             this.btnJugar.BackColor = System.Drawing.Color.Beige;
-            this.btnJugar.Location = new System.Drawing.Point(585, 90);
+            this.btnJugar.Location = new System.Drawing.Point(585, 12);
             this.btnJugar.Name = "btnJugar";
             this.btnJugar.Size = new System.Drawing.Size(80, 25);
             this.btnJugar.TabIndex = 2;
@@ -112,7 +112,7 @@
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.Beige;
-            this.btnReset.Location = new System.Drawing.Point(585, 135);
+            this.btnReset.Location = new System.Drawing.Point(585, 57);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(80, 25);
             this.btnReset.TabIndex = 0;
@@ -124,7 +124,7 @@
             // btnSalir
             // 
             this.btnSalir.BackColor = System.Drawing.Color.Beige;
-            this.btnSalir.Location = new System.Drawing.Point(585, 180);
+            this.btnSalir.Location = new System.Drawing.Point(585, 102);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(80, 25);
             this.btnSalir.TabIndex = 0;
@@ -142,7 +142,7 @@
             // 
             this.LstNombres.FormattingEnabled = true;
             this.LstNombres.ItemHeight = 16;
-            this.LstNombres.Location = new System.Drawing.Point(585, 240);
+            this.LstNombres.Location = new System.Drawing.Point(585, 185);
             this.LstNombres.Name = "LstNombres";
             this.LstNombres.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.LstNombres.Size = new System.Drawing.Size(172, 180);
@@ -150,7 +150,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(484, 314);
+            this.btnEliminar.Location = new System.Drawing.Point(484, 342);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(95, 23);
             this.btnEliminar.TabIndex = 4;
@@ -160,7 +160,7 @@
             // lblResultados
             // 
             this.lblResultados.AutoSize = true;
-            this.lblResultados.Location = new System.Drawing.Point(693, 139);
+            this.lblResultados.Location = new System.Drawing.Point(582, 154);
             this.lblResultados.Name = "lblResultados";
             this.lblResultados.Size = new System.Drawing.Size(76, 16);
             this.lblResultados.TabIndex = 5;

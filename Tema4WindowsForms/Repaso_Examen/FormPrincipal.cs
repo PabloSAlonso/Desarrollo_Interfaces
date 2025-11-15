@@ -104,13 +104,13 @@ namespace Repaso_Examen
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            //Ahora mismo no reinicia los checkeos de checBoxes
             lblResultados.Text = "Resultados";
             foreach (Control c in Controls)
             {
                 if (c is CheckBox)
                 {
                     ((CheckBox)c).Checked = false;
+                    ((CheckBox)c).BackColor = Color.White;
                     toolTip.SetToolTip((CheckBox)c, "No marcado");
                 }
             }
@@ -140,10 +140,16 @@ namespace Repaso_Examen
                     }
                     aleatorios[i] = aleatorio;
                     lblResultados.Text += $", {aleatorios[i]}";
-                    //Pintar de oro checkBoc que coincidan
+                    //Pintar de oro checkBox que coincidan
                 }
             }
 
+        }
+
+        //Este codigo iria en jugar 
+        private void SacarFormModal(object sender, EventArgs e)
+        {
+            
         }
     }
 }
@@ -187,24 +193,25 @@ namespace Repaso_Examen
 
 //- Al presionar el botón Reset (o la opción del menú), se recorrerán todos los CheckBox
 //y se desactivarán si estuviera alguno activado y se reinicia su color. También se restauran los
-//tooltips y la etiqueta de resultados.
+//tooltips y la etiqueta de resultados. OK
 
 //- Se saldrá de la aplicación (por botón, menú o icono X) con confirmación mediante un
 //MessageBox con el texto: “Se saldrá de la aplicación”, título el de la aplicación, icono
 //Exclamation y los botondes OK y Cancel. Si se pulsa OK finaliza, si se pulsa Cancel se cancela
 //el cierre. Esta pregunta se realizará solo si en LstNombre hay algún elemento, si no fuera así,
-//sale sin preguntar nada.
+//sale sin preguntar nada. OK
 
 //- Al presionar el botón u opción del menú Jugar sucederá lo siguiente:
 //Se comprobará que el usuario ha marcado 6 CheckBox exactamente. Si hubiera
 //menos o más se le informará del problema mediante un MessageBox. Evita
 //hacer bucles para ver los marcados, trata de usar los eventos adecuados para
-//hacer el contaje.
+//hacer el contaje. OK (creo)
 
 //Si el paso anterior es correcto, el ordenador sacará 6 números aleatorios
 //distintos entre 1 y 49 (o entre 1 y 10 si lo hiciste en diseño) que guardará en
-//un vector o colección. Además se mostrarán en la etiqueta de Resultados. Se
-//comprobará los aciertos que haya tenido coloreando el fondo de los CheckBox
+//un vector o colección. Además se mostrarán en la etiqueta de Resultados. OK
+
+//Se comprobará los aciertos que haya tenido coloreando el fondo de los CheckBox
 //acertados de color Gold. No deben marcarse los no acertados.
 
 //Si hay uno o más aciertos, se sacará el formulario FrmDatos de tamaño fijo y sin

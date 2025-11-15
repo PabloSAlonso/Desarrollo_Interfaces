@@ -32,6 +32,7 @@
             this.accionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jugarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.btnJugar = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.LstNombres = new System.Windows.Forms.ListBox();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.lblResultados = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +63,7 @@
             this.jugarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.jugarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.jugarToolStripMenuItem.Text = "&Jugar";
+            this.jugarToolStripMenuItem.Click += new System.EventHandler(this.btnJugar_Click);
             // 
             // resetToolStripMenuItem
             // 
@@ -70,6 +71,12 @@
             this.resetToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
             this.resetToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.resetToolStripMenuItem.Text = "&Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
             // salirToolStripMenuItem
             // 
@@ -77,6 +84,7 @@
             this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.salirToolStripMenuItem.Text = "&Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // menuStrip2
             // 
@@ -99,6 +107,7 @@
             this.btnJugar.TabIndex = 2;
             this.btnJugar.Text = "Jugar";
             this.btnJugar.UseVisualStyleBackColor = false;
+            this.btnJugar.Click += new System.EventHandler(this.btnJugar_Click);
             // 
             // btnReset
             // 
@@ -147,11 +156,6 @@
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
             // lblResultados
             // 

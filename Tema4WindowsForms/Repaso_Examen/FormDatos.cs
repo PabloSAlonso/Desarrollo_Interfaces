@@ -12,9 +12,27 @@ namespace Repaso_Examen
 {
     public partial class FormDatos : Form
     {
+        Color colorDefault;
         public FormDatos()
         {
             InitializeComponent();
+            colorDefault = btnAceptar.BackColor;
+        }
+
+        private void btn_MouseEnter(object sender, EventArgs e)
+        {
+            if(sender is Button)
+            {
+                ((Button)sender).BackColor = Color.Blue;
+            }
+        }
+
+        private void btn_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Button)
+            {
+                ((Button)sender).BackColor = colorDefault;
+            }
         }
     }
 }

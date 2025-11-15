@@ -75,9 +75,10 @@ namespace Repaso_Examen
                     e.Cancel = true;
                 }
             }
+            // Si la lista no tiene items sale directamente
             else
             {
-                e.Cancel = true;
+                e.Cancel = false;
             }
         }
 
@@ -97,6 +98,16 @@ namespace Repaso_Examen
                     toolTip.SetToolTip((CheckBox)sender, "No marcado");
                 }
             }
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnJugar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

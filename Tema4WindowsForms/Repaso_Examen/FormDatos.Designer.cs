@@ -92,7 +92,8 @@
             this.Controls.Add(this.TxtNombre);
             this.Controls.Add(this.lblNombre);
             this.Name = "FormDatos";
-            this.Text = "Form1";
+            this.Text = "Datos";
+            this.Load += new System.EventHandler(this.FormDatos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

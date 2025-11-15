@@ -14,12 +14,28 @@ namespace Repaso_Examen
     {
         CheckBox ch;
         ToolTip toolTip = new ToolTip();
-        String textoLabelDefault;
         public FormPrincipal()
         {
             InitializeComponent();
             timer1.Start();
-            textoLabelDefault = lblResultados.Text;
+            botones = new Button[] { btnJugar, btnReset, btnSalir };
+        }
+
+        //Cambiar botones color
+        Button[] botones;
+        int indice = 0;
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            foreach (Button boton in botones)
+            {
+                boton.BackColor = Color.Beige;
+            }
+            botones[indice].BackColor = Color.Yellow;
+            indice++;
+            if (indice >= botones.Length)
+            {
+                indice = 0;
+            }
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -33,6 +49,7 @@ namespace Repaso_Examen
                 ch.Visible = true;
                 ch.Size = new Size(30, 30);
                 ch.Location = new Point(x, y);
+                ch.Text = i.ToString();
                 ch.TabIndex = i + 4;
                 if (i % 9 == 0)
                 {
@@ -48,23 +65,21 @@ namespace Repaso_Examen
                 toolTip.SetToolTip(ch, "No marcado");
             }
         }
+        int contadorCheckBox;
         private void checkBox_Checked(object sender, EventArgs e)
         {
             if (((CheckBox)sender).Checked)
             {
                 toolTip.SetToolTip((CheckBox)sender, "Marcado");
+                contadorCheckBox++;
             }
             else
             {
                 toolTip.SetToolTip((CheckBox)sender, "No marcado");
+                contadorCheckBox--;
             }
         }
-        //Cambiar botones color
-        double segundos;
-        private void timer1_Tick(object sender, EventArgs e)
-        {
 
-        }
 
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -89,12 +104,13 @@ namespace Repaso_Examen
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            lblResultados.Text = textoLabelDefault;
+            aleatorios = new int[0];
+            lblResultados.Text = "Resultados";
             foreach (Control c in Controls)
             {
-                if ((sender is RadioButton))
+                if (c is RadioButton)
                 {
-                    ((CheckBox)sender).Checked = false;
+                    ((CheckBox)c).Checked = false;
                     toolTip.SetToolTip((CheckBox)sender, "No marcado");
                 }
             }
@@ -104,13 +120,33 @@ namespace Repaso_Examen
         {
             this.Close();
         }
-
+        int[] aleatorios;
         private void btnJugar_Click(object sender, EventArgs e)
         {
+            if (contadorCheckBox != 6)
+            {
+                MessageBox.Show("Usted debe marcar exactamente 6 checkBoxes", "ERROR DE USO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                Random random = new Random();
+                int aleatorio = random.Next(1, 50);
+                aleatorios = new int[6];
+                for (int i = 0; i < aleatorios.Length; i++)
+                {
+                    while (aleatorios.Contains(aleatorio))
+                    {
+                        aleatorio = random.Next(1, 50);
+                    }
+                    aleatorios[i] = aleatorio;
+                    lblResultados.Text += $", {aleatorios[i]}";
+                }
+            }
 
         }
     }
 }
+
 //El formulario principal tendrá como título Lotería simple y además las siguientes
 //características:
 
@@ -119,34 +155,34 @@ namespace Repaso_Examen
 //checkbox serán creadas por código en el evento Load o en el constructor de formulario. Se
 //recomienda colocar cada 40 píxeles uno y de tamaño 30x30. El primer componente estará
 //colocado en la posición 30,30 del formulario. No se usarán paneles. Nota: Si no se sabe hacer
-//esto, realízalo en tiempo de diseño pero solo con 10 Checkbox para poder continuar.
+//esto, realízalo en tiempo de diseño pero solo con 10 Checkbox para poder continuar. OK
 
 //- Además aparece un toolTip para cada CheckBox que indica Marcado o No Marcado (Al
 //principio del programa los tooltips deben estar todos a No Marcado, luego lo cambiarás según
-//los marque/desmarque el usuario).
+//los marque/desmarque el usuario). OK
 
 //- Trabajando ya con el diseñador habrá un botón denominado Jugar (BtnJugar), un
-//segundo botón denominado Reset (BtnReset) y otro botón denominado Salir (BtnSalir).
+//segundo botón denominado Reset (BtnReset) y otro botón denominado Salir (BtnSalir). OK
 
 //- Estos tres botones serán de color Beige. Mediante un Timer se realizará el efecto de
 //cambio de color secuencial a Yellow cada 300ms. Es decir, estará 300ms Jugar en amarillo,
 //luego vuelve a Beige y pasa a amarillo el Reset finalmente hará lo mismo el Cancelar y vuelve
-//a empezar.
+//a empezar. OK
 
 //- Habrá también un ListBox de selección múltiple denominado LstNombres y un botón
-//con el texto Eliminar (BtnEliminar). Se explica más abajo el funcionamiento de ambos.
+//con el texto Eliminar (BtnEliminar). Se explica más abajo el funcionamiento de ambos. OK
 
 //- Se diseñará un menú en cuya cabecera aparecerá la palabra ‘Acciones’ (ojo con el
 //subrayado) y al desplegarse aparecerán las opciones ‘Jugar’, ‘Reset’, un separador y ‘Salir’.
 //Además dichas opciones tendrán como atajo de teclado asociado F5, F6 y CTRL+S
-//respectivamente. Compartirán código con los botones análogos.
+//respectivamente. Compartirán código con los botones análogos. OK
 
 //- El orden de tabulación será el adecuado para pasar por todos los elementos anteriores
 //de forma ordenada de izquierda a derecha y de arriba a abajo saltándose los botones Eliminar
-//y Salir.
+//y Salir. OK
 
 //- Existirá también una etiqueta donde se visualizarán los números resultantes
-//(LblResultados). Si no está en uso, aparece simplemente la palabra: Resultados.
+//(LblResultados). Si no está en uso, aparece simplemente la palabra: Resultados. OK
 
 //- Al presionar el botón Reset (o la opción del menú), se recorrerán todos los CheckBox
 //y se desactivarán si estuviera alguno activado y se reinicia su color. También se restauran los
@@ -159,16 +195,18 @@ namespace Repaso_Examen
 //sale sin preguntar nada.
 
 //- Al presionar el botón u opción del menú Jugar sucederá lo siguiente:
-//o Se comprobará que el usuario ha marcado 6 CheckBox exactamente. Si hubiera
+//Se comprobará que el usuario ha marcado 6 CheckBox exactamente. Si hubiera
 //menos o más se le informará del problema mediante un MessageBox. Evita
 //hacer bucles para ver los marcados, trata de usar los eventos adecuados para
 //hacer el contaje.
-//o Si el paso anterior es correcto, el ordenador sacará 6 números aleatorios
+
+//Si el paso anterior es correcto, el ordenador sacará 6 números aleatorios
 //distintos entre 1 y 49 (o entre 1 y 10 si lo hiciste en diseño) que guardará en
 //un vector o colección. Además se mostrarán en la etiqueta de Resultados. Se
 //comprobará los aciertos que haya tenido coloreando el fondo de los CheckBox
 //acertados de color Gold. No deben marcarse los no acertados.
-//o Si hay uno o más aciertos, se sacará el formulario FrmDatos de tamaño fijo y sin
+
+//Si hay uno o más aciertos, se sacará el formulario FrmDatos de tamaño fijo y sin
 //iconos de minimizar ni maximizar de forma Modal para pedir al usuario los
 //datos siguientes:
 // Nombre: mediante etiqueta y un TextBox (TxtNombre).

@@ -120,9 +120,11 @@ namespace Repaso_Examen
         {
             this.Close();
         }
-        int[] aleatorios;
+        int[] numerosGanadores;
+        int[] numerosAcertados;
         private void btnJugar_Click(object sender, EventArgs e)
         {
+
             if (contadorCheckBox != 6)
             {
                 MessageBox.Show("Usted debe marcar exactamente 6 checkBoxes", "ERROR DE USO", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -131,29 +133,56 @@ namespace Repaso_Examen
             {
                 Random random = new Random();
                 int aleatorio = random.Next(1, 50);
-                aleatorios = new int[6];
-                for (int i = 0; i < aleatorios.Length; i++)
+                numerosGanadores = new int[6];
+                for (int i = 0; i < numerosGanadores.Length; i++)
                 {
-                    while (aleatorios.Contains(aleatorio))
+                    while (numerosGanadores.Contains(aleatorio))
                     {
                         aleatorio = random.Next(1, 50);
                     }
-                    aleatorios[i] = aleatorio;
-                    lblResultados.Text += $", {aleatorios[i]}";
+                    numerosGanadores[i] = aleatorio;
+                    lblResultados.Text += $", {numerosGanadores[i]}";
                     //Pintar de oro checkBox que coincidan
                 }
             }
+            SacarFormModal();
 
         }
 
         //Este codigo iria en jugar 
-        private void SacarFormModal(object sender, EventArgs e)
+        private void SacarFormModal()
         {
-            
+            if (numerosGanadores.Length >= 1)
+            {
+                FormDatos formDatos = new FormDatos();
+                formDatos.MaximizeBox = false;
+                formDatos.MinimizeBox = false;
+                formDatos.FormBorderStyle = FormBorderStyle.FixedSingle;
+                formDatos.ShowDialog();
+                string nombre = "";
+                int edad = 0;
+                foreach (var item in formDatos.Controls)
+                {
+                    if (item.GetType() == typeof(TextBox) && ((TextBox)item).Text != "" && ((TextBox)item).Text != null)
+                    {
+                        nombre = ((TextBox)item).Text;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha habido un error en el nombre del usuario", "INTRODUZCA UN NOMBRE VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    if (item is ComboBox cbEdad)
+                    {
+                        edad = (int)cbEdad.SelectedItem;
+                    }
+                }
+                Record nuevoRecord = new Record(nombre, edad, numerosGanadores[0]);
+
+            }
+
         }
     }
 }
-
 //El formulario principal tendrá como título Lotería simple y además las siguientes
 //características:
 

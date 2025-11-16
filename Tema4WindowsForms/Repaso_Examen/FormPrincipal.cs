@@ -49,7 +49,7 @@ namespace Repaso_Examen
                 ch.Visible = true;
                 ch.Size = new Size(30, 30);
                 ch.Location = new Point(x, y);
-                ch.Text = i.ToString(); //Comportamiento raro
+                ch.Text = i.ToString();
                 ch.TabIndex = i + 4;
                 if (i % 9 == 0)
                 {
@@ -61,8 +61,8 @@ namespace Repaso_Examen
                     x += 40;
                 }
                 ch.CheckedChanged += checkBox_Checked;
-                Controls.Add(ch);
                 toolTip.SetToolTip(ch, "No marcado");
+                Controls.Add(ch);
             }
         }
         int contadorCheckBox = 0;

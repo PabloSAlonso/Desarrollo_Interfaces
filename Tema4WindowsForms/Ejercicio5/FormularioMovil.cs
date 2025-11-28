@@ -47,11 +47,6 @@ namespace Ejercicio5
             }
         }
 
-        private void boto(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Este formulario recrea el teclado numérico de un teléfono y fue diseñado por Curro Bellas y realizado por Pablo...", "Informacion de la app", MessageBoxButtons.OK, MessageBoxIcon.Information);

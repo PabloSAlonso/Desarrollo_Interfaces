@@ -77,35 +77,35 @@
             // grabarNúmeroToolStripMenuItem
             // 
             this.grabarNúmeroToolStripMenuItem.Name = "grabarNúmeroToolStripMenuItem";
-            this.grabarNúmeroToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.grabarNúmeroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.grabarNúmeroToolStripMenuItem.Text = "Grabar número";
             this.grabarNúmeroToolStripMenuItem.Click += new System.EventHandler(this.grabarToolStripMenuItem_Click);
             // 
             // mostrarAgendaToolStripMenuItem
             // 
             this.mostrarAgendaToolStripMenuItem.Name = "mostrarAgendaToolStripMenuItem";
-            this.mostrarAgendaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.mostrarAgendaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mostrarAgendaToolStripMenuItem.Text = "Mostrar agenda";
             this.mostrarAgendaToolStripMenuItem.Click += new System.EventHandler(this.mostrarAgendaToolStripMenuItem_Click);
             // 
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.resetToolStripMenuItem.Text = "Reset";
-            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // separadorToolStripMenuItem
             // 
             this.separadorToolStripMenuItem.Name = "separadorToolStripMenuItem";
-            this.separadorToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.separadorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.separadorToolStripMenuItem.Text = "Separador";
             this.separadorToolStripMenuItem.Click += new System.EventHandler(this.separadorToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 

@@ -62,10 +62,6 @@ namespace Ejercicio5
 
         }
 
-        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void separadorToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Ejercicio4
 {
-    public partial class FormularioListas : Form//Texto a labels
+    public partial class FormularioListas : Form
     {
         ToolTip tp = new ToolTip();
 
@@ -31,7 +31,6 @@ namespace Ejercicio4
                 listBox1.Items.Add(textBox1.Text);
                 lblContarItems.Text = listBox1.Items.Count.ToString();
             }
-
         }
 
         public void EliminarDeLista(ListBox listBox, RadioButton radio)

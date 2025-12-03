@@ -40,6 +40,7 @@
             this.lbl.Size = new System.Drawing.Size(35, 13);
             this.lbl.TabIndex = 0;
             this.lbl.Text = "label1";
+            this.lbl.SizeChanged += new System.EventHandler(this.lbl_SizeChanged);
             // 
             // txt
             // 

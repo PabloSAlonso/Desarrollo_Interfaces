@@ -43,14 +43,17 @@ namespace PruebasComponentes
 
         private void btnSeparacionMas_Click(object sender, EventArgs e)
         {
-            labelTextBox1.Separacion += 5;
             flagSeparacion = true;
+            labelTextBox1.Separacion += 5;
         }
 
         private void btnSeparacionMenos_Click(object sender, EventArgs e)
         {
-            labelTextBox1.Separacion -= 5;
-            flagSeparacion = false;
+            if (labelTextBox1.Separacion >= 5)
+            {
+                flagSeparacion = false;
+                labelTextBox1.Separacion -= 5;
+            }
         }
 
         private void labelTextBox1_SeparacionChanged(object sender, EventArgs e)

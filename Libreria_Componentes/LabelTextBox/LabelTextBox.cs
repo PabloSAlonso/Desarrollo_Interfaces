@@ -203,5 +203,9 @@ namespace LabelTextBox
             OnTxtTextChanged(e);
         }
 
+        private void lbl_SizeChanged(object sender, EventArgs e)
+        {
+            Recolocar();
+        }
     }
 }

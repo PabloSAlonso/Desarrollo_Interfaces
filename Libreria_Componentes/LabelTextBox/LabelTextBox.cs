@@ -14,7 +14,7 @@ namespace LabelTextBox
     {
         IZQUIERDA, DERECHA
     }
-    [DefaultProperty("TextLbl"),DefaultEvent("Load")]
+    [DefaultProperty("TextLbl"), DefaultEvent("Load")]
     public partial class LabelTextBox : UserControl
     {
 
@@ -58,6 +58,7 @@ namespace LabelTextBox
                 if (value >= 0)
                 {
                     separacion = value;
+                    OnSeparacionChanged(EventArgs.Empty);
                     Recolocar();
                 }
                 else
@@ -86,13 +87,27 @@ namespace LabelTextBox
             set
             {
                 txt.Text = value;
+                OnTxtTextChanged(EventArgs.Empty);
             }
             get
             {
                 return txt.Text;
             }
         }
-
+        [Category("Mis Propiedades")]
+        [Description("Caracter asociado al PasswordChar del textbox")]
+        public char PswChr
+        {
+            set
+            {
+                txt.PasswordChar = value;
+                //OnTxtPasswordCharChanged(EventArgs.Empty);
+            }
+            get
+            {
+                return txt.PasswordChar;
+            }
+        }
 
         private void Recolocar()
         {
@@ -105,7 +120,8 @@ namespace LabelTextBox
                     txt.Location = new Point(lbl.Width + Separacion, 0);
                     //Establecemos ancho del Textbox
                     //(la label tiene ancho por autosize)
-                    txt.Width = this.Width - lbl.Width - Separacion;
+                    //txt.Width = this.Width - lbl.Width - Separacion;
+                    this.Width = lbl.Width + txt.Width + separacion;
                     //Establecemos altura del componente
                     this.Height = Math.Max(txt.Height, lbl.Height);
                     break;
@@ -113,10 +129,11 @@ namespace LabelTextBox
                     //Establecemos posición del componente txt
                     txt.Location = new Point(0, 0);
                     //Establecemos ancho del Textbox
-                    txt.Width = this.Width - lbl.Width - Separacion;
+                    //txt.Width = this.Width - lbl.Width - Separacion;
                     //Establecemos posición del componente lbl
                     lbl.Location = new Point(txt.Width + Separacion, 0);
                     //Establecemos altura del componente (Puede sacarse del switch)
+                    this.Width = lbl.Width + txt.Width + separacion;
                     this.Height = Math.Max(txt.Height, lbl.Height);
                     break;
             }
@@ -143,5 +160,48 @@ namespace LabelTextBox
                 PosicionChanged(this, e);
             }
         }
+        [Category("La propiedad cambió")]
+        [Description("Se lanza cuando la propiedad Separacion cambia")]
+        public event System.EventHandler SeparacionChanged;
+        protected virtual void OnSeparacionChanged(EventArgs e)
+        {
+            if (SeparacionChanged != null)
+            {
+                SeparacionChanged(this, e);
+            }
+        }
+
+        [Category("La propiedad cambió")]
+        [Description("Se lanza cuando la propiedad text del textbox cambia")]
+        public event System.EventHandler TxtTextChanged;
+        protected virtual void OnTxtTextChanged(EventArgs e)
+        {
+            if (TxtTextChanged != null)
+            {
+                TxtTextChanged(this, e);
+            }
+        }
+
+        //[Category("La propiedad cambió")]
+        //[Description("Se lanza cuando la propiedad passwordchar del textbox cambia")]
+        //public event System.EventHandler TxtPasswordChar;
+        //protected virtual void OnTxtPasswordCharChanged(EventArgs e)
+        //{
+        //    if (TxtPasswordChar != null)
+        //    {
+        //        TxtPasswordChar(this, e);
+        //    }
+        //}
+
+        private void txt_KeyUp(object sender, KeyEventArgs e)
+        {
+            OnKeyUp(e);
+        }
+
+        private void txt_TextChanged(object sender, EventArgs e)
+        {
+            OnTxtTextChanged(e);
+        }
+
     }
 }

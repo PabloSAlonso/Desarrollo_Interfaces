@@ -101,7 +101,7 @@ namespace LabelTextBox
             set
             {
                 txt.PasswordChar = value;
-                //OnTxtPasswordCharChanged(EventArgs.Empty);
+                //OnTxtPasswordCharChanged(EventArgs.Empty); No lo pide
             }
             get
             {
@@ -182,7 +182,7 @@ namespace LabelTextBox
             }
         }
 
-        //[Category("La propiedad cambió")]
+        //[Category("La propiedad cambió")] No lo pide
         //[Description("Se lanza cuando la propiedad passwordchar del textbox cambia")]
         //public event System.EventHandler TxtPasswordChar;
         //protected virtual void OnTxtPasswordCharChanged(EventArgs e)

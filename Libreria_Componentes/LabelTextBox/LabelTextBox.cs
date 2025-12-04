@@ -139,14 +139,18 @@ namespace LabelTextBox
                     break;
             }
         }
-
+        bool subrayado = true;
+        Color colorLinea = Color.Black;
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             Recolocar();
-            e.Graphics.DrawLine(new Pen(Color.Violet), //Subrayamos el texto de la etiqueta
-            lbl.Left, this.Height - 1,
-            lbl.Left + lbl.Width, this.Height - 1);
+            if (subrayado)
+            {
+                e.Graphics.DrawLine(new Pen(colorLinea), //Subrayamos el texto de la etiqueta
+                lbl.Left, this.Height - 1,
+                lbl.Left + lbl.Width, this.Height - 1);
+            }
         }
 
         private void txt_KeyPress(object sender, KeyPressEventArgs e)

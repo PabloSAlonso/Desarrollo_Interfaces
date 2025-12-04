@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,7 +35,7 @@ namespace LabelTextBox
                 {
                     posicion = value;
                     OnPosicionChanged(EventArgs.Empty);
-                    Recolocar();
+                    Refresh();
                 }
                 else
                 {
@@ -59,7 +60,7 @@ namespace LabelTextBox
                 {
                     separacion = value;
                     OnSeparacionChanged(EventArgs.Empty);
-                    Recolocar();
+                    Refresh();
                 }
                 else
                 {
@@ -143,6 +144,9 @@ namespace LabelTextBox
         {
             base.OnPaint(e);
             Recolocar();
+            e.Graphics.DrawLine(new Pen(Color.Violet), //Subrayamos el texto de la etiqueta
+            lbl.Left, this.Height - 1,
+            lbl.Left + lbl.Width, this.Height - 1);
         }
 
         private void txt_KeyPress(object sender, KeyPressEventArgs e)

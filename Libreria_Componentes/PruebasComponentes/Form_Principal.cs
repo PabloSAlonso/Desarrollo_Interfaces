@@ -82,5 +82,31 @@ namespace PruebasComponentes
         {
             labelTextBox1.TextLbl = "Prueba de si va bien el ancho del componente";
         }
+
+        private void Formulario_LabelTextBox_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.FillEllipse(Brushes.Aquamarine, 5, 10, 130, 50); //Circulo relleno
+            e.Graphics.DrawString("Prueba de escritura", this.Font, Brushes.BlueViolet, 20, 25); //String
+        }
+
+        private void btn_pintar_Click(object sender, EventArgs e) //Mala practica pintar sin ser en el onpaint
+        {
+            pintar = !pintar;
+            this.Refresh();
+            this.Text = pintar.ToString();
+            //Graphics gr = this.CreateGraphics();
+            //gr.DrawString("Escribo fuera del OnPaint", this.Font, Brushes.BlueViolet, 10, 100);
+            //gr.DrawImage(new Bitmap(@"C:\Windows\Web\Wallpaper\Theme2\img7.jpg"), 10, 130);
+        }
+        bool pintar = true;
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (pintar)
+            {
+                base.OnPaint(e);
+                e.Graphics.DrawString("Prueba de escritura 2", this.Font, Brushes.BlueViolet, 20, 70);
+
+            }
+        }
     }
 }

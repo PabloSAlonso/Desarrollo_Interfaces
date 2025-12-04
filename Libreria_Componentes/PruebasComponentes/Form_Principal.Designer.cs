@@ -33,11 +33,12 @@
             this.btnSeparacionMenos = new System.Windows.Forms.Button();
             this.btnPrueba = new System.Windows.Forms.Button();
             this.labelTextBox1 = new LabelTextBox.LabelTextBox();
+            this.btn_pintar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPosicion
             // 
-            this.btnPosicion.Location = new System.Drawing.Point(330, 152);
+            this.btnPosicion.Location = new System.Drawing.Point(713, 332);
             this.btnPosicion.Name = "btnPosicion";
             this.btnPosicion.Size = new System.Drawing.Size(75, 23);
             this.btnPosicion.TabIndex = 1;
@@ -47,7 +48,7 @@
             // 
             // btnSeparacionMas
             // 
-            this.btnSeparacionMas.Location = new System.Drawing.Point(330, 181);
+            this.btnSeparacionMas.Location = new System.Drawing.Point(713, 361);
             this.btnSeparacionMas.Name = "btnSeparacionMas";
             this.btnSeparacionMas.Size = new System.Drawing.Size(75, 23);
             this.btnSeparacionMas.TabIndex = 2;
@@ -57,7 +58,7 @@
             // 
             // btnSeparacionMenos
             // 
-            this.btnSeparacionMenos.Location = new System.Drawing.Point(330, 210);
+            this.btnSeparacionMenos.Location = new System.Drawing.Point(713, 390);
             this.btnSeparacionMenos.Name = "btnSeparacionMenos";
             this.btnSeparacionMenos.Size = new System.Drawing.Size(75, 23);
             this.btnSeparacionMenos.TabIndex = 3;
@@ -67,7 +68,7 @@
             // 
             // btnPrueba
             // 
-            this.btnPrueba.Location = new System.Drawing.Point(330, 240);
+            this.btnPrueba.Location = new System.Drawing.Point(713, 420);
             this.btnPrueba.Name = "btnPrueba";
             this.btnPrueba.Size = new System.Drawing.Size(75, 23);
             this.btnPrueba.TabIndex = 4;
@@ -77,7 +78,7 @@
             // 
             // labelTextBox1
             // 
-            this.labelTextBox1.Location = new System.Drawing.Point(13, 61);
+            this.labelTextBox1.Location = new System.Drawing.Point(172, 374);
             this.labelTextBox1.Name = "labelTextBox1";
             this.labelTextBox1.Posicion = LabelTextBox.EPosicion.IZQUIERDA;
             this.labelTextBox1.PswChr = '\0';
@@ -91,11 +92,22 @@
             this.labelTextBox1.TxtTextChanged += new System.EventHandler(this.labelTextBox1_TxtTextChanged);
             this.labelTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.labelTextBox1_KeyUp);
             // 
+            // btn_pintar
+            // 
+            this.btn_pintar.Location = new System.Drawing.Point(713, 42);
+            this.btn_pintar.Name = "btn_pintar";
+            this.btn_pintar.Size = new System.Drawing.Size(75, 23);
+            this.btn_pintar.TabIndex = 6;
+            this.btn_pintar.Text = "Pintar";
+            this.btn_pintar.UseVisualStyleBackColor = true;
+            this.btn_pintar.Click += new System.EventHandler(this.btn_pintar_Click);
+            // 
             // Formulario_LabelTextBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_pintar);
             this.Controls.Add(this.labelTextBox1);
             this.Controls.Add(this.btnPrueba);
             this.Controls.Add(this.btnSeparacionMenos);
@@ -103,6 +115,7 @@
             this.Controls.Add(this.btnPosicion);
             this.Name = "Formulario_LabelTextBox";
             this.Text = "Pruebas";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Formulario_LabelTextBox_Paint);
             this.ResumeLayout(false);
 
         }
@@ -113,6 +126,7 @@
         private System.Windows.Forms.Button btnSeparacionMenos;
         private System.Windows.Forms.Button btnPrueba;
         private LabelTextBox.LabelTextBox labelTextBox1;
+        private System.Windows.Forms.Button btn_pintar;
     }
 }
 

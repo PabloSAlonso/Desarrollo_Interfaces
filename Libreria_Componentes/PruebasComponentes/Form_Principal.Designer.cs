@@ -32,8 +32,8 @@
             this.btnSeparacionMas = new System.Windows.Forms.Button();
             this.btnSeparacionMenos = new System.Windows.Forms.Button();
             this.btnPrueba = new System.Windows.Forms.Button();
-            this.labelTextBox1 = new LabelTextBox.LabelTextBox();
             this.btn_pintar = new System.Windows.Forms.Button();
+            this.labelTextBox1 = new LabelTextBox.LabelTextBox();
             this.SuspendLayout();
             // 
             // btnPosicion
@@ -76,22 +76,6 @@
             this.btnPrueba.UseVisualStyleBackColor = true;
             this.btnPrueba.Click += new System.EventHandler(this.btnPrueba_Click);
             // 
-            // labelTextBox1
-            // 
-            this.labelTextBox1.Location = new System.Drawing.Point(172, 374);
-            this.labelTextBox1.Name = "labelTextBox1";
-            this.labelTextBox1.Posicion = LabelTextBox.EPosicion.IZQUIERDA;
-            this.labelTextBox1.PswChr = '\0';
-            this.labelTextBox1.Separacion = 0;
-            this.labelTextBox1.Size = new System.Drawing.Size(181, 20);
-            this.labelTextBox1.TabIndex = 5;
-            this.labelTextBox1.TextLbl = "label1";
-            this.labelTextBox1.TextTxt = "";
-            this.labelTextBox1.PosicionChanged += new System.EventHandler(this.labelTextBox1_PosicionChanged);
-            this.labelTextBox1.SeparacionChanged += new System.EventHandler(this.labelTextBox1_SeparacionChanged);
-            this.labelTextBox1.TxtTextChanged += new System.EventHandler(this.labelTextBox1_TxtTextChanged);
-            this.labelTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.labelTextBox1_KeyUp);
-            // 
             // btn_pintar
             // 
             this.btn_pintar.Location = new System.Drawing.Point(713, 42);
@@ -101,6 +85,23 @@
             this.btn_pintar.Text = "Pintar";
             this.btn_pintar.UseVisualStyleBackColor = true;
             this.btn_pintar.Click += new System.EventHandler(this.btn_pintar_Click);
+            // 
+            // labelTextBox1
+            // 
+            this.labelTextBox1.Location = new System.Drawing.Point(172, 374);
+            this.labelTextBox1.Name = "labelTextBox1";
+            this.labelTextBox1.Posicion = LabelTextBox.EPosicion.IZQUIERDA;
+            this.labelTextBox1.PswChr = '\0';
+            this.labelTextBox1.Separacion = 0;
+            this.labelTextBox1.Size = new System.Drawing.Size(181, 20);
+            this.labelTextBox1.Subrayado = false;
+            this.labelTextBox1.TabIndex = 5;
+            this.labelTextBox1.TextLbl = "label1";
+            this.labelTextBox1.TextTxt = "";
+            this.labelTextBox1.PosicionChanged += new System.EventHandler(this.labelTextBox1_PosicionChanged);
+            this.labelTextBox1.SeparacionChanged += new System.EventHandler(this.labelTextBox1_SeparacionChanged);
+            this.labelTextBox1.TxtTextChanged += new System.EventHandler(this.labelTextBox1_TxtTextChanged);
+            this.labelTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.labelTextBox1_KeyUp);
             // 
             // Formulario_LabelTextBox
             // 

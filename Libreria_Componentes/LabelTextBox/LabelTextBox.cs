@@ -88,7 +88,7 @@ namespace LabelTextBox
             set
             {
                 txt.Text = value;
-                OnTxtTextChanged(EventArgs.Empty);
+             //   OnTxtTextChanged(EventArgs.Empty);
             }
             get
             {
@@ -107,6 +107,20 @@ namespace LabelTextBox
             get
             {
                 return txt.PasswordChar;
+            }
+        }
+
+        [Category("Mis Propiedades")]
+        [Description("Caracter que determina si la label esta subrayada")]
+        public bool Subrayado
+        {
+            set
+            {
+                flag = value;
+            }
+            get
+            {
+                return flag;
             }
         }
 
@@ -139,13 +153,14 @@ namespace LabelTextBox
                     break;
             }
         }
-        bool subrayado = true;
+        
         Color colorLinea = Color.Black;
+        bool flag = true;
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             Recolocar();
-            if (subrayado)
+            if (flag)
             {
                 e.Graphics.DrawLine(new Pen(colorLinea), //Subrayamos el texto de la etiqueta
                 lbl.Left, this.Height - 1,

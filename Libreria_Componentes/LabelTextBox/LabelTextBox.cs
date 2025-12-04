@@ -88,7 +88,7 @@ namespace LabelTextBox
             set
             {
                 txt.Text = value;
-             //   OnTxtTextChanged(EventArgs.Empty);
+                //   OnTxtTextChanged(EventArgs.Empty);
             }
             get
             {
@@ -111,16 +111,44 @@ namespace LabelTextBox
         }
 
         [Category("Mis Propiedades")]
-        [Description("Caracter que determina si la label esta subrayada")]
+        [Description("Booleana que determina si la label esta subrayada")]
         public bool Subrayado
         {
             set
             {
                 flag = value;
+                Refresh();
             }
             get
             {
                 return flag;
+            }
+        }
+        [Category("Mis Propiedades")]
+        [Description("Color del subrayado de la label")]
+        public Color ColorSubrayado
+        {
+            set
+            {
+                colorPorDefecto = value;
+                Refresh();
+            }
+            get
+            {
+                return colorPorDefecto;
+            }
+        }
+        bool flag = true;
+        Color colorPorDefecto = Color.Black;
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Recolocar();
+            if (flag)
+            {
+                e.Graphics.DrawLine(new Pen(colorPorDefecto), //Subrayamos el texto de la etiqueta
+                lbl.Left, this.Height - 1,
+                lbl.Left + lbl.Width, this.Height - 1);
             }
         }
 
@@ -153,20 +181,7 @@ namespace LabelTextBox
                     break;
             }
         }
-        
-        Color colorLinea = Color.Black;
-        bool flag = true;
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Recolocar();
-            if (flag)
-            {
-                e.Graphics.DrawLine(new Pen(colorLinea), //Subrayamos el texto de la etiqueta
-                lbl.Left, this.Height - 1,
-                lbl.Left + lbl.Width, this.Height - 1);
-            }
-        }
+
 
         private void txt_KeyPress(object sender, KeyPressEventArgs e)
         {

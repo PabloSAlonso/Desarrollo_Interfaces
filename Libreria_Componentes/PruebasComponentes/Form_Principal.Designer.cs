@@ -88,13 +88,14 @@
             // 
             // labelTextBox1
             // 
-            this.labelTextBox1.Location = new System.Drawing.Point(172, 374);
+            this.labelTextBox1.ColorSubrayado = System.Drawing.Color.Black;
+            this.labelTextBox1.Location = new System.Drawing.Point(212, 307);
             this.labelTextBox1.Name = "labelTextBox1";
             this.labelTextBox1.Posicion = LabelTextBox.EPosicion.IZQUIERDA;
             this.labelTextBox1.PswChr = '\0';
             this.labelTextBox1.Separacion = 0;
             this.labelTextBox1.Size = new System.Drawing.Size(181, 20);
-            this.labelTextBox1.Subrayado = false;
+            this.labelTextBox1.Subrayado = true;
             this.labelTextBox1.TabIndex = 5;
             this.labelTextBox1.TextLbl = "label1";
             this.labelTextBox1.TextTxt = "";

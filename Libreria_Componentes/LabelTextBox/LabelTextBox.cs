@@ -88,7 +88,6 @@ namespace LabelTextBox
             set
             {
                 txt.Text = value;
-                //   OnTxtTextChanged(EventArgs.Empty);
             }
             get
             {

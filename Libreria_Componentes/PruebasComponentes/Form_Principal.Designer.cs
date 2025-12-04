@@ -88,7 +88,7 @@
             // 
             // labelTextBox1
             // 
-            this.labelTextBox1.ColorSubrayado = System.Drawing.Color.Black;
+            this.labelTextBox1.ColorSubrayado = System.Drawing.Color.RosyBrown;
             this.labelTextBox1.Location = new System.Drawing.Point(212, 307);
             this.labelTextBox1.Name = "labelTextBox1";
             this.labelTextBox1.Posicion = LabelTextBox.EPosicion.IZQUIERDA;

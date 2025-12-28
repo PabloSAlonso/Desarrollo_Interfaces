@@ -66,12 +66,14 @@ namespace Repaso_Examen
             }
         }
         int contadorCheckBox = 0;
+        List<string> checkBoxElegidos = new List<string>();
         private void checkBox_Checked(object sender, EventArgs e)
         {
             if (((CheckBox)sender).Checked)
             {
                 toolTip.SetToolTip((CheckBox)sender, "Marcado");
                 contadorCheckBox++;
+
             }
             else
             {
@@ -121,7 +123,7 @@ namespace Repaso_Examen
             this.Close();
         }
         int[] numerosGanadores;
-        int[] numerosAcertados;
+        //int[] numerosAcertados;
         private void btnJugar_Click(object sender, EventArgs e)
         {
 

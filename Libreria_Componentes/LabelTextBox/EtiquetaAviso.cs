@@ -33,6 +33,21 @@ namespace LabelTextBox
                 return marca;
             }
         }
+        private Color colorInicioGradiente = Color.White;
+        [Category("Appearance")]
+        [Description("Indica el color inicial del fondo gradiente en caso de tenerlo")]
+        public Color ColorInicioGradiente
+        {
+            set
+            {
+                colorInicioGradiente = value;
+                this.Refresh();
+            }
+            get
+            {
+                return colorInicioGradiente;
+            }
+        }
         public EtiquetaAviso()
         {
             InitializeComponent();

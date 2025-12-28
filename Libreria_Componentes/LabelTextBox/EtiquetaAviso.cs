@@ -15,7 +15,8 @@ namespace LabelTextBox
     {
         Nada,
         Cruz,
-        Circulo
+        Circulo,
+        Imagen
     }
     public partial class EtiquetaAviso : Control
     {
@@ -124,6 +125,9 @@ namespace LabelTextBox
                     //Es recomendable liberar recursos de dibujo pues se
                     //pueden realizar muchos y cogen memoria
                     lapiz.Dispose();
+                    break;
+                case EMarca.Imagen:
+                    grosor = 0;
                     break;
             }
             //Finalmente pintamos el Texto; desplazado si fuera necesario

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,21 @@ namespace LabelTextBox
                 return marca;
             }
         }
+        private bool fondoGradiente = false;
+        [Category("Appearance")]
+        [Description("Indica el tipo de marca que aparece junto al texto")]
+        public bool FondoGradiente
+        {
+            set
+            {
+                fondoGradiente = value;
+                this.Refresh();
+            }
+            get
+            {
+                return fondoGradiente;
+            }
+        }
         private Color colorInicioGradiente = Color.White;
         [Category("Appearance")]
         [Description("Indica el color inicial del fondo gradiente en caso de tenerlo")]
@@ -48,6 +64,23 @@ namespace LabelTextBox
                 return colorInicioGradiente;
             }
         }
+
+        private Color colorFinalGradiente = Color.White;
+        [Category("Appearance")]
+        [Description("Indica el color final del fondo gradiente en caso de tenerlo")]
+        public Color ColorFinalGradiente
+        {
+            set
+            {
+                colorFinalGradiente = value;
+                this.Refresh();
+            }
+            get
+            {
+                return colorFinalGradiente;
+            }
+        }
+
         public EtiquetaAviso()
         {
             InitializeComponent();
@@ -98,6 +131,12 @@ namespace LabelTextBox
             g.DrawString(this.Text, this.Font, b, offsetX + grosor, offsetY);
             Size tam = g.MeasureString(this.Text, this.Font).ToSize();
             this.Size = new Size(tam.Width + offsetX + grosor, tam.Height + offsetY * 2);
+            if (fondoGradiente)
+            {
+                LinearGradientBrush l = new LinearGradientBrush(new Point(0,0), new Point(0,0),colorInicioGradiente, colorFinalGradiente); 
+                //Revisar aqui y establecer fondo
+                
+            }
             b.Dispose();
         }
     }

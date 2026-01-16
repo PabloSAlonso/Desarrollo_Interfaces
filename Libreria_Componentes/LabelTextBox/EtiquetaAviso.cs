@@ -112,6 +112,11 @@ namespace LabelTextBox
         //pulsa el ratón pero solo en la zona donde está la marca(salvo que sea Nada).
         private void ClickEnMarca()
         {
+            OnClickEnMarca();
+        }
+        //En el OnClickEnMarca veo que se esté clicando donde esta la marca
+        protected virtual void OnClickEnMarca()
+        {
 
         }
 

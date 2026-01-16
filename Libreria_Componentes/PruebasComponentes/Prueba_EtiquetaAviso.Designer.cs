@@ -28,15 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prueba_EtiquetaAviso));
             this.etiquetaAviso1 = new LabelTextBox.EtiquetaAviso();
             this.SuspendLayout();
             // 
             // etiquetaAviso1
             // 
-            this.etiquetaAviso1.Location = new System.Drawing.Point(91, 50);
-            this.etiquetaAviso1.Marca = LabelTextBox.EMarca.Cruz;
+            this.etiquetaAviso1.ColorFinalGradiente = System.Drawing.Color.Lime;
+            this.etiquetaAviso1.ColorInicioGradiente = System.Drawing.Color.OrangeRed;
+            this.etiquetaAviso1.FondoGradiente = true;
+            this.etiquetaAviso1.ImagenMarca = ((System.Drawing.Image)(resources.GetObject("etiquetaAviso1.ImagenMarca")));
+            this.etiquetaAviso1.Location = new System.Drawing.Point(91, 53);
+            this.etiquetaAviso1.Marca = LabelTextBox.EMarca.Imagen;
             this.etiquetaAviso1.Name = "etiquetaAviso1";
-            this.etiquetaAviso1.Size = new System.Drawing.Size(97, 15);
+            this.etiquetaAviso1.Size = new System.Drawing.Size(104, 25);
             this.etiquetaAviso1.TabIndex = 0;
             this.etiquetaAviso1.Text = "etiquetaAviso1";
             // 

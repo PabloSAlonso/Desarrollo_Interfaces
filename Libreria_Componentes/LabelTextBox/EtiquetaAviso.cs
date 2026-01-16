@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,6 +35,25 @@ namespace LabelTextBox
             get
             {
                 return marca;
+            }
+        }
+
+        private Image imagenMarca = null;
+        [Category("Appearance")]
+        [Description("Indica el tipo de marca que aparece junto al texto")]
+        public Image ImagenMarca
+        {
+            set
+            {
+                imagenMarca = value;
+                Size = new Size(30, 30);
+                this.Refresh();
+            }
+            get
+            {
+
+                return imagenMarca;
+
             }
         }
         private bool fondoGradiente = false;
@@ -87,6 +108,13 @@ namespace LabelTextBox
             InitializeComponent();
         }
 
+        //Crea un evento denominado ClickEnMarca que será lanzado cuando el usuario
+        //pulsa el ratón pero solo en la zona donde está la marca(salvo que sea Nada).
+        private void ClickEnMarca()
+        {
+
+        }
+
         protected override void OnTextChanged(EventArgs e)
         {
             base.OnTextChanged(e);
@@ -99,13 +127,19 @@ namespace LabelTextBox
             int grosor = 0; //Grosor de las líneas de dibujo
             int offsetX = 0; //Desplazamiento a la derecha del texto
             int offsetY = 0; //Desplazamiento hacia abajo del texto
-                             // Altura de fuente, usada como referencia en varias partes
+
+            // Altura de fuente, usada como referencia en varias partes
             int h = this.Font.Height;
             //Esta propiedad provoca mejoras en la apariencia o en la eficiencia
             // a la hora de dibujar
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             //Dependiendo del valor de la propiedad marca dibujamos una
             //Cruz o un Círculo
+            if (fondoGradiente)
+            {
+                LinearGradientBrush l = new LinearGradientBrush(new Point(0, 0), new Point(30, 30), colorInicioGradiente, colorFinalGradiente);
+                g.FillRectangle(l, new Rectangle(0, 0, this.Width, this.Height));
+            }
             switch (Marca)
             {
                 case EMarca.Circulo:
@@ -127,7 +161,16 @@ namespace LabelTextBox
                     lapiz.Dispose();
                     break;
                 case EMarca.Imagen:
-                    grosor = 0;
+                    if (imagenMarca != null)
+                    {
+                        g.DrawImage(imagenMarca, h / 2, h / 2, h, h);
+                        offsetX = h * 2;
+                        offsetY = h / 2;
+                    }
+                    else
+                    {
+                        EMarca marca = EMarca.Nada; //Cambio la propiedad privada, a vista del usuario está en imagen pero realmente ya está en 'nada'
+                    }
                     break;
             }
             //Finalmente pintamos el Texto; desplazado si fuera necesario
@@ -135,12 +178,6 @@ namespace LabelTextBox
             g.DrawString(this.Text, this.Font, b, offsetX + grosor, offsetY);
             Size tam = g.MeasureString(this.Text, this.Font).ToSize();
             this.Size = new Size(tam.Width + offsetX + grosor, tam.Height + offsetY * 2);
-            if (fondoGradiente)
-            {
-                LinearGradientBrush l = new LinearGradientBrush(new Point(0,0), new Point(0,0),colorInicioGradiente, colorFinalGradiente); 
-                //Revisar aqui y establecer fondo
-                
-            }
             b.Dispose();
         }
     }

@@ -16,7 +16,7 @@ namespace PruebasComponentes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Formulario_LabelTextBox());
+            Application.Run(new Prueba_EtiquetaAviso()); //Aqui voy poniendo que quiero iniciar
         }
     }
 }

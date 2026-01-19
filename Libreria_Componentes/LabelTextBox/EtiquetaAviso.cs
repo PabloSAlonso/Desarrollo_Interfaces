@@ -153,7 +153,7 @@ namespace LabelTextBox
             if (fondoGradiente)
             {
                 LinearGradientBrush l = new LinearGradientBrush(new Point(0, 0), new Point(30, 30), colorInicioGradiente, colorFinalGradiente);
-                g.FillRectangle(l, new Rectangle(0, 0, this.Width, this.Height));
+                g.FillRectangle(l, new Rectangle(0, 0, Width, Height));
             }
             switch (Marca)
             {

@@ -112,12 +112,19 @@ namespace LabelTextBox
         //pulsa el ratón pero solo en la zona donde está la marca(salvo que sea Nada).
         private void ClickEnMarca()
         {
-            OnClickEnMarca();
+            MessageBox.Show("Has pulsado en la marca", "Función Realizada Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        //En el OnClickEnMarca veo que se esté clicando donde esta la marca
-        protected virtual void OnClickEnMarca()
+        //En el OnClick sobreescrito veo que se esté clicando donde esta la marca y en tal caso ejecuto la funcion anterior
+        protected override void OnMouseDown(MouseEventArgs e)
         {
-
+            base.OnMouseDown(e);
+            int x = e.X;
+            int y = e.Y;
+            if (marca != EMarca.Nada && x <= offsetX)
+            {
+                ClickEnMarca();
+                MessageBox.Show($"Informacion relevante:X-{x}, Y-{y}, OffsetX-{offsetX},OffsetY-{offsetY} Grosor-{grosor}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         protected override void OnTextChanged(EventArgs e)
@@ -125,13 +132,16 @@ namespace LabelTextBox
             base.OnTextChanged(e);
             this.Refresh();
         }
+        int offsetX;
+        int offsetY;
+        int grosor;
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             Graphics g = e.Graphics;
-            int grosor = 0; //Grosor de las líneas de dibujo
-            int offsetX = 0; //Desplazamiento a la derecha del texto
-            int offsetY = 0; //Desplazamiento hacia abajo del texto
+            grosor = 0; //Grosor de las líneas de dibujo
+            offsetX = 0; //Desplazamiento a la derecha del texto
+            offsetY = 0; //Desplazamiento hacia abajo del texto
 
             // Altura de fuente, usada como referencia en varias partes
             int h = this.Font.Height;
@@ -174,7 +184,7 @@ namespace LabelTextBox
                     }
                     else
                     {
-                        EMarca marca = EMarca.Nada; //Cambio la propiedad privada, a vista del usuario está en imagen pero realmente ya está en 'nada'
+                        EMarca marca = EMarca.Nada; //Cambio la propiedad privada, a vista del usuario la propiedad Marca está en imagen pero realmente ya se comporta como 'nada'
                     }
                     break;
             }

@@ -121,7 +121,7 @@ namespace LabelTextBox
 
         protected virtual void OnClickEnMarca()
         {
-            if (ClickEnMarca != null) 
+            if (ClickEnMarca != null)
             {
                 ClickEnMarca(this, EventArgs.Empty);
             }
@@ -129,6 +129,7 @@ namespace LabelTextBox
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
+            base.OnMouseClick(e);
             int x = e.X;
             int y = e.Y;
             if (marca != EMarca.Nada && x <= offsetX)

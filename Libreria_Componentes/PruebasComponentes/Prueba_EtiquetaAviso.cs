@@ -16,5 +16,10 @@ namespace PruebasComponentes
         {
             InitializeComponent();
         }
+
+        private void etiquetaAviso1_ClickEnMarca(object sender, EventArgs e)
+        {
+            MessageBox.Show("funcion realizada con exito", "prueba", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

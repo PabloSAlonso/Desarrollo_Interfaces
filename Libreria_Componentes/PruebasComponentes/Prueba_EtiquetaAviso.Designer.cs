@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prueba_EtiquetaAviso));
             this.etiquetaAviso1 = new LabelTextBox.EtiquetaAviso();
             this.SuspendLayout();
             // 
             // etiquetaAviso1
             // 
-            this.etiquetaAviso1.ColorFinalGradiente = System.Drawing.Color.Lime;
-            this.etiquetaAviso1.ColorInicioGradiente = System.Drawing.Color.OrangeRed;
+            this.etiquetaAviso1.ColorFinalGradiente = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.etiquetaAviso1.ColorInicioGradiente = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.etiquetaAviso1.FondoGradiente = true;
-            this.etiquetaAviso1.ImagenMarca = null;
-            this.etiquetaAviso1.Location = new System.Drawing.Point(91, 53);
-            this.etiquetaAviso1.Marca = LabelTextBox.EMarca.Cruz;
+            this.etiquetaAviso1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.etiquetaAviso1.ImagenMarca = ((System.Drawing.Image)(resources.GetObject("etiquetaAviso1.ImagenMarca")));
+            this.etiquetaAviso1.Location = new System.Drawing.Point(228, 118);
+            this.etiquetaAviso1.Marca = LabelTextBox.EMarca.Imagen;
             this.etiquetaAviso1.Name = "etiquetaAviso1";
-            this.etiquetaAviso1.Size = new System.Drawing.Size(97, 15);
+            this.etiquetaAviso1.Size = new System.Drawing.Size(271, 68);
             this.etiquetaAviso1.TabIndex = 0;
             this.etiquetaAviso1.Text = "etiquetaAviso1";
+            this.etiquetaAviso1.ClickEnMarca += new System.EventHandler(this.etiquetaAviso1_ClickEnMarca);
             // 
             // Prueba_EtiquetaAviso
             // 

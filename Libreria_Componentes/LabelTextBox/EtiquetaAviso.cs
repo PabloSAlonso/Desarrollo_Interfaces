@@ -46,7 +46,7 @@ namespace LabelTextBox
             set
             {
                 imagenMarca = value;
-                Size = new Size(30, 30);
+                //Size = new Size(30, 30);
                 this.Refresh();
             }
             get
@@ -110,20 +110,30 @@ namespace LabelTextBox
 
         //Crea un evento denominado ClickEnMarca que será lanzado cuando el usuario
         //pulsa el ratón pero solo en la zona donde está la marca(salvo que sea Nada).
-        private void ClickEnMarca()
+
+        //private void ClickEnMarca(object sender, MouseEventArgs e)
+        //{
+        //    OnClickEnMarca(e);
+        //} 
+        [Category("Acción")]
+        [Description("Se lanza cuando se hace clic en la marca")]
+        public event EventHandler ClickEnMarca;
+
+        protected virtual void OnClickEnMarca()
         {
-            MessageBox.Show("Has pulsado en la marca", "Función Realizada Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (ClickEnMarca != null) 
+            {
+                ClickEnMarca(this, EventArgs.Empty);
+            }
         }
-        //En el OnClick sobreescrito veo que se esté clicando donde esta la marca y en tal caso ejecuto la funcion anterior
-        protected override void OnMouseDown(MouseEventArgs e)
+
+        protected override void OnMouseClick(MouseEventArgs e)
         {
-            base.OnMouseDown(e);
             int x = e.X;
             int y = e.Y;
             if (marca != EMarca.Nada && x <= offsetX)
             {
-                ClickEnMarca();
-                MessageBox.Show($"Informacion relevante:X-{x}, Y-{y}, OffsetX-{offsetX},OffsetY-{offsetY} Grosor-{grosor}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OnClickEnMarca();
             }
         }
 

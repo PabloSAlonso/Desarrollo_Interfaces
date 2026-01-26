@@ -41,18 +41,26 @@ namespace LabelTextBox
 
         [Category("Propiedades etiqueta")]
         [Description("Representa los minutos de la etiqueta")]
-        public int Minutos = 0;
-        private int minutos
+        private int minutos = 0;
+        public int Minutos
         {
             set
             {
                 if (minutos > 59)
                 {
                     minutos = 0;
+                    lblTiempo.Text = formato;
+                    this.Refresh();
+                }
+                else if (minutos < 0)
+                {
+                    throw new ArgumentException();
                 }
                 else
                 {
                     minutos = value;
+                    lblTiempo.Text = formato;
+                    this.Refresh();
                 }
             }
             get { return minutos; }
@@ -60,8 +68,8 @@ namespace LabelTextBox
 
         [Category("Propiedades etiqueta")]
         [Description("Representa los segundos de la etiqueta")]
-        public int Segundos = 0;
-        private int segundos
+        private int segundos = 0;
+        public int Segundos
         {
             set
             {
@@ -73,11 +81,17 @@ namespace LabelTextBox
                     }
                     segundos = value % 60;
                     lblTiempo.Text = formato;
+                    this.Refresh();
+                }
+                else if (segundos < 0)
+                {
+                    throw new ArgumentException();
                 }
                 else
                 {
                     segundos = value;
                     lblTiempo.Text = formato;
+                    this.Refresh();
                 }
             }
             get { return segundos; }
@@ -91,7 +105,6 @@ namespace LabelTextBox
             {
                 DesbordaTiempo(this, EventArgs.Empty);
             }
-
         }
     }
 }

@@ -49,7 +49,6 @@ namespace LabelTextBox
                 if (minutos > 59)
                 {
                     minutos = 0;
-                    lblTiempo.Text = formato;
                     this.Refresh();
                 }
                 else if (minutos < 0)
@@ -59,7 +58,6 @@ namespace LabelTextBox
                 else
                 {
                     minutos = value;
-                    lblTiempo.Text = formato;
                     this.Refresh();
                 }
             }
@@ -80,7 +78,6 @@ namespace LabelTextBox
                         OnDesbordaTiempo(this, EventArgs.Empty);
                     }
                     segundos = value % 60;
-                    lblTiempo.Text = formato;
                     this.Refresh();
                 }
                 else if (segundos < 0)
@@ -90,11 +87,16 @@ namespace LabelTextBox
                 else
                 {
                     segundos = value;
-                    lblTiempo.Text = formato;
                     this.Refresh();
                 }
             }
             get { return segundos; }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            lblTiempo.Text = formato;
         }
 
         public event EventHandler DesbordaTiempo;

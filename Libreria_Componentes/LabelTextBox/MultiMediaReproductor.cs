@@ -21,7 +21,7 @@ namespace LabelTextBox
 
         [Category("Acción")]
         [Description("Evento que se lanza al pulsar el boton Play / Stop del componente")]
-        public event EventHandler PlayClick;
+        public event EventHandler PlayClick; //asegurar que lo que se pulsa es el boton
         protected virtual void OnPlayClick(object sender, EventArgs e)
         {
             if (PlayClick != null)
@@ -32,11 +32,8 @@ namespace LabelTextBox
 
         private void btnReproducir_Click(object sender, EventArgs e)
         {
-            if (sender == btnReproducir)
-            {
-                btnReproducir.Text = btnReproducir.Text == "Play" ? "Stop" : "Play";
-                OnPlayClick(sender, e);
-            }
+            btnReproducir.Text = btnReproducir.Text == "Play" ? "Stop" : "Play";
+            OnPlayClick(sender, e);
         }
 
         [Category("Propiedades etiqueta")]

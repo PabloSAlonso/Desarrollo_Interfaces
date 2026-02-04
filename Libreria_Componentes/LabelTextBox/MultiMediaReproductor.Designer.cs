@@ -66,7 +66,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnReproducir;
-        private System.Windows.Forms.Label lblTiempo;
+        public System.Windows.Forms.Button btnReproducir;
+        public System.Windows.Forms.Label lblTiempo;
     }
 }

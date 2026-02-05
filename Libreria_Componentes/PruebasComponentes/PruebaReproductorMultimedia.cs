@@ -16,7 +16,14 @@ namespace PruebasComponentes
         public PruebaReproductorMultimedia()
         {
             InitializeComponent();
+            for (int i = 1; i < 21; i++)
+            {
+                cbSegundos.Items.Add(i);
+            }
         }
+        String path = "";
+        DirectoryInfo d;
+        FileInfo[] fotos;
         
         private void btnSelección_Click(object sender, EventArgs e)
         {
@@ -25,6 +32,10 @@ namespace PruebasComponentes
                 FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
                 folderBrowserDialog.Description = "Selecciona un directorio con imagenes";
                 folderBrowserDialog.ShowDialog();
+                path = folderBrowserDialog.SelectedPath;
+                d = new DirectoryInfo(path);
+                fotos = d.GetFiles();
+                
             }
             catch (Exception)
             {
@@ -37,22 +48,24 @@ namespace PruebasComponentes
         {
             segundosPorFoto = int.Parse(cbSegundos.SelectedItem.ToString());
         }
+
         int segundos = 0;
         private void timer_Tick(object sender, EventArgs e)
         {
+            segundos++;
+            multiMediaReproductor1.Segundos = segundos;
             if (flagReproductor && segundosPorFoto % segundos == 0)
             {
-                // Cambia la foto
+                foreach (FileInfo foto in fotos)
+                {
+                    gbImagenes.BackgroundImage = Image.FromFile(path + "\\" + foto.Name);
+                }
             }
         }
-        bool flagReproductor = false; 
+        bool flagReproductor = false;
         private void multiMediaReproductor1_PlayClick(object sender, EventArgs e)
         {
             flagReproductor = !flagReproductor;
-            if (flagReproductor) 
-            {
-                // Avanza las imagenes
-            }
         }
     }
 }

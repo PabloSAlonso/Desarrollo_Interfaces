@@ -58,6 +58,7 @@
             // 
             // cbSegundos
             // 
+            this.cbSegundos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSegundos.FormattingEnabled = true;
             this.cbSegundos.Location = new System.Drawing.Point(12, 293);
             this.cbSegundos.MaxLength = 2;

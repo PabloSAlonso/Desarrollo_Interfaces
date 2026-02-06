@@ -24,7 +24,7 @@ namespace PruebasComponentes
         String path = "";
         DirectoryInfo d;
         FileInfo[] fotos;
-        
+
         private void btnSelección_Click(object sender, EventArgs e)
         {
             try
@@ -35,12 +35,14 @@ namespace PruebasComponentes
                 path = folderBrowserDialog.SelectedPath;
                 d = new DirectoryInfo(path);
                 fotos = d.GetFiles();
-                
+
             }
             catch (Exception)
             {
                 Console.WriteLine("Error con el directorio");
             }
+            indice = 0;
+
         }
 
         int segundosPorFoto = 0;
@@ -49,23 +51,37 @@ namespace PruebasComponentes
             segundosPorFoto = int.Parse(cbSegundos.SelectedItem.ToString());
         }
 
-        int segundos = 0;
+        int segundosTotales = 0;
+        int indice = 0;
         private void timer_Tick(object sender, EventArgs e)
         {
-            segundos++;
-            multiMediaReproductor1.Segundos = segundos;
-            if (flagReproductor && segundosPorFoto % segundos == 0)
+            segundosTotales++;
+            multiMediaReproductor1.Segundos++;
+
+            if (segundosPorFoto >= segundosTotales)
             {
-                foreach (FileInfo foto in fotos)
-                {
-                    gbImagenes.BackgroundImage = Image.FromFile(path + "\\" + foto.Name);
-                }
+                segundosPorFoto = 0; //Reiniciamos segundos de imagen
+                // cambiar la foto
             }
         }
-        bool flagReproductor = false;
+
+        private void CambiarFoto()
+        {
+            if (fotos == null || fotos.Length == 0)
+            {
+                MessageBox.Show("Problemas con el directorio", "DIRECTORIO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+
+            }
+        }
         private void multiMediaReproductor1_PlayClick(object sender, EventArgs e)
         {
-            flagReproductor = !flagReproductor;
+            if (timer.Enabled)
+                timer.Stop();
+            else
+                timer.Start();
         }
     }
 }

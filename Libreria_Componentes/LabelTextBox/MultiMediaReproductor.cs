@@ -12,11 +12,9 @@ namespace LabelTextBox
 {
     public partial class MultiMediaReproductor : UserControl
     {
-        string formato;
         public MultiMediaReproductor()
         {
             InitializeComponent();
-            formato = $"{Minutos:00}:{Segundos:00}";
         }
 
         [Category("Acción")]
@@ -43,12 +41,12 @@ namespace LabelTextBox
         {
             set
             {
-                if (minutos > 59)
+                if (value > 59)
                 {
                     minutos = 0;
                     this.Refresh();
                 }
-                else if (minutos < 0)
+                else if (value < 0)
                 {
                     throw new ArgumentException();
                 }
@@ -68,24 +66,23 @@ namespace LabelTextBox
         {
             set
             {
-                if (segundos > 59)
+                if (value < 0)
                 {
-                    if (segundos != 0 && segundos % 60 == 0)
+                    throw new ArgumentException();
+                }
+                if (value > 59)
+                {
+                    if (value % 60 == 0)
                     {
                         OnDesbordaTiempo(this, EventArgs.Empty);
                     }
                     segundos = value % 60;
-                    this.Refresh();
-                }
-                else if (segundos < 0)
-                {
-                    throw new ArgumentException();
                 }
                 else
                 {
                     segundos = value;
-                    this.Refresh();
                 }
+                this.Refresh();
             }
             get { return segundos; }
         }
@@ -93,7 +90,7 @@ namespace LabelTextBox
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            lblTiempo.Text = formato;
+            lblTiempo.Text = $"{minutos:00}:{segundos:00}";
         }
 
         public event EventHandler DesbordaTiempo;

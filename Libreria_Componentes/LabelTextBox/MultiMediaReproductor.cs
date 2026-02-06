@@ -44,7 +44,6 @@ namespace LabelTextBox
                 if (value > 59)
                 {
                     minutos = 0;
-                    this.Refresh();
                 }
                 else if (value < 0)
                 {
@@ -53,8 +52,8 @@ namespace LabelTextBox
                 else
                 {
                     minutos = value;
-                    this.Refresh();
                 }
+                Refresh();
             }
             get { return minutos; }
         }
@@ -82,7 +81,7 @@ namespace LabelTextBox
                 {
                     segundos = value;
                 }
-                this.Refresh();
+                Refresh();
             }
             get { return segundos; }
         }

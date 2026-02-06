@@ -29,22 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.multiMediaReproductor1 = new LabelTextBox.MultiMediaReproductor();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PruebaReproductorMultimedia));
             this.btnSelección = new System.Windows.Forms.Button();
             this.cbSegundos = new System.Windows.Forms.ComboBox();
             this.gbImagenes = new System.Windows.Forms.GroupBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.multiMediaReproductor1 = new LabelTextBox.MultiMediaReproductor();
             this.SuspendLayout();
-            // 
-            // multiMediaReproductor1
-            // 
-            this.multiMediaReproductor1.Location = new System.Drawing.Point(12, 29);
-            this.multiMediaReproductor1.Minutos = 0;
-            this.multiMediaReproductor1.Name = "multiMediaReproductor1";
-            this.multiMediaReproductor1.Segundos = 0;
-            this.multiMediaReproductor1.Size = new System.Drawing.Size(268, 190);
-            this.multiMediaReproductor1.TabIndex = 0;
-            this.multiMediaReproductor1.PlayClick += new System.EventHandler(this.multiMediaReproductor1_PlayClick);
             // 
             // btnSelección
             // 
@@ -71,15 +62,25 @@
             // 
             this.gbImagenes.Location = new System.Drawing.Point(406, 29);
             this.gbImagenes.Name = "gbImagenes";
-            this.gbImagenes.Size = new System.Drawing.Size(338, 285);
+            this.gbImagenes.Size = new System.Drawing.Size(218, 232);
             this.gbImagenes.TabIndex = 3;
             this.gbImagenes.TabStop = false;
             this.gbImagenes.Text = "Imágenes";
             // 
             // timer
             // 
-            this.timer.Interval = 1000;
+            this.timer.Interval = 1;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // multiMediaReproductor1
+            // 
+            this.multiMediaReproductor1.Location = new System.Drawing.Point(12, 29);
+            this.multiMediaReproductor1.Minutos = 0;
+            this.multiMediaReproductor1.Name = "multiMediaReproductor1";
+            this.multiMediaReproductor1.Segundos = 0;
+            this.multiMediaReproductor1.Size = new System.Drawing.Size(268, 190);
+            this.multiMediaReproductor1.TabIndex = 0;
+            this.multiMediaReproductor1.PlayClick += new System.EventHandler(this.multiMediaReproductor1_PlayClick);
             // 
             // PruebaReproductorMultimedia
             // 
@@ -90,6 +91,7 @@
             this.Controls.Add(this.cbSegundos);
             this.Controls.Add(this.btnSelección);
             this.Controls.Add(this.multiMediaReproductor1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PruebaReproductorMultimedia";
             this.Text = "PruebaReproductorMultimedia";
             this.ResumeLayout(false);

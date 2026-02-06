@@ -9,40 +9,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PruebasComponentes
+namespace PruebasComponentes//Icono. Preprocesar directorio (im,g corrupta y archivos no imag). Inicio de valor en combo. Excep genérica no.
 {
     public partial class PruebaReproductorMultimedia : Form
     {
         public PruebaReproductorMultimedia()
         {
             InitializeComponent();
+            multiMediaReproductor1.DesbordaTiempo += multiMediaReproductor1_DesbordaTiempo;
             for (int i = 1; i < 21; i++)
             {
                 cbSegundos.Items.Add(i);
+                cbSegundos.SelectedItem = 1;
             }
         }
+
+        private void multiMediaReproductor1_DesbordaTiempo(object sender, EventArgs e)
+        {
+            multiMediaReproductor1.Minutos++;
+        }
+
         String path = "";
         DirectoryInfo d;
         FileInfo[] fotos;
 
         private void btnSelección_Click(object sender, EventArgs e)
         {
-            try
-            {
-                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-                folderBrowserDialog.Description = "Selecciona un directorio con imagenes";
-                folderBrowserDialog.ShowDialog();
-                path = folderBrowserDialog.SelectedPath;
-                d = new DirectoryInfo(path);
-                fotos = d.GetFiles();
-
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Error con el directorio");
-            }
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            folderBrowserDialog.Description = "Selecciona un directorio con imagenes";
+            folderBrowserDialog.ShowDialog();
+            path = folderBrowserDialog.SelectedPath;
+            d = new DirectoryInfo(path);
+            fotos = d.GetFiles();
             indice = 0;
-
+            CambiarFoto();
         }
 
         int segundosPorFoto = 0;
@@ -51,37 +51,42 @@ namespace PruebasComponentes
             segundosPorFoto = int.Parse(cbSegundos.SelectedItem.ToString());
         }
 
-        int segundosTotales = 0;
+        int segundosImagen = 0;
         int indice = 0;
         private void timer_Tick(object sender, EventArgs e)
         {
-            segundosTotales++;
             multiMediaReproductor1.Segundos++;
+            segundosImagen++;
 
-            if (segundosPorFoto >= segundosTotales)
+            if (segundosImagen >= segundosPorFoto)
             {
-                segundosPorFoto = 0; //Reiniciamos segundos de imagen
-                // cambiar la foto
+                segundosImagen = 0; //Reiniciamos segundos de tiempo en pantalla de la imagen
+                CambiarFoto();
             }
         }
 
         private void CambiarFoto()
         {
-            if (fotos == null || fotos.Length == 0)
+            if (fotos != null && fotos.Length > 0)
             {
-                MessageBox.Show("Problemas con el directorio", "DIRECTORIO NO VÁLIDO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-
+                gbImagenes.BackgroundImage = Image.FromFile(fotos[indice].FullName);
+                indice++;
+                if (indice >= fotos.Length)
+                {
+                    indice = 0;
+                }
             }
         }
         private void multiMediaReproductor1_PlayClick(object sender, EventArgs e)
         {
             if (timer.Enabled)
+            {
                 timer.Stop();
+            }
             else
+            {
                 timer.Start();
+            }
         }
     }
 }

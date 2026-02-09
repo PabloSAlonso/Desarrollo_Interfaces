@@ -36,7 +36,7 @@
             // 
             this.btnReproducir.Location = new System.Drawing.Point(3, 3);
             this.btnReproducir.Name = "btnReproducir";
-            this.btnReproducir.Size = new System.Drawing.Size(212, 183);
+            this.btnReproducir.Size = new System.Drawing.Size(129, 65);
             this.btnReproducir.TabIndex = 0;
             this.btnReproducir.Text = "Play";
             this.btnReproducir.UseVisualStyleBackColor = true;
@@ -45,7 +45,7 @@
             // lblTiempo
             // 
             this.lblTiempo.AutoSize = true;
-            this.lblTiempo.Location = new System.Drawing.Point(221, 3);
+            this.lblTiempo.Location = new System.Drawing.Point(138, 3);
             this.lblTiempo.Name = "lblTiempo";
             this.lblTiempo.Size = new System.Drawing.Size(42, 13);
             this.lblTiempo.TabIndex = 1;
@@ -58,7 +58,7 @@
             this.Controls.Add(this.lblTiempo);
             this.Controls.Add(this.btnReproducir);
             this.Name = "MultiMediaReproductor";
-            this.Size = new System.Drawing.Size(268, 190);
+            this.Size = new System.Drawing.Size(184, 75);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -39,7 +39,7 @@
             // 
             // btnSelección
             // 
-            this.btnSelección.Location = new System.Drawing.Point(12, 225);
+            this.btnSelección.Location = new System.Drawing.Point(12, 109);
             this.btnSelección.Name = "btnSelección";
             this.btnSelección.Size = new System.Drawing.Size(216, 59);
             this.btnSelección.TabIndex = 1;
@@ -51,7 +51,7 @@
             // 
             this.cbSegundos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSegundos.FormattingEnabled = true;
-            this.cbSegundos.Location = new System.Drawing.Point(12, 293);
+            this.cbSegundos.Location = new System.Drawing.Point(12, 174);
             this.cbSegundos.MaxLength = 2;
             this.cbSegundos.Name = "cbSegundos";
             this.cbSegundos.Size = new System.Drawing.Size(216, 21);
@@ -60,7 +60,7 @@
             // 
             // gbImagenes
             // 
-            this.gbImagenes.Location = new System.Drawing.Point(406, 29);
+            this.gbImagenes.Location = new System.Drawing.Point(286, 29);
             this.gbImagenes.Name = "gbImagenes";
             this.gbImagenes.Size = new System.Drawing.Size(218, 232);
             this.gbImagenes.TabIndex = 3;
@@ -69,7 +69,7 @@
             // 
             // timer
             // 
-            this.timer.Interval = 1;
+            this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // multiMediaReproductor1
@@ -86,7 +86,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(548, 283);
             this.Controls.Add(this.gbImagenes);
             this.Controls.Add(this.cbSegundos);
             this.Controls.Add(this.btnSelección);

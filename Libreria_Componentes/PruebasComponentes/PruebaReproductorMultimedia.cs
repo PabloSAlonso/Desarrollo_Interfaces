@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PruebasComponentes//Icono. Preprocesar directorio (im,g corrupta y archivos no imag). Inicio de valor en combo. Excep genérica no.
+namespace PruebasComponentes//Icono. Inicio de valor en combo. Excep genérica no. DONE
+                            //Preprocesar directorio(im, g corrupta y archivos no imag). 
 {
     public partial class PruebaReproductorMultimedia : Form
     {

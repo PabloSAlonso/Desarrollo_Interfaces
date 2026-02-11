@@ -37,15 +37,22 @@ namespace PruebasComponentes//Icono. Inicio de valor en combo. Excep genérica n
 
         private void btnSelección_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            folderBrowserDialog.Description = "Selecciona un directorio con imagenes";
-            folderBrowserDialog.ShowDialog();
-            path = folderBrowserDialog.SelectedPath;
-            d = new DirectoryInfo(path);
-            fotos = d.GetFiles();
-            indice = 0;
-            CambiarFoto();
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                folderBrowserDialog.Description = "Selecciona un directorio con imagenes";
+                folderBrowserDialog.ShowDialog();
+                path = folderBrowserDialog.SelectedPath;
+                d = new DirectoryInfo(path);
+                fotos = d.GetFiles();
+                indice = 0;
+                CambiarFoto();
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Debes seleccionar un directorio", "Has cancelado la selección de directorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
 
@@ -69,45 +76,43 @@ namespace PruebasComponentes//Icono. Inicio de valor en combo. Excep genérica n
             }
         }
 
-        private bool EsImagenValidaYAvanza()
+        private bool EsImagenValida(int i)
         {
-            string ext = fotos[indice].Extension.ToLower();
-            bool valida = (ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".bmp");
-
-            indice++;
-            if (indice >= fotos.Length)
-            {
-                indice = 0;
-            }
-            return valida;
+            string ext = fotos[i].Extension.ToLower();
+            return (ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".bmp");
         }
 
 
         private void CambiarFoto()
         {
-            try
+            if (fotos != null && fotos.Length > 0)
             {
-                if (fotos != null && fotos.Length > 0)
+                int intentos = 0;
+                while (intentos < fotos.Length)
                 {
-                    int intentos = 0;
-
-                    while (intentos < fotos.Length)
+                    if (EsImagenValida(indice))
                     {
-                        if (EsImagenValidaYAvanza())
-                        {
-                            gbImagenes.BackgroundImage =
-                                Image.FromFile(fotos[(indice - 1 + fotos.Length) % fotos.Length].FullName); //ese indice para no gastar tiempo con archivos no válidos
+                        gbImagenes.BackgroundImage =
+                            Image.FromFile(fotos[indice].FullName);
 
-                            break; // salimos al encontrar una válida
+                        indice++;
+                        if (indice >= fotos.Length)
+                        {
+                            indice = 0;
                         }
-                        intentos++;
+                        intentos = fotos.Length; //forzar salida de while
                     }
+                    if (intentos < fotos.Length) //si no se forzó la salida y no hay solo archivos válidos se ejecuta lo siguiente cuando la imagen no es válida
+                    {
+
+                        indice++;
+                        if (indice >= fotos.Length)
+                        {
+                            indice = 0;
+                        }
+                    }
+                    intentos++;
                 }
-            }
-            catch (OutOfMemoryException o)
-            {
-                // Si llegamos aquí, hay archivos no válidos 
-                indice++;
             }
         }
         private void multiMediaReproductor1_PlayClick(object sender, EventArgs e)

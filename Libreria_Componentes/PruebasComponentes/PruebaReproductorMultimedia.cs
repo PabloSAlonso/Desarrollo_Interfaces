@@ -10,8 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PruebasComponentes//Icono. Inicio de valor en combo. Excep genérica no. DONE
-                            //Preprocesar directorio(im, g corrupta y archivos no imag). 
+namespace PruebasComponentes// Preprocesar directorio(corrupta). 
 {
     public partial class PruebaReproductorMultimedia : Form
     {
@@ -37,23 +36,17 @@ namespace PruebasComponentes//Icono. Inicio de valor en combo. Excep genérica n
 
         private void btnSelección_Click(object sender, EventArgs e)
         {
-            try
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            folderBrowserDialog.Description = "Selecciona un directorio con imagenes";
+            DialogResult r = folderBrowserDialog.ShowDialog();
+            if (r == DialogResult.OK)
             {
-
-                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-                folderBrowserDialog.Description = "Selecciona un directorio con imagenes";
-                folderBrowserDialog.ShowDialog();
                 path = folderBrowserDialog.SelectedPath;
                 d = new DirectoryInfo(path);
                 fotos = d.GetFiles();
                 indice = 0;
                 CambiarFoto();
             }
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Debes seleccionar un directorio", "Has cancelado la selección de directorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
         }
 
         int segundosPorFoto = 0;
@@ -92,9 +85,16 @@ namespace PruebasComponentes//Icono. Inicio de valor en combo. Excep genérica n
                 {
                     if (EsImagenValida(indice))
                     {
-                        gbImagenes.BackgroundImage =
-                            Image.FromFile(fotos[indice].FullName);
+                        try
+                        {
 
+                            gbImagenes.BackgroundImage =
+                                Image.FromFile(fotos[indice].FullName);
+                        }
+                        catch (OutOfMemoryException ex)
+                        {
+                            gbImagenes.BackgroundImage = null;
+                        }
                         indice++;
                         if (indice >= fotos.Length)
                         {

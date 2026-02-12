@@ -16,7 +16,7 @@ namespace PruebasComponentes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PruebaReproductorMultimedia()); //Aqui voy poniendo que quiero iniciar
+            Application.Run(new Ahorcado()); //Aqui voy poniendo que quiero iniciar
         }
     }
 }

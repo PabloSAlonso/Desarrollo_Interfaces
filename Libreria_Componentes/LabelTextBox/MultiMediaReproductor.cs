@@ -34,9 +34,9 @@ namespace LabelTextBox
             OnPlayClick(sender, e);
         }
 
+        private int minutos = 0;
         [Category("Propiedades etiqueta")]
         [Description("Representa los minutos de la etiqueta")]
-        private int minutos = 0;
         public int Minutos
         {
             set
@@ -58,9 +58,9 @@ namespace LabelTextBox
             get { return minutos; }
         }
 
+        private int segundos = 0;
         [Category("Propiedades etiqueta")]
         [Description("Representa los segundos de la etiqueta")]
-        private int segundos = 0;
         public int Segundos
         {
             set

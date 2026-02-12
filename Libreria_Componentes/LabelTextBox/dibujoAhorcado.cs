@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LabelTextBox
@@ -18,11 +13,26 @@ namespace LabelTextBox
         }
 
         private int errores = 0;
+        [Category("Mis atributos")]
+        [Description("Errores que determinan cuanto dibujo hay")]
         public int Errores
         {
             set
             {
+                if (value < 0 || value > 7)
+                {
+                    value = 0;
+                }
+                if (errores != value)
+                {
+                    OnCambiaError(this, EventArgs.Empty);
+                }
+                if (value == 7)
+                {
+                    OnAhorcado(this, EventArgs.Empty);
+                }
                 errores = value;
+                Refresh();
             }
             get
             {
@@ -64,49 +74,56 @@ namespace LabelTextBox
                     pe.Graphics.Clear(DefaultBackColor);
                     return;
                 case 1:
+                    //Poste
+                    point1 = new Point(this.Width - 1, this.Height - 1);
+                    point2 = new Point(0, this.Height - 1);
+                    pe.Graphics.DrawLine(pen, point1, point2);
                     point1 = new Point(0, 0);
                     point2 = new Point(0, this.Height);
-                    pe.Graphics.DrawLine(pen, 0, 0, 0, this.Height);
+                    pe.Graphics.DrawLine(pen, point1, point2);
                     return;
 
                 case 2:
-                    point1 = new Point(0, this.Height);
-                    point2 = new Point(this.Width / 2, 0);
-                    pe.Graphics.DrawLine(pen, 0, this.Height, this.Width / 2, 0);
-                    return;
+                    //Rama para cuerda
+                    point1 = new Point(0, 0);
+                    point2 = new Point(this.Width - (this.Width / 10), 0);
+                    pe.Graphics.DrawLine(pen, point1, point2);
+                    goto case 1;
 
                 case 3:
-                    point1 = new Point(this.Width / 2, 0);
-                    point2 = new Point(this.Width / 2, this.Height / 12);
-                    pe.Graphics.DrawLine(pen, this.Width / 2, 0, this.Width / 2, this.Height / 12);
-                    return;
+                    //Cuerda
+                    point1 = new Point(this.Width - (this.Width / 4), 0);
+                    point2 = new Point(this.Width - (this.Width / 4), this.Height / 10);
+                    pe.Graphics.DrawLine(pen, point1, point2);
+                    goto case 2;
 
                 case 4:
-                    pe.Graphics.DrawEllipse(pen, this.Width / 2 - 15, this.Height / 12, 30, 30);
-                    return;
+                    //Cabeza
+                    pe.Graphics.DrawEllipse(pen, this.Width - (this.Width / 4) - 15, this.Height / 10, 30, 30);
+                    goto case 3;
 
                 case 5:
-                    point1 = new Point();
-                    point2 = new Point();
+                    //Torso
+                    point1 = new Point(this.Width - (this.Width / 4), this.Height / 10 + 30);
+                    point2 = new Point(this.Width - (this.Width / 4), this.Height / 10 + 60);
                     pe.Graphics.DrawLine(pen, point1, point2);
-                    return;
+                    goto case 4;
 
                 case 6:
-                    point1 = new Point();
-                    point2 = new Point();
+                    point1 = new Point(this.Width - (this.Width / 4), this.Height / 10 + 40);
+                    point2 = new Point(this.Width - (this.Width / 4) + 25, this.Height / 10 + 50);
                     pe.Graphics.DrawLine(pen, point1, point2);
-                    point2 = new Point(); //Cambia hacia donde va el brazo
+                    point2 = new Point(this.Width - (this.Width / 4) - 25, this.Height / 10 + 50); //Cambia hacia donde va el 2º brazo
                     pe.Graphics.DrawLine(pen, point1, point2);
-                    return;
+                    goto case 5;
 
                 case 7:
-                    point1 = new Point();
-                    point2 = new Point();
+                    point1 = new Point(this.Width - (this.Width / 4), this.Height / 10 + 60);
+                    point2 = new Point(this.Width - (this.Width / 4) + 25, this.Height / 10 + 70);
                     pe.Graphics.DrawLine(pen, point1, point2);
-                    point2 = new Point(); //Cambia hacia donde va la pierna
+                    point2 = new Point(this.Width - (this.Width / 4) - 25, this.Height / 10 + 70); //Cambia hacia donde va la 2º pierna
                     pe.Graphics.DrawLine(pen, point1, point2);
-                    return;
-
+                    goto case 6;
             }
         }
     }

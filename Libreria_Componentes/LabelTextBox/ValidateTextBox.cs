@@ -7,76 +7,135 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LabelTextBox
 {
     public partial class ValidateTextBox : UserControl
     {
-        public enum ETipo
+        public enum eTipo
         {
-            Numerico,
-            Textual
+            Numerico, Textual
         }
         public ValidateTextBox()
         {
             InitializeComponent();
+            txt.Location = new System.Drawing.Point(10, 10);
         }
-        private ETipo tipo = ETipo.Numerico;
-        [Category("Mis propiedades")]
-        [Description("tipo del enumerado")]
-        public ETipo Tipo
+
+        public ValidateTextBox(IContainer container)
         {
-            set
-            {
-                tipo = value;
-            }
-            get
-            {
-                return tipo;
-            }
+            container.Add(this);
+            InitializeComponent();
         }
 
-
-        [Category("Mis propiedades")]
-        [Description("Texto asociado al textbox del control")]
-        public String Texto
+        [Category("Mis Propiedades")]
+        [Description("Texto del textbox")]
+        public string Texto
         {
             set
             {
                 txt.Text = value;
                 Refresh();
             }
-            get
-            {
-                return txt.Text;
-            }
+
+            get { return txt.Text; }
         }
 
         [Category("Mis Propiedades")]
-        [Description("Propiedad asociada al multiLine del textbox del componente")]
-        public bool MultiLine
+        [Description("Multilinea del textbox")]
+        public bool Multilinea
         {
             set
             {
-                txt.Multiline = value;
+                {
+                    txt.Multiline = value;
+                    Refresh();
+                }
+            }
+            get { return txt.Multiline; }
+        }
+
+        private eTipo tipo;
+        [Category("Mis Propiedades")]
+        [Description("Tipo de caracter de entrada")]
+        public eTipo Tipo
+        {
+            set
+            {
+                tipo = value;
                 Refresh();
             }
-            get
+            get { return tipo; }
+        }
+
+        [Category("Eventos Propios")]
+        [Description("Cambio de texto")]
+        public event EventHandler txb1_TextChanged;
+        protected virtual void Ontxb1_TextChanged(object sender, EventArgs e)
+        {
+            if (txb1_TextChanged != null)
             {
-                return txt.Multiline;
+                txb1_TextChanged(this, e);
             }
         }
 
-        public void ajustarAnchoAlto()
+        private void ValidateTextBox_Load(object sender, EventArgs e)
         {
-            Height = txt.Height + 20;
-            txt.Width = Width - 20;
+
+        }
+
+        bool isChecked = false;
+
+        public bool checkFormatTextual(string content)
+        {
+            foreach (char c in content)
+            {
+                if (!char.IsLetter(c) && c != ' ')
+                {
+                    return false;
+                }
+            }
+            return content != "";
+        }
+
+        public bool checkFormatNumerico(string content)
+        {
+            return int.TryParse(content.Trim(), out _);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (tipo == eTipo.Numerico && checkFormatNumerico(txt.Text))
+            {
+                isChecked = true;
+            }
+            else if (tipo == eTipo.Textual && checkFormatTextual(txt.Text))
+            {
+                isChecked = true;
+            }
+            else
+            {
+                isChecked = false;
+            }
+            Ontxb1_TextChanged(sender, e);
+            Refresh();
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            ajustarAnchoAlto();
+            this.Height = txt.Height + 20;
+            txt.Width = this.Width - 20;
+            Graphics graphics = e.Graphics;
+            Pen pen = new Pen(Color.Red);
+            int w = Width - 10;
+            int h = Height - 10;
+            if (isChecked)
+            {
+                pen = new Pen(Color.Green);
+            }
+            graphics.DrawRectangle(pen, new Rectangle(5, 5, w, h));
         }
     }
 }

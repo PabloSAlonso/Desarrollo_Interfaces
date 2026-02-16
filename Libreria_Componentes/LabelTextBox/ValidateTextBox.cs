@@ -80,10 +80,6 @@ namespace LabelTextBox
             }
         }
 
-        private void ValidateTextBox_Load(object sender, EventArgs e)
-        {
-
-        }
 
         bool isChecked = false;
 

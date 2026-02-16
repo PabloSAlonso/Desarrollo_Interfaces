@@ -46,7 +46,6 @@ namespace LabelTextBox
             set
             {
                 imagenMarca = value;
-                //Size = new Size(30, 30);
                 this.Refresh();
             }
             get

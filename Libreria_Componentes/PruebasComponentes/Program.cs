@@ -16,7 +16,8 @@ namespace PruebasComponentes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Ahorcado()); //Aqui voy poniendo que quiero iniciar
+            Application.Run(new Ahorcado()); 
+            //Application.Run(new PruebaValidateTextBox());
         }
     }
 }

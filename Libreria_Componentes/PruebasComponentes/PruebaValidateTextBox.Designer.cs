@@ -29,11 +29,36 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PruebaValidateTextBox));
+            this.validateTextBox1 = new LabelTextBox.ValidateTextBox(this.components);
+            this.SuspendLayout();
+            // 
+            // validateTextBox1
+            // 
+            this.validateTextBox1.Location = new System.Drawing.Point(13, 13);
+            this.validateTextBox1.Multilinea = false;
+            this.validateTextBox1.Name = "validateTextBox1";
+            this.validateTextBox1.Size = new System.Drawing.Size(210, 40);
+            this.validateTextBox1.TabIndex = 0;
+            this.validateTextBox1.Texto = "";
+            this.validateTextBox1.Tipo = LabelTextBox.ValidateTextBox.eTipo.Numerico;
+            this.validateTextBox1.Load += new System.EventHandler(this.validateTextBox1_Load);
+            // 
+            // PruebaValidateTextBox
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.validateTextBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "PruebaValidateTextBox";
             this.Text = "PruebaValidateTextBox";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private LabelTextBox.ValidateTextBox validateTextBox1;
     }
 }

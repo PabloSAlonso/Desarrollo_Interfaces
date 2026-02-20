@@ -96,6 +96,9 @@
     <EmbeddedResource Include="PruebaReproductorMultimedia.resx">
       <DependentUpon>PruebaReproductorMultimedia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PruebaValidateTextBox.resx">
+      <DependentUpon>PruebaValidateTextBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Prueba_EtiquetaAviso.resx">
       <DependentUpon>Prueba_EtiquetaAviso.cs</DependentUpon>
     </EmbeddedResource>

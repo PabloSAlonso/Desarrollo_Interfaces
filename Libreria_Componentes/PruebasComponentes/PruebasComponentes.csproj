@@ -66,6 +66,12 @@
     <Compile Include="PruebaReproductorMultimedia.Designer.cs">
       <DependentUpon>PruebaReproductorMultimedia.cs</DependentUpon>
     </Compile>
+    <Compile Include="PruebaValidateTextBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PruebaValidateTextBox.Designer.cs">
+      <DependentUpon>PruebaValidateTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Prueba_EtiquetaAviso.cs">
       <SubType>Form</SubType>
     </Compile>

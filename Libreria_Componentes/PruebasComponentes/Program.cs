@@ -16,8 +16,8 @@ namespace PruebasComponentes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Ahorcado()); 
-            //Application.Run(new PruebaValidateTextBox());
+            //Application.Run(new Ahorcado()); 
+            Application.Run(new PruebaValidateTextBox());
         }
     }
 }

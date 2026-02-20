@@ -38,11 +38,10 @@
             this.validateTextBox1.Location = new System.Drawing.Point(13, 13);
             this.validateTextBox1.Multilinea = false;
             this.validateTextBox1.Name = "validateTextBox1";
-            this.validateTextBox1.Size = new System.Drawing.Size(210, 40);
+            this.validateTextBox1.Size = new System.Drawing.Size(628, 40);
             this.validateTextBox1.TabIndex = 0;
-            this.validateTextBox1.Texto = "";
-            this.validateTextBox1.Tipo = LabelTextBox.ValidateTextBox.eTipo.Numerico;
-            this.validateTextBox1.Load += new System.EventHandler(this.validateTextBox1_Load);
+            this.validateTextBox1.Texto = "22";
+            this.validateTextBox1.Tipo = LabelTextBox.ValidateTextBox.eTipo.Textual;
             // 
             // PruebaValidateTextBox
             // 

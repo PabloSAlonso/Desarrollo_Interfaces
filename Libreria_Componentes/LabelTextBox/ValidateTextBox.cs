@@ -11,7 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LabelTextBox
 {
-    public partial class ValidateTextBox : UserControl
+    public partial class ValidateTextBox : UserControl//Revisar comprobaciones texto/numero
     {
         public enum eTipo
         {
@@ -21,6 +21,7 @@ namespace LabelTextBox
         {
             InitializeComponent();
             txt.Location = new System.Drawing.Point(10, 10);
+
         }
 
         public ValidateTextBox(IContainer container)
@@ -48,10 +49,10 @@ namespace LabelTextBox
         {
             set
             {
-                {
-                    txt.Multiline = value;
-                    Refresh();
-                }
+
+                txt.Multiline = value;
+                Refresh();
+
             }
             get { return txt.Multiline; }
         }
@@ -64,6 +65,7 @@ namespace LabelTextBox
             set
             {
                 tipo = value;
+                textBox1_TextChanged(this, EventArgs.Empty);
                 Refresh();
             }
             get { return tipo; }
@@ -79,9 +81,6 @@ namespace LabelTextBox
                 txb1_TextChanged(this, e);
             }
         }
-
-
-        bool isChecked = false;
 
         public bool checkFormatTextual(string content)
         {
@@ -100,19 +99,16 @@ namespace LabelTextBox
             return int.TryParse(content.Trim(), out _);
         }
 
+        bool isChecked = false;
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (tipo == eTipo.Numerico && checkFormatNumerico(txt.Text))
+            if (tipo == eTipo.Numerico)
             {
-                isChecked = true;
+                isChecked = checkFormatNumerico(txt.Text);
             }
-            else if (tipo == eTipo.Textual && checkFormatTextual(txt.Text))
+            else if (tipo == eTipo.Textual)
             {
-                isChecked = true;
-            }
-            else
-            {
-                isChecked = false;
+                isChecked = checkFormatTextual(txt.Text);
             }
             Ontxb1_TextChanged(sender, e);
             Refresh();
@@ -129,9 +125,10 @@ namespace LabelTextBox
             int h = Height - 10;
             if (isChecked)
             {
-                pen = new Pen(Color.Green);
+                pen.Color = (Color.Green);
             }
             graphics.DrawRectangle(pen, new Rectangle(5, 5, w, h));
+
         }
     }
 }

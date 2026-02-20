@@ -37,7 +37,7 @@
             this.dibujoAhorcado1.Errores = 7;
             this.dibujoAhorcado1.Location = new System.Drawing.Point(12, 12);
             this.dibujoAhorcado1.Name = "dibujoAhorcado1";
-            this.dibujoAhorcado1.Size = new System.Drawing.Size(164, 132);
+            this.dibujoAhorcado1.Size = new System.Drawing.Size(134, 132);
             this.dibujoAhorcado1.TabIndex = 0;
             this.dibujoAhorcado1.Text = "dibujoAhorcado1";
             this.dibujoAhorcado1.Click += new System.EventHandler(this.dibujoAhorcado1_Click);

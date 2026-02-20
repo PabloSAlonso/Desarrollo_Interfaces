@@ -33,20 +33,19 @@
             // 
             // txt
             // 
-            this.txt.Location = new System.Drawing.Point(13, 12);
-            this.txt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt.Location = new System.Drawing.Point(10, 10);
             this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(132, 22);
+            this.txt.Size = new System.Drawing.Size(100, 20);
             this.txt.TabIndex = 0;
+            this.txt.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // ValidateTextBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txt);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ValidateTextBox";
-            this.Size = new System.Drawing.Size(280, 105);
+            this.Size = new System.Drawing.Size(210, 85);
             this.ResumeLayout(false);
             this.PerformLayout();
 
